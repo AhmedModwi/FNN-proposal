@@ -1,0 +1,340 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import SourceLinks from '../components/ui/SourceLinks.astro';
+---
+
+<BaseLayout title="UI Architecture: Spacing & Geometry — Al-Fananin">
+  <style is:global>
+
+    body {
+      color: var(--color-text-primary);
+      background-color: var(--color-bg-base);
+    }
+    
+    .en-mono {
+      font-family: 'Inter', system-ui, sans-serif;
+      direction: ltr;
+      display: inline-block;
+      font-size: 0.85em;
+    }
+    
+    .en-text {
+      font-family: 'Inter', system-ui, sans-serif;
+      direction: ltr;
+      display: inline-block;
+    }
+
+    /* Structural Documentation Layout */
+    .doc-container { max-width: 1040px; margin: 0 auto; padding: 0 2rem; }
+    
+    section { padding: 4.5rem 0; border-bottom: 1px solid var(--border-light); }
+    section:last-child { border-bottom: none; }
+    
+    .section-header { margin-bottom: 3rem; max-width: 800px; }
+    .section-num { font-family: 'Inter', sans-serif; font-weight: 700; color: var(--text-muted); font-size: 0.875rem; letter-spacing: 0.05em; margin-bottom: 0.5rem; display: block; }
+    .section-title { font-size: 2.25rem; font-weight: bold; margin-bottom: 1rem; line-height: 1.2; }
+    .section-desc { font-size: 1.125rem; color: var(--text-muted); }
+    
+    /* Token Blocks */
+    .token-grid { display: grid; gap: 1rem; }
+    @media (min-width: 768px) { .token-grid { grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); } }
+    
+    .token-card {
+      background: white;
+      border: 1px solid var(--border-light);
+      border-radius: 0.5rem;
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+    
+    h1, h2, h3, h4 { letter-spacing: -0.01em; }
+    
+    /* Technical Presentation Styles */
+    .wire-box { border: 1px dashed rgba(43,26,20,0.3); background: rgba(43,26,20,0.02); }
+    .measure-line { position: relative; border-top: 1px solid var(--accent); }
+    .measure-line::before, .measure-line::after { content: ''; position: absolute; top: -4px; width: 1px; height: 9px; background: var(--accent); }
+    .measure-line::before { left: 0; }
+    .measure-line::after { right: 0; }
+    
+    .demo-cell { background: white; border: 1px solid var(--border-light); border-radius: 4px; display: flex; align-items: center; justify-content: center; color: var(--text-muted); font-size: 0.75rem; }
+  
+  </style>
+
+  <!-- PAGE HEADER -->
+  <header class="pt-20 pb-12 border-b border-[rgba(43,26,20,0.1)] bg-white">
+    <div class="doc-container text-center">
+      <span class="en-mono uppercase tracking-widest text-[#2A9D8F] font-bold mb-4 block text-xs">Architecture Document v1.0</span>
+      <h1 class="text-4xl md:text-5xl font-bold mb-6"><span class="lang-ar">هندسة الواجهة: الفراغات والشبكات</span><span class="lang-en hidden">Interface geometry: Spaces and Grids</span></h1>
+      <p class="text-xl max-w-3xl mx-auto opacity-75">
+        <span class="lang-ar">الواجهة الرقمية لا تُبنى من الألوان والخطوط فقط، بل تعتمد على نظامين خفيين يحكمان وضوحها وتنظيمها. يوثق هذا الملف معمارية الفراغات والشبكات (النظام الهيكلي)، لضمان تماسك التصميم بعيداً عن العشوائية البصرية.</span><span class="lang-en hidden">The digital interface is not built of colors and lines alone, but rather relies on two hidden systems that govern its clarity and organization. This file documents the architecture of spaces and networks (structural system), to ensure design cohesion away from visual randomness.</span>
+      </p>
+    </div>
+  </header>
+
+  <!-- ==========================================
+       RESEARCH-DRIVEN FOUNDATION
+       ========================================== -->
+  <section class="bg-muted/50 border-b border-subtle py-16 md:py-24 px-6 md:px-12">
+    <div class="max-w-7xl mx-auto">
+      <div class="mb-12 max-w-4xl">
+        <span class="en-text text-xs font-bold tracking-widest uppercase text-secondary mb-3 block" dir="ltr">Structural Engineering Foundations</span>
+        <h2 class="text-3xl md:text-5xl font-black mb-6 f-amiri leading-[1.2]">
+          <span class="lang-ar">الرياضيات الخفية للثقة: <br/><span class="text-[#2A9D8F]">كيف تحكم الشبكة سلوك ضيوفنا؟</span></span>
+          <span class="lang-en hidden" dir="ltr">The Hidden Math of Trust: <br/><span class="text-[#2A9D8F]">How the Grid Governs Guest Behavior?</span></span>
+        </h2>
+        <p class="text-xl md:text-2xl text-secondary leading-relaxed f-amiri border-r-4 border-[#2A9D8F]/20 pr-6">
+          <span class="lang-ar">بناءً على الدراسات التي تشير إلى أن</span><span class="lang-en hidden">Based on studies indicating that</span> <strong><span class="lang-ar">72% من عمليات البحث عن المطاعم تتم عبر الجوال</span><span class="lang-en hidden">72% of restaurant searches happen on mobile</span></strong><span class="lang-ar">، قمنا بهندسة نظام "الفنانين" ليخاطب حواس المستخدم ويقلل الجهد المعرفي:</span><span class="lang-en hidden">, we engineered the Al-Fananin system to address user senses and reduce cognitive load:</span>
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-6">
+        <div class="bg-white p-6 border rounded-xl shadow-sm">
+          <h4 class="font-bold text-[#2A9D8F] mb-2 f-amiri ar-text"><span class="lang-ar">قاعدة الـ 8 بكسل (8pt Grid)</span><span class="lang-en hidden">8pt Grid Rule</span></h4>
+          <p class="text-xs opacity-80 leading-relaxed f-amiri ar-text"><span class="lang-ar">استخدام نظام رياضي (مضاعفات الرقم 8) يخلق إيقاعاً بصرياً يثق فيه العقل الباطن بشكل غريزي. هذا التماسك يرفع من "درجة الاحترافية المدركة" ويزيد من ولاء الزائر للعلامة التجارية.</span><span class="lang-en hidden">Using a mathematical system (multiples of 8) creates a visual rhythm that the subconscious trust instinctively. This cohesion raises the "perceived professionalism" and increases brand loyalty.</span></p>
+        </div>
+        <div class="bg-white p-6 border rounded-xl shadow-sm">
+          <h4 class="font-bold text-[#2A9D8F] mb-2 f-amiri ar-text"><span class="lang-ar">منطق الـ RTL (Native Experience)</span><span class="lang-en hidden">RTL Logics</span></h4>
+          <p class="text-xs opacity-80 leading-relaxed f-amiri ar-text"><span class="lang-ar">محاذاة العناصر من اليمين إلى اليسار لا تعكس النص فقط، بل تعكس توقعات المستخدم الثقافية، مما يحسن من معدلات البقاء داخل الموقع (Retention Rates) عبر تجربة تبدو "طبيعية" للزائر العربي.</span><span class="lang-en hidden">Aligning elements from right to left doesn't just mirror text, it mirrors cultural expectations, improving retention rates via a "natural" experience for the Arabic visitor.</span></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================== -->
+  <!-- CHAPTER 1: SPACING & GRIDS SYSTEM          -->
+  <!-- ========================================== -->
+  <div class="bg-gray-50/50 py-4 border-b border-gray-200 sticky top-0 z-50 backdrop-blur-sm">
+    <div class="doc-container flex items-center gap-4">
+      <div class="w-2 h-2 rounded-full bg-blue-500"></div>
+      <span class="font-bold text-lg"><span class="lang-ar">الفصل الأول: نظام الفراغات والشبكات (Spacing & Grids)</span><span class="lang-en hidden">Chapter One: Spacing & Grids System</span></span>
+    </div>
+  </div>
+
+  <main class="doc-container">
+
+    <!-- SECTION 1 -->
+    <section>
+      <div class="section-header">
+        <span class="section-num en-mono">SECTION 1.0</span>
+        <h2 class="section-title"><span class="lang-ar">نظام الفراغات والشبكات</span><span class="lang-en hidden">System of spaces and networks</span></h2>
+        <p class="section-desc">
+          <span class="lang-ar">الفراغ ليس مساحة فارغة، بل هو المادة الهيكلية التي تنظم تدفق المعلومات وتخلق التسلسل الهرمي. بدون نظام رياضي صارم للفراغات، تبدو الواجهات فوضوية مهما بلغت جودة الألوان والطباعة. الفراغ هو ما يمنح عين المستخدم القدرة على التنفس وفهم العلاقات بين العناصر.</span><span class="lang-en hidden">Space is not empty space, but rather the structural material that organizes the flow of information and creates hierarchy. Without a strict mathematical system of spaces, interfaces appear chaotic, no matter how good the colors and typography are. Space is what gives the user's eye the ability to breathe and understand the relationships between elements.</span>
+        </p>
+      </div>
+    </section>
+
+    <!-- SECTION 2 -->
+    <section>
+      <div class="section-header">
+        <span class="section-num en-mono">SECTION 2.0</span>
+        <h2 class="section-title"><span class="lang-ar">نظام الـ 8 بكسل (The 8px Grid System)</span><span class="lang-en hidden">The 8px Grid System</span></h2>
+        <p class="section-desc">
+          <span class="lang-ar">تعتمد مسافات النظام بالكامل على مضاعفات الرقم 8. هذا يضمن تناسقاً رياضياً، محاذاة دقيقة للبكسل (Pixel-perfect)، ويسهل التخاطب بين المصممين والمطورين.</span><span class="lang-en hidden">The entire system's spacing is based on multiples of 8. This ensures mathematical consistency, pixel-perfect alignment, and facilitates communication between designers and developers.</span>
+        </p>
+      </div>
+      
+      <div class="token-grid">
+        <div class="token-card items-center text-center">
+          <div class="w-full flex justify-center items-end h-16"><div class="bg-blue-200 w-8" style="height: 8px;"></div></div>
+          <div class="w-full measure-line my-1"></div>
+          <div><code class="en-mono text-blue-800 bg-blue-50 px-2 py-1 rounded">space-1 (8px)</code></div>
+          <p class="text-sm opacity-60"><span class="lang-ar">عناصر دقيقة ومترابطة بشدة</span><span class="lang-en hidden">Subtle and closely interconnected elements</span></p>
+        </div>
+        <div class="token-card items-center text-center">
+          <div class="w-full flex justify-center items-end h-16"><div class="bg-blue-300 w-8" style="height: 16px;"></div></div>
+          <div class="w-full measure-line my-1"></div>
+          <div><code class="en-mono text-blue-800 bg-blue-50 px-2 py-1 rounded">space-2 (16px)</code></div>
+          <p class="text-sm opacity-60"><span class="lang-ar">النطاق التباعدي الافتراضي للبطاقات</span><span class="lang-en hidden">The default spacing range for cards</span></p>
+        </div>
+        <div class="token-card items-center text-center">
+          <div class="w-full flex justify-center items-end h-16"><div class="bg-blue-400 w-8" style="height: 24px;"></div></div>
+          <div class="w-full measure-line my-1"></div>
+          <div><code class="en-mono text-blue-800 bg-blue-50 px-2 py-1 rounded">space-3 (24px)</code></div>
+          <p class="text-sm opacity-60"><span class="lang-ar">الفواصل بين مكونات من نفس السياق</span><span class="lang-en hidden">Separators between components of the same context</span></p>
+        </div>
+        <div class="token-card items-center text-center">
+          <div class="w-full flex justify-center items-end h-16"><div class="bg-blue-500 w-8" style="height: 32px;"></div></div>
+          <div class="w-full measure-line my-1"></div>
+          <div><code class="en-mono text-blue-800 bg-blue-50 px-2 py-1 rounded">space-4 (32px)</code></div>
+          <p class="text-sm opacity-60"><span class="lang-ar">الفواصل الرئيسية داخل القسم الواحد</span><span class="lang-en hidden">Main breaks within a single section</span></p>
+        </div>
+        <div class="token-card items-center text-center">
+          <div class="w-full flex justify-center items-end h-16"><div class="bg-blue-600 w-8" style="height: 48px;"></div></div>
+          <div class="w-full measure-line my-1"></div>
+          <div><code class="en-mono text-blue-800 bg-blue-50 px-2 py-1 rounded">space-6 (48px)</code></div>
+          <p class="text-sm opacity-60"><span class="lang-ar">المسافات الفاصلة بين الأقسام</span><span class="lang-en hidden">Spacing between sections</span></p>
+        </div>
+        <div class="token-card items-center text-center">
+          <div class="w-full flex justify-center items-end h-16"><div class="bg-blue-800 w-8" style="height: 64px;"></div></div>
+          <div class="w-full measure-line my-1"></div>
+          <div><code class="en-mono text-blue-800 bg-blue-50 px-2 py-1 rounded">space-8 (64px)</code></div>
+          <p class="text-sm opacity-60"><span class="lang-ar">فراغات عملاقة للتنفس البصري</span><span class="lang-en hidden">Giant voids for visual breathing</span></p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 3 -->
+    <section>
+      <div class="section-header">
+        <span class="section-num en-mono">SECTION 3.0</span>
+        <h2 class="section-title"><span class="lang-ar">نصف الخطوة: مسافة الـ 4 بكسل (The 4px Half Step)</span><span class="lang-en hidden">Half Step: The 4px Half Step</span></h2>
+        <p class="section-desc">
+          <span class="lang-ar">الـ 4 بكسل ليست وحدة بناء أساسية، بـل هي</span><span class="lang-en hidden">The 4 pixels are not a basic building block, they are</span> <strong><span class="lang-ar">أداة جراحية (Precision Tool)</span><span class="lang-en hidden">Precision Tool</span></strong> <span class="lang-ar">تُستخدم فقط لإجراء التعديلات الدقيقة جداً (Micro-adjustments)، مثل المسافة بين الأيقونة والنص المجاور لها، أو لضبط ارتفاع السطور (Line-height) ومحاذاة الشارات الصغيرة.</span><span class="lang-en hidden">It is only used to make very fine adjustments (micro-adjustments), such as the distance between an icon and the text next to it, or to adjust the line-height and alignment of small icons.</span>
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-8">
+        <div class="bg-white p-6 border rounded-lg">
+          <h4 class="font-bold mb-4 text-center"><span class="lang-ar">مسافة دقيقة (4px)</span><span class="lang-en hidden">Min distance (4px)</span></h4>
+          <div class="flex items-center justify-center gap-1 bg-gray-50 p-4 rounded wire-box">
+            <i data-lucide="map-pin" class="w-4 h-4 text-gray-400"></i>
+            <div class="w-[4px] h-4 bg-red-300"></div>
+            <span class="text-sm font-bold text-gray-700"><span class="lang-ar">الخرطوم، السودان</span><span class="lang-en hidden">Khartoum, Sudan</span></span>
+          </div>
+          <p class="text-xs text-center mt-3 opacity-60 en-mono">Gap: 4px | Cohesive Grouping</p>
+        </div>
+
+        <div class="bg-white p-6 border rounded-lg">
+          <h4 class="font-bold mb-4 text-center"><span class="lang-ar">مسافة قياسية (8px)</span><span class="lang-en hidden">Standard distance (8px)</span></h4>
+          <div class="flex items-start bg-gray-50 p-4 rounded wire-box">
+            <div class="w-12 h-12 bg-gray-200 rounded-full flex-shrink-0"></div>
+            <div class="w-[8px] h-12 bg-blue-300"></div>
+            <div>
+              <div class="font-bold text-sm bg-gray-200 h-4 w-24 mb-2 rounded"></div>
+              <div class="text-xs text-gray-400 bg-gray-100 h-3 w-32 rounded"></div>
+            </div>
+          </div>
+          <p class="text-xs text-center mt-3 opacity-60 en-mono">Gap: 8px | Component Separation</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 4 -->
+    <section>
+      <div class="section-header">
+        <span class="section-num en-mono">SECTION 4.0</span>
+        <h2 class="section-title"><span class="lang-ar">شبكة الـ 12 عمود (The 12-Column Grid)</span><span class="lang-en hidden">The 12-Column Grid</span></h2>
+        <p class="section-desc">
+          <span class="lang-ar">نعتمد شبكة مرنة من 12 عموداً للشاشات الكبيرة (Desktop). يكمن سر الرقم 12 في قابليته العالية للقسمة، مما يسمح بإنشاء تخطيطات لا حصر لها بمرونة. أما في شاشات الجوال، تتقلص الشبكة لتصبح عموداً واحداً ممتداً.</span><span class="lang-en hidden">We adopt a flexible 12-column grid for large screens (Desktop). The secret of the number 12 is its high divisibility, which allows infinite layouts to be created flexibly. On mobile screens, the grid shrinks to become a single extended column.</span>
+        </p>
+      </div>
+
+      <div class="space-y-6">
+        <div class="grid grid-cols-12 gap-4 bg-gray-100 p-4 rounded-lg">
+          <div class="demo-cell h-8">1</div><div class="demo-cell h-8">2</div><div class="demo-cell h-8">3</div>
+          <div class="demo-cell h-8">4</div><div class="demo-cell h-8">5</div><div class="demo-cell h-8">6</div>
+          <div class="demo-cell h-8">7</div><div class="demo-cell h-8">8</div><div class="demo-cell h-8">9</div>
+          <div class="demo-cell h-8">10</div><div class="demo-cell h-8">11</div><div class="demo-cell h-8">12</div>
+        </div>
+      </div>
+      
+      <div class="mt-8 flex gap-8 justify-center border-t pt-8">
+        <div class="text-center">
+          <code class="block en-mono text-gray-500 mb-1">Gutters (Desktop)</code>
+          <span class="font-bold text-lg">24px</span>
+        </div>
+        <div class="text-center">
+          <code class="block en-mono text-gray-500 mb-1">Gutters (Mobile)</code>
+          <span class="font-bold text-lg">16px</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 5 -->
+    <section>
+      <div class="section-header">
+        <span class="section-num en-mono">SECTION 5.0</span>
+        <h2 class="section-title"><span class="lang-ar">قانون الفراغ الداخلي والخارجي (Internal vs External)</span><span class="lang-en hidden">The law of internal and external vacuum (Internal vs External)</span></h2>
+        <p class="section-desc">
+          <span class="lang-ar">القانون الذهبي للتجميع الهندسي (Gestalt): <strong>الفراغ الداخلي (Padding) يجب أن يكون دائماً أصغر من أو يساوي الفراغ الخارجي الفاصل بين العناصر (Margin).</strong> هذا يضمن أن العناصر المرتبطة منطقياً تبدو متصلة بصرياً.</span><span class="lang-en hidden">The golden law of geometric grouping (Gestalt): <strong>The inner space (Padding) must always be less than or equal to the outer space separating the elements (Margin).</strong> This ensures that logically related elements appear visually connected.</span>
+        </p>
+      </div>
+    </section>
+
+    <!-- SECTION 6 -->
+    <section>
+      <div class="section-header">
+        <span class="section-num en-mono">SECTION 6.0</span>
+        <h2 class="section-title"><span class="lang-ar">العرض الأقصى لكتل النصوص (Text Max-Width)</span><span class="lang-en hidden">Maximum width of text blocks (Text Max-Width)</span></h2>
+        <p class="section-desc">
+          <strong><span class="lang-ar">يجب الالتزام بوضع حد أقصى (Max-Width) لأي حاوية نصوص مقروءة، يتراوح بين 600 بكسل إلى 800 بكسل.</span><span class="lang-en hidden">You must adhere to setting a maximum width (Max-Width) for any readable text container, ranging from 600 pixels to 800 pixels.</span></strong>
+        </p>
+      </div>
+    </section>
+
+    <!-- SECTION 7 -->
+    <section>
+      <div class="section-header">
+        <span class="section-num en-mono">SECTION 7.0</span>
+        <h2 class="section-title"><span class="lang-ar">نظام التقويس والحدود الدائرية (Border Radius)</span><span class="lang-en hidden">Border Radius System</span></h2>
+        <p class="section-desc">
+          <span class="lang-ar">نستخدم زوايا دائرية منتظمة ومدروسة لتخفيف حدة الواجهة. أهم قاعدة هي "قانون التداخل" (Nesting Rule): <strong>مقدار القوس الداخلي = مقدار القوس الخارجي - مسافة الفراغ بينهما الأساسية (Padding).</strong></span>
+          <span class="lang-en hidden">We use regular and calculated rounded corners to soften the interface. The most important rule is the “Nesting Rule”: <strong>Internal arch value = external arch value - basic space distance between them (Padding).</strong></span>
+        </p>
+      </div>
+
+      <div class="flex flex-wrap gap-4 mb-10">
+        <div class="px-4 py-2 border rounded text-sm"><code class="en-mono font-bold">radius-sm (4px)</code></div>
+        <div class="px-4 py-2 border rounded-md text-sm"><code class="en-mono font-bold">radius-md (8px)</code></div>
+        <div class="px-4 py-2 border rounded-lg text-sm"><code class="en-mono font-bold">radius-lg (12px)</code></div>
+        <div class="px-4 py-2 border rounded-xl text-sm"><code class="en-mono font-bold">radius-xl (16px)</code></div>
+        <div class="px-4 py-2 border rounded-2xl text-sm"><code class="en-mono font-bold">radius-2xl (24px)</code></div>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-8 items-center">
+        <div class="bg-[#1A1A1A] text-white p-8 rounded-[24px] relative">
+           <div class="absolute -top-3 right-6 bg-yellow-400 text-black text-xs font-bold px-2 py-1 rounded en-mono">Outer Radius: 24px</div>
+           <div class="bg-white/10 p-4 w-full h-32 rounded-[12px] border border-white/20 relative">
+             <div class="absolute bottom-2 left-2 text-xs font-bold opacity-60 en-mono">(24 - 12 = 12px Inner Radius)</div>
+           </div>
+           <p class="text-center font-bold mt-6 opacity-90"><span class="lang-ar">التقويس متناغم ومتوازي تماماً</span><span class="lang-en hidden">The curvature is harmonious and perfectly parallel</span></p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="bg-[#1A1A1A] text-white pt-16 pb-20 border-t-8 border-[var(--accent)] mt-12">
+    <div class="doc-container">
+      <h2 class="text-3xl font-bold mb-8"><span class="lang-ar">ملخص العمارة الهيكلية والأنظمة (System Checklist)</span><span class="lang-en hidden">Summary of structural architecture and systems (System Checklist)</span></h2>
+      
+      <div class="grid md:grid-cols-1 gap-8">
+        <div class="space-y-4">
+          <h4 class="font-bold text-[#F4A261] text-lg border-b border-white/10 pb-2"><span class="lang-ar">هيكلية الفراغات والأبعاد</span><span class="lang-en hidden">Structure of spaces and dimensions</span></h4>
+          <ul class="space-y-3 opacity-90 text-sm">
+            <li class="flex items-center gap-3"><i data-lucide="check-circle" class="w-4 h-4 text-green-400"></i> <span class="lang-ar">استخدام مضاعفات الرقم 8 حصرياً لقياسات التصميم (Margins & Padding).</span><span class="lang-en hidden">Use multiples of 8 exclusively for design measurements (Margins & Padding).</span></li>
+            <li class="flex items-center gap-3"><i data-lucide="check-circle" class="w-4 h-4 text-green-400"></i> <span class="lang-ar">استخدام 4 بكسل للضبط المجهري والدقيق جداً (Micro-adjustments).</span><span class="lang-en hidden">Use 4 pixels for micro-adjustments.</span></li>
+            <li class="flex items-center gap-3"><i data-lucide="check-circle" class="w-4 h-4 text-green-400"></i> <span class="lang-ar">شبكة 12 عمود متجاوبة تتقلص في أجهزة الجوال لعمود متمدد واحد.</span><span class="lang-en hidden">Responsive 12 column grid that shrinks on mobile devices to one expanding column.</span></li>
+            <li class="flex items-center gap-3"><i data-lucide="check-circle" class="w-4 h-4 text-green-400"></i> <span class="lang-ar">الفراغ الداخلي (Internal) أصغر دائماً من الخارجي (External Layout).</span><span class="lang-en hidden">The internal space is always smaller than the external layout.</span></li>
+            <li class="flex items-center gap-3"><i data-lucide="check-circle" class="w-4 h-4 text-green-400"></i> <span class="lang-ar">عرض حاويات النص لا يتجاوز الـ 800 بكسل لتجنب الإرهاق البصري للعين.</span><span class="lang-en hidden">The width of text containers does not exceed 800 pixels to avoid visual fatigue on the eyes.</span></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="mt-16 pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center opacity-50 text-xs en-mono space-y-4 md:space-y-0 text-center md:text-left">
+         <span>DOCUMENT STATUS: APPROVED FINAL</span>
+         <span>AUTHORED BY: SYSTEM ARCHITECTURE TEAM / AL-FANANIN UI GUIDELINES V1.0</span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    lucide.createIcons();
+  </script>
+
+  <SourceLinks 
+    sources={[
+      { 
+        titleAr: "المساحات، الشبكات، والتقسيم في أنظمة التصميم", 
+        titleEn: "Spacing, Grids, and Layouts - Design Systems",
+        url: "https://www.designsystems.com/space-grids-and-layouts/" 
+      },
+      { 
+        titleAr: "المحاكاة (Mirroring): التصميم للمستخدم العربي", 
+        titleEn: "Mirroring: How to design for Arabic users",
+        url: "https://www.menabytes.com/mirroring-design-arabic-users/" 
+      }
+    ]}
+  />
+</BaseLayout>

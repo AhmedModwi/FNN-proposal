@@ -1,0 +1,887 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import SourceLinks from '../components/ui/SourceLinks.astro';
+---
+
+<BaseLayout title="Photography System Specimen — Al-Fananin">
+  <style is:global>
+
+        body {
+            color: var(--color-text-primary);
+            background-color: var(--color-bg-base);
+        }
+
+        .en-font {
+            font-family: 'Inter', system-ui, sans-serif;
+            direction: ltr;
+            display: inline-block;
+        }
+
+        .f-amiri {
+            font-family: 'Amiri', Georgia, serif;
+        }
+
+        .doc-container {
+            max-width: 1040px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        section {
+            padding: 5rem 0;
+            border-bottom: 1px solid var(--border-light);
+        }
+
+        section:last-of-type {
+            border-bottom: none;
+        }
+
+        .section-header {
+            margin-bottom: 3.5rem;
+            max-width: 800px;
+        }
+
+        .section-num {
+            font-family: 'Inter', sans-serif;
+            font-weight: 700;
+            color: var(--text-muted);
+            font-size: 0.875rem;
+            letter-spacing: 0.05em;
+            margin-bottom: 0.75rem;
+            display: block;
+        }
+
+        .section-title {
+            font-size: 2.25rem;
+            font-weight: bold;
+            margin-bottom: 1.25rem;
+            line-height: 1.3;
+        }
+
+        .section-desc {
+            font-size: 1.125rem;
+            color: var(--text-muted);
+            line-height: 1.8;
+        }
+
+        .tag {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            padding: 0.25rem 0.5rem;
+            border-radius: 4px;
+            background: rgba(43, 26, 20, 0.05);
+            color: var(--text-muted);
+        }
+
+        /* Abstract Photo Placeholders to avoid generic stock */
+        .photo-placeholder {
+            background-color: #EEDCB5;
+            position: relative;
+            overflow: hidden;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            border: 1px solid rgba(0,0,0,0.05);
+            aspect-ratio: 4/3;
+        }
+        
+        .photo-placeholder::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(255,255,255,0.4) 0%, rgba(255,255,255,0) 100%);
+            mix-blend-mode: overlay;
+        }
+        
+        .photo-label {
+            position: relative;
+            z-index: 10;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.75rem;
+            font-weight: bold;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            color: rgba(43, 26, 20, 0.5);
+            border: 1px dashed rgba(43, 26, 20, 0.2);
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            background: rgba(255,255,255,0.3);
+            backdrop-filter: blur(2px);
+        }
+    
+  </style>
+
+
+
+    <header class="pt-24 pb-16 bg-white border-b border-gray-200">
+        <div class="doc-container text-center">
+            <span class="en-font text-xs font-bold tracking-widest uppercase text-gray-500 mb-6 block">Art Direction Brief v1.0</span>
+            <h1 class="text-4xl md:text-5xl font-bold mb-6"><span class="lang-ar">نظام التصوير — ترجمة الضيافة السودانية إلى لغة بصرية قابلة للرغبة</span><span class="lang-en hidden">The imaging system—translating Sudanese hospitality into a desirable visual language</span></h1>
+            <p class="text-xl max-w-3xl mx-auto opacity-75 f-amiri leading-relaxed">
+                <span class="lang-ar">وثيقة التوجيه الفني لتصوير الأطباق، المشروبات، المساحات، والعناصر البشرية ضمن هوية رقمية راقية.</span><span class="lang-en hidden">An artistic direction document for depicting dishes, drinks, spaces, and human elements within a sophisticated digital identity.</span>
+                <br><span class="lang-ar">الهدف ليس مجرد توثيق طعام، بل تصوير الملمس (Texture)، الدفء (Warmth)، الكرم (Abundance)، والأصالة (Authenticity).</span><span class="lang-en hidden">The goal is not just to document food, but to capture texture, warmth, generosity, and authenticity.</span>
+            </p>
+        </div>
+    </header>
+
+    <main>
+        <!-- RESEARCH-DRIVEN FOUNDATION -->
+        <section class="bg-muted/50 border-b border-subtle py-16 md:py-24 px-6 md:px-12">
+            <div class="max-w-7xl mx-auto">
+                <div class="mb-12 max-w-4xl">
+                    <span class="en-text text-xs font-bold tracking-widest uppercase text-secondary mb-3 block" dir="ltr">Visual Psychology & Conversion</span>
+                    <h2 class="text-3xl md:text-5xl font-black mb-6 f-amiri leading-[1.2]">
+                        <span class="lang-ar">سيكولوجية الصورة: <br/><span class="text-red-800">كيف نرفع معدل التحويل البصري؟</span></span>
+                        <span class="lang-en hidden" dir="ltr">Visual Psychology: <br/><span class="text-red-800">How to Boost Visual Conversion?</span></span>
+                    </h2>
+                    <p class="text-xl md:text-2xl text-secondary leading-relaxed f-amiri border-r-4 border-red-800/20 pr-6">
+                        <span class="lang-ar">تثبت الدراسات أن</span><span class="lang-en hidden">Studies prove that</span> <strong><span class="lang-ar">45% من زوار المواقع يبحثون عن صور الطعام أولاً</span><span class="lang-en hidden">45% of site visitors look for food photos first</span></strong><span class="lang-ar">، وأن الإخراج الفني الاحترافي يرفع نسبة الطلب بـ 30-40%. نظامنا يعتمد القواعد التالية:</span><span class="lang-en hidden">, and professional art direction increases ordering by 30-40%. Our system adopts these rules:</span>
+                    </p>
+                </div>
+
+                <div class="grid md:grid-cols-3 gap-6">
+                    <div class="bg-white p-6 border rounded-xl shadow-sm">
+                        <h4 class="font-bold text-red-800 mb-2 f-amiri ar-text"><span class="lang-ar">قاعدة الطعام البني (The Brown Rule)</span><span class="lang-en hidden">Brown food rule</span></h4>
+                        <p class="text-xs opacity-80 leading-relaxed f-amiri ar-text"><span class="lang-ar">المطبخ السوداني غني باليخنات البنية. نستخدم التباين اللوني العالي (العزل على خلفيات فاتحة) لمنع "الفوضى البصرية" وإظهار الجمال العميق للأطباق التقليدية.</span><span class="lang-en hidden">Sudanese cuisine is rich in brown stews. We use high color contrast (isolating on light backgrounds) to prevent "visual chaos" and show the deep beauty of traditional dishes.</span></p>
+                    </div>
+                    <div class="bg-white p-6 border rounded-xl shadow-sm">
+                        <h4 class="font-bold text-red-800 mb-2 f-amiri ar-text"><span class="lang-ar">الإضاءة الجانبية (Side-lit Texture)</span><span class="lang-en hidden">Side-lit Texture</span></h4>
+                        <p class="text-xs opacity-80 leading-relaxed f-amiri ar-text"><span class="lang-ar">الضوء الجانبي (45 درجة) يكشف مسامية الخبز (الكسرة) وتفاصيل اللحوم (الشية). هذا الملمس يولد استجابة عصبية فورية تسمى "الجوع البصري".</span><span class="lang-en hidden">Side-lighting (45 degrees) reveals bread porosity (Kisra) and meat details (Shiya). This texture generates an immediate neural response called "visual hunger".</span></p>
+                    </div>
+                    <div class="bg-white p-6 border rounded-xl shadow-sm">
+                        <h4 class="font-bold text-red-800 mb-2 f-amiri ar-text"><span class="lang-ar">المصداقية الاجتماعية (Social Trust)</span><span class="lang-en hidden">Social Trust</span></h4>
+                        <p class="text-xs opacity-80 leading-relaxed f-amiri ar-text"><span class="lang-ar">الصور التي تشمل عناصر بشرية (يد، صب قهوة) ترفع الثقة بالعلامة التجارية، لأنها تنقل شعور "الضيافة الحية" بدلاً من الصور المعلبة الباردة.</span><span class="lang-en hidden">Images including human elements (hand, pouring coffee) raise brand trust, as they convey a "living hospitality" feel instead of cold canned photos.</span></p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- DISCLAIMER: RESEARCH CONTEXT -->
+        <section class="bg-[#F8F9FA] border-b border-gray-200 py-8">
+            <div class="doc-container">
+                <div class="flex gap-4 items-start p-6 bg-[#EEDCB5]/30 rounded-xl border border-[#D9A92B]/40 text-[#3E2723]">
+                    <i data-lucide="info" class="w-6 h-6 flex-shrink-0 mt-1 text-[#9B2226]"></i>
+                    <div>
+                        <strong class="block mb-1 font-bold text-lg"><span class="lang-ar">ملاحظة هامة (توضيح المصدر):</span><span class="lang-en hidden">Important note (clarification of source):</span></strong>
+                        <p class="text-[16px] leading-relaxed opacity-90 f-amiri"><span class="lang-ar">هذا المستند هو</span><span class="lang-en hidden">This document is</span> <strong><span class="lang-ar">نتاج بحث منهجي صارم (Research-Based Brief)</span><span class="lang-en hidden">The product of rigorous, systematic research (Research-Based Brief)</span></strong> <span class="lang-ar">تم تصميمه حصرياً استناداً إلى أحدث التوصيات العالمية لخبراء تصوير الأطعمة. الهدف هو تزويدك كخبير فني بالمعايير التي تحقق أعلى معدلات التحويل.</span><span class="lang-en hidden">designed exclusively based on the latest global food photography recommendations. The goal is to provide you as a technical expert with the standards that achieve the highest conversion rates.</span></p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- SECTION 2: ART DIRECTION PHILOSOPHY -->
+        <section class="doc-container">
+            <div class="section-header">
+                <span class="section-num en-font">SECTION 2.0</span>
+                <h2 class="section-title"><span class="lang-ar">فلسفة التوجيه الفني (Art Direction Philosophy)</span><span class="lang-en hidden">Art Direction Philosophy</span></h2>
+                <p class="section-desc">
+                    <span class="lang-ar">الصور الصاخبة أو المثالية المفرطة تفقد مصداقيتها. التصوير هنا يرفض الأجواء التجارية الاستهلاكية ويتبنى منهجية التوثيق الحميمي. الطعام يبدو وكأنك دعيت إلى وليمة حقيقية.</span><span class="lang-en hidden">Loud or overly idealized images lose their credibility. Photography here rejects the commercial, consumer atmosphere and adopts the methodology of intimate documentation. The food feels like you've been invited to a real feast.</span>
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Card 1 -->
+                <div class="bg-white p-6 rounded-xl border border-gray-100 shadow-sm">
+                    <span class="tag mb-3 block w-max">Authenticity</span>
+                    <h3 class="font-bold text-lg mb-2 text-[#9B2226]"><span class="lang-ar">الواقعية الدافئة</span><span class="lang-en hidden">Warm realism</span></h3>
+                    <p class="text-sm opacity-80 leading-relaxed text-gray-700"><span class="lang-ar">الابتعاد التام عن إضاءات الفلاش القاسية والصور ذات المظهر البلاستيكي. نعتمد الإضاءة المنتشرة الناعمة.</span><span class="lang-en hidden">Avoid harsh flash lighting and plastic-looking photos. We adopt soft diffused lighting.</span></p>
+                </div>
+                <!-- Card 2 -->
+                <div class="bg-white p-6 rounded-xl border border-gray-100 shadow-sm">
+                    <span class="tag mb-3 block w-max">Tactile</span>
+                    <h3 class="font-bold text-lg mb-2 text-[#9B2226]"><span class="lang-ar">الملمس قبل الزخرفة</span><span class="lang-en hidden">Texture before decoration</span></h3>
+                    <p class="text-sm opacity-80 leading-relaxed text-gray-700"><span class="lang-ar">يجب أن يشعر المشاهد بمسامية الكسرة وقرمشة الطعمية وسماكة الملاح قبل التركيز على ترتيب زينة الطبق.</span><span class="lang-en hidden">The viewer must feel the porosity of the kasra, the crunch of the falafel, and the thickness of the mellah before focusing on the arrangement of the dish’s garnish.</span></p>
+                </div>
+                <!-- Card 3 -->
+                <div class="bg-white p-6 rounded-xl border border-gray-100 shadow-sm">
+                    <span class="tag mb-3 block w-max">Generosity</span>
+                    <h3 class="font-bold text-lg mb-2 text-[#9B2226]"><span class="lang-ar">الوفرة دون فوضى</span><span class="lang-en hidden">Abundance without clutter</span></h3>
+                    <p class="text-sm opacity-80 leading-relaxed text-gray-700"><span class="lang-ar">تجسيد الكرم السوداني بكثافة الطعام والطبقات، ولكن داخل تكوين هندسي نظيف ومريح للعين.</span><span class="lang-en hidden">The embodiment of Sudanese generosity with the density of food and layers, but within a clean geometric composition that is pleasing to the eye.</span></p>
+                </div>
+                <!-- Card 4 -->
+                <div class="bg-white p-6 rounded-xl border border-gray-100 shadow-sm">
+                    <span class="tag mb-3 block w-max">Storytelling</span>
+                    <h3 class="font-bold text-lg mb-2 text-[#9B2226]"><span class="lang-ar">الإنسان كجزء من القصة</span><span class="lang-en hidden">Man as part of the story</span></h3>
+                    <p class="text-sm opacity-80 leading-relaxed text-gray-700"><span class="lang-ar">يد بشرية تصب القهوة أو تقطع الخبز تضفي حياة وألفة وتلغي الإحساس الاستوديو المعزول.</span><span class="lang-en hidden">A human hand pouring coffee or cutting bread adds life and familiarity and eliminates the isolated studio feel.</span></p>
+                </div>
+                <!-- Card 5 -->
+                <div class="bg-white p-6 rounded-xl border border-gray-100 shadow-sm">
+                    <span class="tag mb-3 block w-max">Culture</span>
+                    <h3 class="font-bold text-lg mb-2 text-[#9B2226]"><span class="lang-ar">الهوية السودانية دون استعراض</span><span class="lang-en hidden">Sudanese identity without display</span></h3>
+                    <p class="text-sm opacity-80 leading-relaxed text-gray-700"><span class="lang-ar">استخدام تلميحات ثقافية دقيقة ومندمجة وظيفياً بدلاً من الاستعراض السياحي المبتذل بالأيقونات التقليدية.</span><span class="lang-en hidden">Using subtle, functionally integrated cultural allusions rather than cheesy tourist display with traditional iconography.</span></p>
+                </div>
+                <!-- Card 6 -->
+                <div class="bg-white p-6 rounded-xl border border-gray-100 shadow-sm">
+                    <span class="tag mb-3 block w-max">Conversion</span>
+                    <h3 class="font-bold text-lg mb-2 text-[#9B2226]"><span class="lang-ar">الجوع البصري القابل للتحويل</span><span class="lang-en hidden">Transferable visual hunger</span></h3>
+                    <p class="text-sm opacity-80 leading-relaxed text-gray-700"><span class="lang-ar">الهدف النهائي هو الطلب. يجب إبراز اللمعان، العصارة، والتباين اللوني لتحفيز الشهية المباشرة للمشاهد.</span><span class="lang-en hidden">The ultimate goal is demand. Luster, juiciness, and color contrast should be highlighted to stimulate the viewer's immediate appetite.</span></p>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 3: WHAT THE CAMERA MUST SELL -->
+        <section class="bg-[#F8F9FA] border-y border-gray-200">
+            <div class="doc-container">
+                <div class="section-header">
+                    <span class="section-num en-font">SECTION 3.0</span>
+                    <h2 class="section-title"><span class="lang-ar">ماذا يجب أن تبيع الكاميرا؟</span><span class="lang-en hidden">What should the camera sell for?</span></h2>
+                    <p class="section-desc">
+                        <span class="lang-ar">نحن لا نبيع قائمة أطباق (Dish Inventory)، بل نبيع تجربة متكاملة. الكاميرا يجب أن تخترق حاجز الشاشة لتقدم قيماً وظيفية وعاطفية.</span><span class="lang-en hidden">We don't sell a menu (Dish Inventory), we sell an integrated experience. The camera must break through the screen barrier to provide functional and emotional values.</span>
+                    </p>
+                </div>
+
+                <div class="max-w-4xl bg-white border border-gray-200 rounded-2xl p-8 shadow-sm">
+                    <div class="space-y-6 relative before:absolute before:inset-y-0 before:-right-3 before:w-1 before:bg-gray-100 before:rounded pr-6">
+                        <div class="relative">
+                            <div class="absolute -right-[34px] top-1 w-6 h-6 rounded-full bg-[#9B2226] flex items-center justify-center border-4 border-white"></div>
+                            <strong class="text-xl block text-gray-900 mb-1"><span class="lang-ar">الشهوة الطعامية (The Food Itself)</span><span class="lang-en hidden">The Food Itself</span></strong>
+                            <p class="text-sm text-gray-600"><span class="lang-ar">عصارة اللحم، لمعان الزيت، كثافة البخار، ونضارة المكونات.</span><span class="lang-en hidden">The juiciness of the meat, the sheen of the oil, the intensity of the steam, and the freshness of the ingredients.</span></p>
+                        </div>
+                        <div class="relative">
+                            <div class="absolute -right-[34px] top-1 w-6 h-6 rounded-full bg-[#E8B730] flex items-center justify-center border-4 border-white"></div>
+                            <strong class="text-xl block text-gray-900 mb-1"><span class="lang-ar">المشاركة الجماعية (The Act of Sharing)</span><span class="lang-en hidden">The Act of Sharing</span></strong>
+                            <p class="text-sm text-gray-600"><span class="lang-ar">الأيادي الممتدة، التوزيع على أكثر من شخص، ودفء المائدة.</span><span class="lang-en hidden">The extended hands, the distribution to more than one person, and the warmth of the table.</span></p>
+                        </div>
+                        <div class="relative">
+                            <div class="absolute -right-[34px] top-1 w-6 h-6 rounded-full bg-[#81B29A] flex items-center justify-center border-4 border-white"></div>
+                            <strong class="text-xl block text-gray-900 mb-1"><span class="lang-ar">الطقوس الثقافية (Cultural Rituals)</span><span class="lang-en hidden">Cultural Rituals</span></strong>
+                            <p class="text-sm text-gray-600"><span class="lang-ar">طريقة صب الجبنة، تقديم الشية على الجمر، وتحضير الكسرة.</span><span class="lang-en hidden">How to pour the cheese, serve the shiya on hot coals, and prepare the kasra.</span></p>
+                        </div>
+                        <div class="relative">
+                            <div class="absolute -right-[34px] top-1 w-6 h-6 rounded-full bg-[#3E2723] flex items-center justify-center border-4 border-white"></div>
+                            <strong class="text-xl block text-gray-900 mb-1"><span class="lang-ar">جودة المكونات والمصداقية (Trustworthiness)</span><span class="lang-en hidden">Ingredient quality and trustworthiness</span></strong>
+                            <p class="text-sm text-gray-600"><span class="lang-ar">وضوح الطبق دون فلاتر ثقيلة لإثبات ثقتنا بجودة ما قدمناه.</span><span class="lang-en hidden">The clarity of the dish without heavy filters to prove our confidence in the quality of what we provided.</span></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 4: LIGHTING SYSTEM -->
+        <section class="doc-container">
+            <div class="section-header">
+                <span class="section-num en-font">SECTION 4.0</span>
+                <h2 class="section-title"><span class="lang-ar">عمارة الإضاءة (Lighting System)</span><span class="lang-en hidden">Lighting System</span></h2>
+                <p class="section-desc">
+                    <span class="lang-ar">الإضاءة هي المُشكل الأساسي للملمس.</span><span class="lang-en hidden">Lighting is the primary shaper of texture.</span> <strong><span class="lang-ar">يُمنع تماماً استخدام الفلاش المباشر (Direct Flash)</span><span class="lang-en hidden">The use of Direct Flash is strictly prohibited.</span></strong> <span class="lang-ar">أو الإضاءة القاسية التي تعطي الانطباع التجاري الرخيص وتخفي مسامية الأطباق السودانية العميقة.</span><span class="lang-en hidden">Or the harsh lighting that gives the impression of cheap commercialism and hides the porosity of the deep Sudanese dishes.</span>
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-8">
+                <!-- Lighting Mode 1 -->
+                <div class="bg-gray-100 p-6 rounded-2xl border-2 border-dashed border-gray-300 relative group">
+                    <div class="absolute top-4 left-4 bg-white px-2 py-1 rounded shadow-sm text-xs font-bold en-font text-blue-800">Diffused Light</div>
+                    <div class="photo-placeholder h-48 mb-4 border border-white/40 shadow-sm" style="background: linear-gradient(120deg, #FDFBF7, #EEDCB5);">
+                        <i data-lucide="sun-dim" class="w-12 h-12 text-[#2B1A14] opacity-20 mx-auto mb-2"></i>
+                        <span class="photo-label shadow text-center text-xs">Soft Natural Glow</span>
+                    </div>
+                    <h3 class="font-bold text-lg mb-1 relative z-10"><span class="lang-ar">الضوء المشتت الناعم</span><span class="lang-en hidden">Soft diffused light</span></h3>
+                    <p class="text-xs opacity-80 leading-relaxed"><span class="lang-ar">محاكاة ضوء النافذة الشمالية الناعم باستخدام (Softboxes). يقلل حدة الظلال ويعطي إشراقة واقعية طبيعية للطعام.</span><span class="lang-en hidden">Simulating the soft light of a northern window using softboxes. Reduces shadows and gives a natural, realistic glow to food.</span></p>
+                </div>
+
+                <!-- Lighting Mode 2 -->
+                <div class="bg-gray-100 p-6 rounded-2xl border-2 border-dashed border-gray-300 relative group">
+                    <div class="absolute top-4 left-4 bg-white px-2 py-1 rounded shadow-sm text-xs font-bold en-font text-amber-800">Side Light</div>
+                    <div class="photo-placeholder h-48 mb-4 border border-white/40 shadow-sm" style="background: linear-gradient(90deg, #EEDCB5, #cfa86e);">
+                        <i data-lucide="flashlight" class="w-12 h-12 text-[#2B1A14] opacity-20 mx-auto mb-2 transform rotate-90"></i>
+                        <span class="photo-label shadow text-center text-xs">Texture Reveal</span>
+                    </div>
+                    <h3 class="font-bold text-lg mb-1 relative z-10"><span class="lang-ar">الإضاءة الجانبية (45° - 90°)</span><span class="lang-en hidden">Side lighting (45° - 90°)</span></h3>
+                    <p class="text-xs opacity-80 leading-relaxed"><span class="lang-ar">تُلقي بظلال ناعمة وتكشف</span><span class="lang-en hidden">Casts soft shadows and reveals</span> <strong><span class="lang-ar">البنية الطبوغرافية</span><span class="lang-en hidden">Topographic structure</span></strong> <span class="lang-ar">ومسامية وخشونة الأطعمة كالمخبوزات (الكسرة/القراصة) واللحوم المشوية.</span><span class="lang-en hidden">And the porosity and roughness of foods such as baked goods (kasra/qarasa) and grilled meat.</span></p>
+                </div>
+
+                <!-- Lighting Mode 3 -->
+                <div class="bg-gray-100 p-6 rounded-2xl border-2 border-dashed border-gray-300 relative group">
+                    <div class="absolute top-4 left-4 bg-white px-2 py-1 rounded shadow-sm text-xs font-bold en-font text-purple-800">Backlight</div>
+                    <div class="photo-placeholder h-48 mb-4 border border-white/40 shadow-sm" style="background: linear-gradient(0deg, #EEDCB5 50%, #ffffff 100%);">
+                        <i data-lucide="sun" class="w-12 h-12 text-[#2B1A14] opacity-20 mx-auto mb-2"></i>
+                        <span class="photo-label shadow text-center text-xs">Liquid Translucency</span>
+                    </div>
+                    <h3 class="font-bold text-lg mb-1 relative z-10"><span class="lang-ar">الإضاءة الخلفية</span><span class="lang-en hidden">Backlight</span></h3>
+                    <p class="text-xs opacity-80 leading-relaxed"><span class="lang-ar">مثالية للمشروبات (الكركديه، القهوة)، ولإبراز حواف الأطعمة (Rim Lighting) والتقاط البخار المتصاعد بوضوح عالي.</span><span class="lang-en hidden">Ideal for drinks (hibiscus, coffee), highlighting the edges of foods (Rim Lighting) and capturing rising steam with great clarity.</span></p>
+                </div>
+
+                <!-- Forbidden Mode -->
+                <div class="bg-red-50 p-6 rounded-2xl border-2 border-dashed border-red-300 relative group overflow-hidden">
+                    <div class="absolute top-4 left-4 bg-red-600 text-white px-2 py-1 rounded shadow-sm text-xs font-bold en-font z-20">Direct Flash (Forbidden)</div>
+                    <div class="photo-placeholder h-48 mb-4 border border-red-200 shadow-sm relative" style="background: radial-gradient(circle, #ffffff 10%, #EEDCB5 90%);">
+                        <i data-lucide="zap-off" class="w-12 h-12 text-red-800 opacity-60 mx-auto mb-2 relative z-10"></i>
+                         <!-- Harsh simulated shadow -->
+                        <div class="absolute top-1/2 left-1/2 w-24 h-5 bg-black/60 transform translate-x-4 translate-y-4 blur-[2px] rounded-full z-0"></div>
+                        <div class="absolute top-1/2 left-1/2 w-20 h-20 bg-white shadow-xl transform -translate-x-1/2 -translate-y-1/2 rounded-full border border-gray-300 z-10"></div>
+                    </div>
+                    <h3 class="font-bold text-lg mb-1 text-red-800 relative z-10"><span class="lang-ar">الفلاش המباشر (مرفوض)</span><span class="lang-en hidden">Flash started (rejected)</span></h3>
+                    <p class="text-xs opacity-80 leading-relaxed text-red-900"><span class="lang-ar">يُسطح عمق الطبق، يولد انعكاسات متوهجة ومزعجة على الزيوت والمرق، ويخلق ظلالاً سوداء قاسية ومشوهة خلف المكونات.</span><span class="lang-en hidden">It flattens the depth of the dish, generates annoying glowing reflections on oils and broths, and creates harsh, distorted black shadows behind ingredients.</span></p>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 5: CAMERA ANGLES BY DISH GEOMETRY -->
+        <section class="bg-[#2B1A14] text-white py-24">
+            <div class="doc-container">
+                <div class="section-header">
+                    <span class="section-num en-font text-gray-400">SECTION 5.0</span>
+                    <h2 class="section-title"><span class="lang-ar">هندسة الطبق وزوايا الكاميرا</span><span class="lang-en hidden">Dish geometry and camera angles</span></h2>
+                    <p class="section-desc opacity-70">
+                        <span class="lang-ar">الزاوية تتبع هندسة الطبق والقصة المراد سردها. لا تُصور جميع المكتوبات من زاوية واحدة. زاوية الكاميرا أداة لتوجيه عين الزائر للمعلومة الغذائية الأهم.</span><span class="lang-en hidden">The angle follows the geometry of the dish and the story to be told. Not all writings are depicted from one angle. The camera angle is a tool to direct the visitor's eye to the most important nutritional information.</span>
+                    </p>
+                </div>
+
+                <div class="grid lg:grid-cols-3 gap-8">
+                    <!-- Angle 1 -->
+                    <div class="border border-white/20 p-6 rounded-xl bg-white/5 relative">
+                        <span class="en-font font-bold text-xs bg-white/10 px-2 py-1 rounded absolute top-4 left-4 tracking-widest uppercase">Overhead / Flat-lay</span>
+                        <div class="h-40 mt-8 mb-6 border border-white/20 rounded bg-white/5 flex items-center justify-center relative">
+                            <!-- Graphical representation of an overhead shot -->
+                            <div class="w-24 h-24 rounded-full border-4 border-dashed border-[#F4A261] opacity-60"></div>
+                            <div class="w-12 h-12 rounded-full border-4 border-[#81B29A] absolute top-4 right-4 opacity-50"></div>
+                            <div class="w-10 h-10 rounded border-2 border-white/40 absolute bottom-4 left-6 opacity-40"></div>
+                        </div>
+                        <h3 class="font-bold text-xl mb-2 text-[#F4A261]"><span class="lang-ar">الزاوية العلوية (90°)</span><span class="lang-en hidden">Top angle (90°)</span></h3>
+                        <p class="text-sm opacity-80 leading-relaxed mb-4"><span class="lang-ar">مثالية لاستعراض المائدة الممتلئة، لـ "الصينية السودانية" التشاركية، المخبوزات والأطباق المسطحة. تبرز الوفرة (Abundance) والهياكل التنظيمية للوجبة والترتيب الجمالي لعناصر المائدة.</span><span class="lang-en hidden">Perfect for showcasing a full table, for sharing 'Sudanese tray', baked goods and flat dishes. Abundance, the organizational structures of the meal, and the aesthetic arrangement of table items stand out.</span></p>
+                    </div>
+
+                    <!-- Angle 2 -->
+                    <div class="border border-white/20 p-6 rounded-xl bg-white/5 relative">
+                        <span class="en-font font-bold text-xs bg-white/10 px-2 py-1 rounded absolute top-4 left-4 tracking-widest uppercase">Diner’s View / 45°</span>
+                        <div class="h-40 mt-8 mb-6 border border-white/20 rounded bg-white/5 flex items-center justify-center relative perspective-container">
+                             <!-- Graphical representation of a 45 degree shot -->
+                             <div class="w-32 h-12 bg-[#81B29A]/30 rounded-[50%] absolute top-1/2 mt-4 transform -translate-y-1/2 scale-y-50 blur-[2px]"></div>
+                             <div class="w-28 h-10 border-b-4 border-l-4 border-solid border-white/60 rounded-[50%] absolute top-1/2 transform -translate-y-1/2 scale-y-50 mb-2"></div>
+                             <div class="w-24 h-6 border bg-[#F4A261]/80 rounded-[50%] absolute top-[35%] transform scale-y-50"></div>
+                        </div>
+                        <h3 class="font-bold text-xl mb-2 text-[#81B29A]"><span class="lang-ar">زاوية نظر الجالس (45°)</span><span class="lang-en hidden">Sitting angle of view (45°)</span></h3>
+                        <p class="text-sm opacity-80 leading-relaxed mb-4"><span class="lang-ar">زاوية الرؤية الطبيعية للضيف عند جلوسه. الأفضل لتصوير الأعماق القليلة مثل أطباق (الملاح) واليخنات العميقة. تخلق تواصلاً نفسياً ودعوة استباقية للتذوق المباشر.</span><span class="lang-en hidden">The natural viewing angle of the guest when sitting. Best for shooting shallow depths such as malah dishes and deep stews. Creates a psychological connection and a proactive invitation to direct tasting.</span></p>
+                    </div>
+
+                    <!-- Angle 3 -->
+                    <div class="border border-white/20 p-6 rounded-xl bg-white/5 relative">
+                        <span class="en-font font-bold text-xs bg-white/10 px-2 py-1 rounded absolute top-4 left-4 tracking-widest uppercase">Side Profile / 0°</span>
+                        <div class="h-40 mt-8 mb-6 border border-white/20 rounded bg-white/5 flex flex-col items-center justify-center gap-1">
+                             <!-- Graphical representation of a side profile shot -->
+                             <div class="w-20 h-4 bg-orange-200/50 rounded-full"></div>
+                             <div class="w-22 h-3 bg-red-800/60 rounded"></div>
+                             <div class="w-20 h-4 bg-orange-300/40 rounded-full mt-1"></div>
+                        </div>
+                        <h3 class="font-bold text-xl mb-2 text-white/90"><span class="lang-ar">زاوية الصفر والأفق (0°)</span><span class="lang-en hidden">Zero angle and horizon (0°)</span></h3>
+                        <p class="text-sm opacity-80 leading-relaxed mb-4"><span class="lang-ar">الزاوية الجانبية الموازية للطاولة. مثالية للكشف عن تكوين الطبقات (Layers) لساندويتش أو برجر، ولإبراز الارتفاع للأكواب الطويلة وتعرجات السوائل أو المشروبات المصبوبة.</span><span class="lang-en hidden">The side corner parallel to the table. Ideal for revealing the layered composition of a sandwich or burger, and for highlighting the height of tall cups and slushies of poured liquids or drinks.</span></p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 6: THE BROWN FOOD RULE -->
+        <section class="bg-[#F8F9FA] border-y border-gray-200">
+            <div class="doc-container">
+                <div class="section-header">
+                    <span class="section-num en-font">SECTION 6.0</span>
+                    <h2 class="section-title text-[#780000]"><span class="lang-ar">قاعدة الأطعمة البنية (The "Brown Food" Rule)</span><span class="lang-en hidden">The "Brown Food" Rule</span></h2>
+                    <p class="section-desc">
+                        <span class="lang-ar">المعضلة الكبرى: المطبخ السوداني غني جداً باليخنات واللحوم ذات الألوان الداكنة أو الترابية (شية، فول، تقلية) التي تميل للون "البني". هذه الأطعمة إذا لم تُصور بذكاء ستبدو مسطحة وباهتة.</span><span class="lang-en hidden">The biggest dilemma: Sudanese cuisine is very rich in stews and meats that are dark or earthy in color (shia, fava beans, taqliyya), which tend to be “brown.” If these foods are not photographed intelligently, they will look flat and dull.</span> <strong><span class="lang-ar">هنا نطبق قوانين التباين الصارمة.</span><span class="lang-en hidden">Here we apply strict laws of contrast.</span></strong>
+                    </p>
+                </div>
+
+                <div class="bg-white p-8 rounded-2xl border border-gray-200 shadow-sm max-w-5xl mx-auto mb-12">
+                    <div class="grid md:grid-cols-2 gap-10">
+                        <div>
+                            <h3 class="font-bold text-xl mb-4 text-[#780000] flex items-center gap-2">
+                                <i data-lucide="triangle-alert" class="w-5 h-5"></i>
+                                <span class="lang-ar">قوانين المواجهة للفوضى البصرية البنية</span><span class="lang-en hidden">Laws of confrontation for brown visual chaos</span>
+                            </h3>
+                            <ul class="space-y-4 text-sm opacity-90 text-gray-800 f-amiri text-lg">
+                                <li class="border-b pb-2"><strong><span class="lang-ar">حتمية التزيين الدقيقة (Garnish is Mandatory):</span><span class="lang-en hidden">Garnish is Mandatory:</span></strong> <span class="lang-ar">يُمنع تصوير أي طبق بني أو داكن عميق بدون إضافة بُعد لوني مغاير يكسر الرتابة بطريقة عضوية.</span><span class="lang-en hidden">It is forbidden to photograph any deep brown or dark dish without adding a contrasting color dimension that breaks the monotony in an organic way.</span></li>
+                                <li class="border-b pb-2"><strong><span class="lang-ar">لمعة العصارة (Oil Sheen):</span><span class="lang-en hidden">Oil Sheen:</span></strong> <span class="lang-ar">إبراز قطرات الزيت أو السمن بدقة عالية من خلال "الضوء الجانبي" لمنع الطبق من الظهور جافاً.</span><span class="lang-en hidden">Highlighting drops of oil or ghee with high precision through the “side light” to prevent the dish from appearing dry.</span></li>
+                                <li class="border-b pb-2"><strong><span class="lang-ar">عزل الخلفية الفاتحة (Light Plates):</span><span class="lang-en hidden">Isolating the light background (Light Plates):</span></strong> <span class="lang-ar">تقديم الأطباق الداكنة بداخل فخار أو خزف فاتح اللون/أبيض لعزل الطعام بصرياً كـ "بطل للصورة" لعدم ضياع ملامحه.</span><span class="lang-en hidden">Serving dark dishes inside light/white pottery or porcelain to visually isolate the food as a “photo hero” so as not to lose its features.</span></li>
+                            </ul>
+                        </div>
+                        
+                        <!-- Mini Do / Don't block specifically for brown foods -->
+                        <div class="space-y-4">
+                            <!-- Bad Example Mock -->
+                            <div class="border-2 border-red-200 bg-red-50 p-4 rounded-xl flex items-center gap-4">
+                               <div class="w-16 h-16 rounded-full bg-[#5D4037] flex-shrink-0 grid place-items-center opacity-80 border-2 border-[#3E2723]"></div>
+                               <div>
+                                   <div class="flex items-center gap-2 mb-1">
+                                       <span class="bg-red-200 text-red-800 text-[10px] en-font font-bold px-1 rounded uppercase">Avoid</span>
+                                       <span class="font-bold text-red-900 text-sm"><span class="lang-ar">تباين ضعيف (Muddy)</span><span class="lang-en hidden">Low contrast (Muddy)</span></span>
+                                   </div>
+                                   <p class="text-xs opacity-70"><span class="lang-ar">طبق غامق، إضاءة مسطحة، لون موحد بلا ملامح واضحة. يبدو غير شهي إطلاقاً.</span><span class="lang-en hidden">Dark dish, flat lighting, uniform color with no clear features. It looks completely unappetizing.</span></p>
+                               </div>
+                            </div>
+
+                            <!-- Good Example Mock -->
+                            <div class="border-2 border-green-200 bg-green-50 p-4 rounded-xl flex items-center gap-4 relative overflow-hidden">
+                               <div class="absolute inset-y-0 right-0 w-8 bg-gradient-to-l from-white/40 to-transparent"></div>
+                               <div class="w-16 h-16 rounded-full bg-white flex-shrink-0 grid place-items-center shadow-md relative">
+                                   <!-- Plate content simulated -->
+                                   <div class="w-12 h-12 rounded-full bg-[#5D4037] shadow-inner relative overflow-hidden">
+                                       <div class="absolute top-2 right-2 w-3 h-3 bg-white/60 rounded-full blur-[1px]"></div> <!-- Highlight -->
+                                       <div class="absolute -bottom-1 -left-1 w-6 h-4 bg-green-500/80 rounded blur-[2px]"></div> <!-- Herb Garnish -->
+                                   </div>
+                               </div>
+                               <div>
+                                   <div class="flex items-center gap-2 mb-1">
+                                       <span class="bg-green-200 text-green-800 text-[10px] en-font font-bold px-1 rounded uppercase">Enforced</span>
+                                       <span class="font-bold text-green-900 text-sm"><span class="lang-ar">تباين مقنع (Optimized)</span><span class="lang-en hidden">Optimized contrast</span></span>
+                                   </div>
+                                   <p class="text-xs opacity-70"><span class="lang-ar">استخدام الطبق الفاتح. إضاءة جانبية تكشف اللمعة، ولمسات خضراء طازجة (زينة الكزبرة) تكسر الجمود البصري.</span><span class="lang-en hidden">Use a light dish. Side lighting reveals the shine, and fresh green touches (coriander garnish) break the visual deadness.</span></p>
+                               </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 7: STYLING AND GARNISH RULES -->
+        <section class="doc-container">
+            <div class="section-header">
+                <span class="section-num en-font">SECTION 7.0</span>
+                <h2 class="section-title"><span class="lang-ar">قواعد التزيين والتنسيق (Styling & Garnish)</span><span class="lang-en hidden">Styling & Garnish rules</span></h2>
+                <p class="section-desc">
+                    <span class="lang-ar">الزينة ليست مجرد لون يوضع بخلاف سياق الطبق. التزين أداة عضوية تُوظّف لإضاءة التصميم، لخلق تباين متوازن، ولتصريح مصداقية مكونات الأكلة دون خداع بصري أو ابتذال تجاري.</span><span class="lang-en hidden">A garnish is not just a color placed outside of the context of a dish. Garnish is an organic tool used to illuminate a design, create balanced contrast, and convey the authenticity of a food's ingredients without optical illusion or commercial vulgarity.</span>
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-4 gap-4">
+                <div class="bg-gray-50 border border-gray-200 p-6 rounded-lg text-center">
+                    <span class="en-font text-xs font-bold text-gray-500 mb-2 block tracking-wider">HERBS</span>
+                    <div class="w-12 h-12 bg-green-100 rounded-full border border-green-200 mx-auto mb-3 flex items-center justify-center">
+                        <i data-lucide="leaf" class="text-green-700 w-5 h-5"></i>
+                    </div>
+                    <h4 class="font-bold text-sm mb-2"><span class="lang-ar">أعشاب ونضارة</span><span class="lang-en hidden">Herbs and freshness</span></h4>
+                    <p class="text-xs opacity-70"><span class="lang-ar">إيحاء بالطراوة الفورية، تكسر صلابة الأطعمة البنية وتضيف حيوية خضراء (كزبرة، شبت).</span><span class="lang-en hidden">Insinuating instant softness, it breaks the toughness of brown foods and adds green vitality (coriander, dill).</span></p>
+                </div>
+                
+                <div class="bg-gray-50 border border-gray-200 p-6 rounded-lg text-center">
+                    <span class="en-font text-xs font-bold text-gray-500 mb-2 block tracking-wider">CHILI / SPICES</span>
+                    <div class="w-12 h-12 bg-red-100 rounded-full border border-red-200 mx-auto mb-3 flex items-center justify-center">
+                        <i data-lucide="flame" class="text-red-700 w-5 h-5"></i>
+                    </div>
+                    <h4 class="font-bold text-sm mb-2"><span class="lang-ar">بهارات حادة</span><span class="lang-en hidden">Sharp spices</span></h4>
+                    <p class="text-xs opacity-70"><span class="lang-ar">نقاط حمراء كفلفل أو توابل لإضفاء لمسة بصرية تتعدى الشكل إلى نقل إحساس الحرارة.</span><span class="lang-en hidden">Red dots, such as pepper or spices, add a visual touch that goes beyond form to convey a sense of heat.</span></p>
+                </div>
+
+                <div class="bg-gray-50 border border-gray-200 p-6 rounded-lg text-center">
+                    <span class="en-font text-xs font-bold text-gray-500 mb-2 block tracking-wider">TEXTURE</span>
+                    <div class="w-12 h-12 bg-[#EEDCB5] rounded-full border border-[#D9A92B] mx-auto mb-3 flex items-center justify-center">
+                        <i data-lucide="grip" class="text-[#9B2226] w-5 h-5"></i>
+                    </div>
+                    <h4 class="font-bold text-sm mb-2"><span class="lang-ar">حبيبات وقرمشة</span><span class="lang-en hidden">Granules and crunch</span></h4>
+                    <p class="text-xs opacity-70"><span class="lang-ar">ذرات السمسم، والمكسرات، والكسرات السطحية لتوكيد السطح العضوي وقوامه الهندسي.</span><span class="lang-en hidden">Sesame atoms, nuts, and surface crumbs to emphasize the organic surface and its geometric texture.</span></p>
+                </div>
+
+                <div class="bg-gray-50 border border-gray-200 p-6 rounded-lg text-center">
+                    <span class="en-font text-xs font-bold text-gray-500 mb-2 block tracking-wider">MESS</span>
+                    <div class="w-12 h-12 bg-gray-200 rounded-full border border-gray-300 mx-auto mb-3 flex items-center justify-center">
+                        <i data-lucide="lasso" class="text-gray-700 w-5 h-5"></i>
+                    </div>
+                    <h4 class="font-bold text-sm mb-2"><span class="lang-ar">آثار التقديم</span><span class="lang-en hidden">Submission effects</span></h4>
+                    <p class="text-xs opacity-70"><span class="lang-ar">آثار الشواء والفحم وأطراف الطبق غير النمطية كإثبات موثوق لرحلة تحضير الطعام الطازجة.</span><span class="lang-en hidden">Grill traces, charcoal and atypical plate edges as reliable proof of the fresh food preparation journey.</span></p>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 8: STORYTELLING & HUMAN ELEMENT -->
+        <section class="doc-container border-t pt-16 mt-16">
+            <div class="section-header">
+                <span class="section-num en-font">SECTION 8.0</span>
+                <h2 class="section-title text-[#9B2226]"><span class="lang-ar">عنصر الإنسان والسرد القصصي</span><span class="lang-en hidden">The human element and storytelling</span></h2>
+                <p class="section-desc">
+                    <span class="lang-ar">الصورة الخالية من أثر بشري قد تبدو معقمة وكئيبة كصور القوائم الطبية. الصور ذات الإخراج السردي هي ما يكسر حاجز الشاشة، وتنقل تجربة كاملة للمشاهد، وتبرز الهوية الحقيقية في التفاصيل الصغيرة.</span><span class="lang-en hidden">An image devoid of human traces may appear as sterile and depressing as medical menu images. Images with narrative direction are what break the screen barrier, convey a complete experience to the viewer, and highlight the true identity in the small details.</span>
+                </p>
+            </div>
+
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <div class="photo-placeholder h-80 rounded-2xl border-none shadow-xl bg-gray-900 group">
+                    <img src="https://images.unsplash.com/photo-1547592180-85f173990554?q=80&w=2070&auto=format&fit=crop" class="w-full h-full object-cover opacity-80 mix-blend-overlay group-hover:opacity-100 transition-opacity duration-500" alt="Narrative Food Photography Context">
+                    <div class="absolute bottom-6 right-6 left-6 text-white text-right">
+                        <span class="en-font bg-white/20 px-2 py-1 text-xs rounded backdrop-blur inline-block mb-2 uppercase tracking-wide">Human Connection</span>
+                        <h4 class="font-bold text-xl drop-shadow-md"><span class="lang-ar">اللمسة البشرية الدافئة</span><span class="lang-en hidden">The warm human touch</span></h4>
+                    </div>
+                </div>
+
+                <div class="space-y-6">
+                    <p class="text-lg f-amiri leading-relaxed opacity-90 border-r-4 border-[#9B2226] pr-4 bg-red-50/50 p-4 rounded-l">
+                        <span class="lang-ar">"المثالية العيادية الصارمة عدوة الجاذبية". اترك بضع قطرات صلصة عشوائية طفيفة ونتوءات غير مرتبة. فهذه "النواقص" تنبض بالحياة وتشجع العين والمخ على تقبل التجربة.</span><span class="lang-en hidden">“Strict clinical idealism is the enemy of gravity.” Leave a few slight random sauce drops and messy bumps. These “shortcomings” come alive and encourage the eye and brain to accept the experience.</span>
+                    </p>
+                    <ul class="space-y-4">
+                        <li class="flex items-start gap-4">
+                            <i data-lucide="hand" class="text-[#E8B730] w-6 h-6 mt-1 flex-shrink-0"></i>
+                            <div>
+                                <strong class="block"><span class="lang-ar">أيدي تتحرك في الكادر</span><span class="lang-en hidden">Hands moving in the frame</span></strong>
+                                <span class="text-sm opacity-70"><span class="lang-ar">يد تقطع كسرة أو تمرر شية بانسجام. تُضفي سياقاً حميمياً وتثبت كرم التشارك والإيقاع الاجتماعي.</span><span class="lang-en hidden">A hand cuts a crumb or passes a piece of paper in unison. It adds an intimate context and establishes the generosity of sharing and social rhythm.</span></span>
+                            </div>
+                        </li>
+                        <li class="flex items-start gap-4">
+                            <i data-lucide="cookie" class="text-[#E8B730] w-6 h-6 mt-1 flex-shrink-0"></i>
+                            <div>
+                                <strong class="block"><span class="lang-ar">التكوين العضوي للفتات</span><span class="lang-en hidden">Organic composition of crumb</span></strong>
+                                <span class="text-sm opacity-70"><span class="lang-ar">بعض فتات الخبز على المائدة أو بقعة صلصة عفوية صغيرة على الحافة توضح الحقيقة العفوية وأن الوجبة قد قٌدمت وليست نموذجاً استعراضياً للبلاستيك.</span><span class="lang-en hidden">A few bread crumbs on the table or a small casual sauce smear on the edge demonstrates the spontaneous fact that the meal was served and not a plastic display model.</span></span>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 9: MOTION, STEAM, AND LIVE ACTION FRAMES -->
+        <section class="bg-gray-100 border-y border-gray-200 mt-16">
+            <div class="doc-container">
+                <div class="section-header">
+                    <span class="section-num en-font">SECTION 9.0</span>
+                    <h2 class="section-title"><span class="lang-ar">حيوية الحدث في اللقطة الساكنة</span><span class="lang-en hidden">The liveliness of the action in the still shot</span></h2>
+                    <p class="section-desc">
+                        <span class="lang-ar">لا بد في الإخراج الفني من كسر جمود الصورة الساكنة بالتقاط</span><span class="lang-en hidden">In artistic direction, it is necessary to break the rigidity of the static image by capturing it</span> <strong><span class="lang-ar">لحظات ديناميكية (Live Action)</span><span class="lang-en hidden">Dynamic Moments (Live Action)</span></strong><span class="lang-ar">. استخدام سرعات غالق (Shutter Speeds) متفاوتة لنقل الأجواء من البصرية إلى الحركية.</span><span class="lang-en hidden">. Using varying shutter speeds to transfer the atmosphere from visual to kinetic.</span>
+                    </p>
+                </div>
+
+                <div class="grid md:grid-cols-3 gap-6">
+                    <div class="bg-white p-6 rounded-xl border border-gray-200 shadow-sm relative overflow-hidden group">
+                        <div class="absolute inset-x-0 bottom-0 h-1 bg-gray-900 group-hover:bg-[#E8B730] transition-colors"></div>
+                        <i data-lucide="wind" class="text-gray-400 w-8 h-8 mb-4"></i>
+                        <h4 class="font-bold mb-2"><span class="lang-ar">أبخرة الأطباق والغليان (Steam)</span><span class="lang-en hidden">Dish fumes and boiling (Steam)</span></h4>
+                        <p class="text-sm opacity-70 mb-4"><span class="lang-ar">صورة للقهوة والبخار يتصاعد من فنجانها أو دخان شية الجمر المتطاير في الخلفية (يدعمها خيار الإضاءة الخلفية لالتقاط البخار).</span><span class="lang-en hidden">An image of coffee with steam rising from a cup or the smoke of charcoal from flying embers in the background (supported by the backlight option to capture the steam).</span></p>
+                        <span class="en-font text-[10px] uppercase font-bold text-gray-400 border px-1 rounded block w-max">Backlight Needed</span>
+                    </div>
+
+                    <div class="bg-white p-6 rounded-xl border border-gray-200 shadow-sm relative overflow-hidden group">
+                        <div class="absolute inset-x-0 bottom-0 h-1 bg-gray-900 group-hover:bg-[#E8B730] transition-colors"></div>
+                        <i data-lucide="droplets" class="text-gray-400 w-8 h-8 mb-4"></i>
+                        <h4 class="font-bold mb-2"><span class="lang-ar">الديناميكا السائلة (Pouring)</span><span class="lang-en hidden">Fluid Dynamics (Pouring)</span></h4>
+                        <p class="text-sm opacity-70 mb-4"><span class="lang-ar">تسجيل لقطات انسكاب (الجبنة) وتصاعدها، وسكب الملاح، وديناميكية الكركديه مع الثلج.</span><span class="lang-en hidden">Recording shots of the cheese spilling and rising, the salt pouring, and the dynamism of the hibiscus with ice.</span></p>
+                        <span class="en-font text-[10px] uppercase font-bold text-gray-400 border px-1 rounded block w-max">Fast Shutter</span>
+                    </div>
+
+                    <div class="bg-white p-6 rounded-xl border border-gray-200 shadow-sm relative overflow-hidden group">
+                        <div class="absolute inset-x-0 bottom-0 h-1 bg-gray-900 group-hover:bg-[#E8B730] transition-colors"></div>
+                        <i data-lucide="camera" class="text-gray-400 w-8 h-8 mb-4"></i>
+                        <h4 class="font-bold mb-2"><span class="lang-ar">الضبابية الحركية (Motion Blur)</span><span class="lang-en hidden">Motion Blur</span></h4>
+                        <p class="text-sm opacity-70 mb-4"><span class="lang-ar">استخدام ضبابية متعمدة للبيئة المحيطة وللأيدي المارة للتركيز البصري الكامل والحاد على محور الطبق فقط.</span><span class="lang-en hidden">The use of deliberate blurring of the surrounding environment and of passing hands for complete, sharp visual focus on the axis of the dish only.</span></p>
+                        <span class="en-font text-[10px] uppercase font-bold text-gray-400 border px-1 rounded block w-max">Slow Shutter: 1/15s</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 10: SURFACE & PROPS -->
+        <section class="doc-container">
+            <div class="section-header">
+                <span class="section-num en-font">SECTION 10.0</span>
+                <h2 class="section-title"><span class="lang-ar">الطاولات والإكسسوارات (Surfaces & Props)</span><span class="lang-en hidden">Tables & Accessories (Surfaces & Props)</span></h2>
+                <p class="section-desc">
+                    <span class="lang-ar">العناصر الداعمة هي بيئة يجب أن تتناغم تماما وتدعم موضوع الطبق دون التطفل البصري واختطاف النظر لتفاصيل مزخرفة لا تفيد. الإكسسوارات السودانية يجب أن تُستخدم كخلفيات وبأشكال تجريدية وبسيطة.</span><span class="lang-en hidden">The supporting elements are an environment that must perfectly harmonize and support the theme of the dish without visually intruding and stealing the eye with useless ornate details. Sudanese accessories should be used as backgrounds and in abstract and simple shapes.</span>
+                </p>
+            </div>
+
+            <div class="bg-gray-50 border p-8 rounded-2xl flex flex-col md:flex-row gap-12 max-w-5xl mx-auto">
+                <div class="flex-1 space-y-6">
+                    <div>
+                        <h4 class="font-bold text-[#81B29A] mb-2 flex items-center gap-2"><i data-lucide="check" class="w-4 h-4"></i> <span class="lang-ar">الأسطح المفضلة</span><span class="lang-en hidden">Favorite surfaces</span></h4>
+                        <p class="text-sm opacity-80 leading-relaxed"><span class="lang-ar">الأخشاب الطبيعية المطفية (وليست اللامعة)، الصخور أو الحجر الأملس، المفارش القماشية التراثية البسيطة والأسطح الخزفية المطفأة. تُعطي انطباعاً بالجذور والأساس الطبيعي الصلب.</span><span class="lang-en hidden">Natural matte woods (not varnished), rocks or soapstone, simple heritage fabric placemats and matt ceramic surfaces. Gives the impression of roots and a solid natural foundation.</span></p>
+                    </div>
+                </div>
+                <div class="flex-1 space-y-6">
+                     <div>
+                        <h4 class="font-bold text-red-700 mb-2 flex items-center gap-2"><i data-lucide="x" class="w-4 h-4"></i> <span class="lang-ar">العناصر المرفوضة</span><span class="lang-en hidden">Rejected items</span></h4>
+                        <p class="text-sm opacity-80 leading-relaxed"><span class="lang-ar">الأنسجة البلاستيكية الملونة، الألوان المتضاربة جداً، القطع والإكسسوارات الساطعة، الخلفيات المزدحمة المزعجة التي تتصادم مباشرة مع الواجهة الرقمية.</span><span class="lang-en hidden">Colorful plastic textures, very contrasting colors, bright pieces and accessories, annoying busy backgrounds that clash directly with the digital interface.</span></p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 13: INTERFACE COMPATIBILITY -->
+        <section class="doc-container border-t pt-16">
+            <div class="section-header">
+                <span class="section-num en-font">SECTION 13.0</span>
+                <h2 class="section-title text-[#2B1A14]"><span class="lang-ar">قانون التوافق البنيوي للواجهة (Interface Rules)</span><span class="lang-en hidden">Interface Rules</span></h2>
+                <p class="section-desc">
+                    <strong><span class="lang-ar">هذه الصور ليست للطباعة ولا للمجلات. إنها مخصصة لواجهة متجر إلكتروني.</span><span class="lang-en hidden">These images are not for print or for magazines. It is intended for an online storefront.</span></strong> <span class="lang-ar">يجب أن يتعامل المصور مع الفضاء المحيط بالطبق والصورة على أنه خلفية لعناصر تفاعلية ونصوص.</span><span class="lang-en hidden">The photographer must treat the space surrounding the dish and image as a background for interactive elements and text.</span>
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-8 items-center bg-[#EEDCB5]/20 p-8 rounded-3xl border border-[#D9A92B]/30">
+                <div class="space-y-4">
+                    <h3 class="font-bold text-xl text-[#9B2226] mb-4"><span class="lang-ar">متطلبات التصوير للنظام الرقمي:</span><span class="lang-en hidden">Imaging requirements for the digital system:</span></h3>
+                    <ul class="list-disc list-inside space-y-3 text-sm opacity-90 text-gray-800 font-semibold f-amiri text-lg">
+                        <li><strong><span class="lang-ar">الانسجام اللوني:</span><span class="lang-en hidden">Color harmony:</span></strong> <span class="lang-ar">ألوان الخلفيات للصور يجب ألا تعارض ألوان واجهة الموقع (العنابي والطوبي والرملي الدافئ).</span><span class="lang-en hidden">Background colors for images should not conflict with the website interface colors (burgundy, brick, warm sand).</span></li>
+                        <li><strong><span class="lang-ar">المساحة السالبة (Negative Space):</span><span class="lang-en hidden">Negative Space:</span></strong> <span class="lang-ar">يجب توفير مساحة هادئة واضحة ضمن تكوين الصورة يمكن للمصمم وضع النصوص والأزرار التفاعلية فوقها بانسيابية دون إحداث تشويش.</span><span class="lang-en hidden">A quiet, clear space must be provided within the image composition, over which the designer can place text and interactive buttons smoothly without causing confusion.</span></li>
+                        <li><strong><span class="lang-ar">مرونة القص (Cropping):</span><span class="lang-en hidden">Cropping elasticity:</span></strong> <span class="lang-ar">تكوين الصورة بوسطية مرنة جداً بحيث تقبل القص الشديد لكروت القائمة المربعة، ولرايات (Banners) العرض العريضة بامتياز.</span><span class="lang-en hidden">The image is created with a very flexible medium that accepts severe cuts for square menu cards and extremely wide width banners.</span></li>
+                    </ul>
+                </div>
+                <!-- Visual mock -->
+                <div class="h-64 bg-gray-800 rounded-xl relative overflow-hidden shadow-2xl flex items-center justify-center p-6 border-4 border-white/20">
+                     <div class="absolute inset-0 bg-cover bg-center opacity-60 mix-blend-luminosity" style="background-image: url('https://images.unsplash.com/photo-1547592180-85f173990554?q=80&w=2070&auto=format&fit=crop'); filter: blur(2px);"></div>
+                     <div class="absolute inset-0 bg-gradient-to-l from-gray-900 via-gray-900/60 to-transparent"></div>
+                     <div class="relative z-10 w-full text-right flex flex-col items-end">
+                         <div class="w-1/2 h-8 bg-white/20 rounded shadow mb-4"></div>
+                         <div class="w-2/3 h-4 bg-white/10 rounded mb-2"></div>
+                         <div class="w-1/3 h-4 bg-white/10 rounded mb-6"></div>
+                         <div class="mt-4 px-6 py-2 bg-[#9B2226] text-white text-xs font-bold rounded shadow-lg en-font">UI OVERLAY</div>
+                     </div>
+                     <span class="absolute top-4 left-4 text-white text-[10px] en-font uppercase border border-white/30 px-2 py-1 rounded bg-black/40 backdrop-blur">Negative Space Design</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 15: PHOTOGRAPHER BRIEF SUMMARY -->
+        <section class="bg-[#1A1A1A] text-white py-24 mt-20">
+            <div class="doc-container">
+                <div class="max-w-4xl mx-auto border border-white/10 bg-white/5 rounded-3xl p-10 md:p-14 shadow-2xl backdrop-blur-sm">
+                    <span class="section-num en-font text-gray-400 opacity-60 uppercase tracking-widest block mb-4">SECTION 15.0</span>
+                    <h2 class="text-3xl md:text-5xl font-bold mb-8 text-[#E8B730] border-b border-white/10 pb-6 whitespace-pre-line tracking-tight"><span class="lang-ar">الخلاصة المرجعية: قيد التنفيذ للعدسة
+                    (Photographer's Execution Checklist)</span><span class="lang-en hidden">Reference Abstract: In progress for the lens 
+(Photographer's Execution Checklist)</span></h2>
+                    
+                    <div class="grid md:grid-cols-2 gap-x-12 gap-y-6 text-lg f-amiri font-normal">
+                        <!-- Column 1 -->
+                        <ul class="space-y-4">
+                            <li class="flex items-start gap-4 pb-2 border-b border-white/10"><i data-lucide="check" class="text-green-500 mt-1 flex-shrink-0"></i> <span><span class="lang-ar">استخدم</span><span class="lang-en hidden">use</span> <b><span class="lang-ar">الإضاءة المشتتة</span><span class="lang-en hidden">Diffuse lighting</span></b> <span class="lang-ar">الناعمة تماماً وامنع الفلاش التجاري القاسي والمسطح.</span><span class="lang-en hidden">Perfectly smooth and prevent harsh, flat commercial flash.</span></span></li>
+                            <li class="flex items-start gap-4 pb-2 border-b border-white/10"><i data-lucide="check" class="text-green-500 mt-1 flex-shrink-0"></i> <span><span class="lang-ar">ابنِ زاوية الصورة (علوية، 45°، 0°) بناءً على</span><span class="lang-en hidden">Build the image angle (top, 45°, 0°) based on</span> <b><span class="lang-ar">هندسة وارتفاع الطبق.</span><span class="lang-en hidden">Geometry and height of the dish.</span></b></span></li>
+                            <li class="flex items-start gap-4 pb-2 border-b border-white/10"><i data-lucide="check" class="text-green-500 mt-1 flex-shrink-0"></i> <span><span class="lang-ar">التغلب على قتامة وغموض (الأطباق البنية) عبر قوة الإطارات</span><span class="lang-en hidden">Overcoming the darkness and ambiguity (brown dishes) through the power of frames</span> <b><span class="lang-ar">البيضاء الفاتحة.</span><span class="lang-en hidden">Light white.</span></b></span></li>
+                            <li class="flex items-start gap-4 pb-2 border-b border-white/10"><i data-lucide="check" class="text-green-500 mt-1 flex-shrink-0"></i> <span><span class="lang-ar">توظيف</span><span class="lang-en hidden">employment</span> <b><span class="lang-ar">زينة حتمية للطبق</span><span class="lang-en hidden">An inevitable garnish for the dish</span></b> <span class="lang-ar">بمشتقات خضراء، زيوت حيوية، وفواصل لونية من الحبيبات.</span><span class="lang-en hidden">With green derivatives, vital oils, and color separations from the granules.</span></span></li>
+                        </ul>
+                        <!-- Column 2 -->
+                        <ul class="space-y-4">
+                            <li class="flex items-start gap-4 pb-2 border-b border-white/10"><i data-lucide="check" class="text-green-500 mt-1 flex-shrink-0"></i> <span><span class="lang-ar">خلق حركة بتجميد (الأبخرة، الإنسكاب) وإشراك</span><span class="lang-en hidden">Create movement by freezing (vapors, spills) and engaging</span> <b><span class="lang-ar">العنصر البشري والأيدي.</span><span class="lang-en hidden">The human element and hands.</span></b></span></li>
+                            <li class="flex items-start gap-4 pb-2 border-b border-white/10"><i data-lucide="check" class="text-green-500 mt-1 flex-shrink-0"></i> <span><span class="lang-ar">تكوين بيئات واقعية دافئة بعيداً عن</span><span class="lang-en hidden">Create realistic, warm environments away from</span> <b><span class="lang-ar">المثالية العيادية المنفرة.</span><span class="lang-en hidden">Alienating clinical idealism.</span></b></span></li>
+                            <li class="flex items-start gap-4 pb-2 border-b border-white/10"><i data-lucide="check" class="text-green-500 mt-1 flex-shrink-0"></i> <span><span class="lang-ar">توظيف خلفيات</span><span class="lang-en hidden">Recruiting backgrounds</span> <b><span class="lang-ar">هادئة طبيعية</span><span class="lang-en hidden">Natural quiet</span></b> <span class="lang-ar">غير متضاربة وترك</span><span class="lang-en hidden">Unconflicted and left</span> <b><span class="lang-ar">المساحات الوهمية المفتوحة</span><span class="lang-en hidden">Illusory open spaces</span></b> <span class="lang-ar">لكتابات النظام.</span><span class="lang-en hidden">For system scripts.</span></span></li>
+                            <li class="flex items-start gap-4 pb-2 border-b border-white/10"><i data-lucide="check" class="text-green-500 mt-1 flex-shrink-0"></i> <span><span class="lang-ar">الامتناع تماماً عن الـ (HDR)، والالتزام</span><span class="lang-en hidden">Abstain completely from (HDR), and commit to it</span> <b><span class="lang-ar">بمعالجة لونية رزينة</span><span class="lang-en hidden">Solid color treatment</span></b> <span class="lang-ar">تتقاطع بأصالة الواقع.</span><span class="lang-en hidden">Intersect with the authenticity of reality.</span></span></li>
+                        </ul>
+                    </div>
+
+                    <div class="mt-14 p-6 bg-[#9B2226]/20 border-r-4 border-[#9B2226] rounded text-white/90">
+                        <strong class="block mb-2 text-xl text-[#F4A261]"><span class="lang-ar">الرؤية العليا للمصور:</span><span class="lang-en hidden">The photographer's top view:</span></strong>
+                        <p class="opacity-90 leading-relaxed text-sm en-font" dir="ltr">
+                            "You are not photographing a menu item to be cataloged. You are photographing an atmosphere, a texture, and an irresistible invitation to trust."
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CHAPTER 2: ICONOGRAPHY SYSTEM -->
+        <div class="doc-container py-12 border-t border-white/10 mt-12">
+            <div class="flex items-center gap-4 mb-12">
+                <div class="w-2 h-2 rounded-full bg-[#F4A261]"></div>
+                <h2 class="text-2xl font-bold text-white"><span class="lang-ar">الفصل الثاني: النظام الرمزي والأيقونات (Iconography System)</span><span class="lang-en hidden">Chapter Two: The Symbolic System and Icons</span></h2>
+            </div>
+
+            <!-- SECTION 9 & 10 -->
+            <section class="mb-20">
+                <div class="mb-10">
+                    <span class="en-mono text-[10px] text-[#F4A261] uppercase tracking-[0.2em] block mb-2">SECTION 9.0 & 10.0</span>
+                    <h3 class="text-3xl font-black f-amiri text-white mb-4"><span class="lang-ar">الاستراتيجية الهجينة للأيقونات</span><span class="lang-en hidden">Hybrid strategy for icons</span></h3>
+                    <p class="text-lg opacity-70 leading-relaxed max-w-4xl text-white/80">
+                        <span class="lang-ar">الأنظمة المرئية الناجحة لا تعيد اختراع العجلة بل توازن بين المألوف (العالمي) والمميز (المحلي). يعتمد بناء الواجهة على نظام "هجين" يتوزع إلى ثلاثة أنواع رمزية لتقليل الجهد الإدراكي للمستخدم وتوجيهه بكفاءة.</span><span class="lang-en hidden">Successful visual systems do not reinvent the wheel but rather balance the familiar (global) and the distinctive (local). The interface construction is based on a “hybrid” system that is divided into three symbolic types to reduce the user’s cognitive effort and direct it efficiently.</span>
+                    </p>
+                </div>
+
+                <div class="grid md:grid-cols-3 gap-6">
+                    <div class="p-8 border border-white/10 rounded-2xl bg-white/5 backdrop-blur-sm">
+                        <div class="w-12 h-12 bg-white/10 rounded-xl flex items-center justify-center mb-6 text-white/80">
+                            <i data-lucide="layout-grid"></i>
+                        </div>
+                        <h4 class="font-bold text-xl mb-3 text-[#F4A261]"><span class="lang-ar">1. الأيقونات الوظيفية المشتركة</span><span class="lang-en hidden">1. Common functional icons</span></h4>
+                        <p class="text-sm opacity-60 leading-relaxed text-white/70"><span class="lang-ar">أيقونات قياسية (مثل البحث، الإغلاق، القائمة) يجب أن تعتمد على مكتبات عالمية ومدروسة (مثل Lucide) لأنها لغة موحدة عالمياً، تغييرها قد يعيق استخدام الواجهة.</span><span class="lang-en hidden">Standard icons (such as search, close, menu) must rely on universal and well-developed libraries (such as Lucide) because because it is a universally standardized language, changing them may hinder the use of the interface.</span></p>
+                    </div>
+
+                    <div class="p-8 border border-[#F4A261]/30 rounded-2xl bg-[#F4A261]/5 relative overflow-hidden">
+                        <div class="absolute -right-4 -top-4 w-24 h-24 bg-[#F4A261]/10 rounded-full blur-2xl"></div>
+                        <div class="w-12 h-12 bg-[#F4A261]/20 rounded-xl flex items-center justify-center mb-6 text-[#F4A261] relative z-10">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+                        </div>
+                        <h4 class="font-bold text-xl mb-3 text-white relative z-10"><span class="lang-ar">2. الأيقونات الثقافية والهوية</span><span class="lang-en hidden">2. Cultural icons and identity</span></h4>
+                        <p class="text-sm opacity-70 leading-relaxed text-white/80 relative z-10"><span class="lang-ar">رسومات أيقونية مخصّصة وحصرية للمشروع فقط لحفظ التراث الغذائي وتمثيل العناصر المحلية مثل (جبنة القهوة، الملاح، الشية، الكسرة) لتعزيز ارتباط المستخدم بالهوية.</span><span class="lang-en hidden">Iconic drawings customized and exclusive to the project only to preserve the food heritage and represent local elements such as (coffee cheese, mellah, shiya, kasra) to enhance the user’s connection to identity.</span></p>
+                    </div>
+
+                    <div class="p-8 border border-white/10 rounded-2xl bg-white/5 backdrop-blur-sm">
+                        <div class="w-12 h-12 bg-amber-500/10 rounded-xl flex items-center justify-center mb-6 text-amber-500">
+                            <i data-lucide="flame"></i>
+                        </div>
+                        <h4 class="font-bold text-xl mb-3 text-[#F4A261]"><span class="lang-ar">3. العلامات الغذائية السريعة</span><span class="lang-en hidden">3. Quick nutritional labels</span></h4>
+                        <p class="text-sm opacity-60 leading-relaxed text-white/70"><span class="lang-ar">علامات إرشادية صغيرة ترافق قوائم الطعام تُشير إلى المتطلبات الغذائية (نباتي، حار جداً، مسببات حساسية) وتلعب دور العلامات التحذيرية الخاطفة.</span><span class="lang-en hidden">Small signposts accompanying menus indicate dietary requirements (vegetarian, extra spicy, allergens) and act as warning signs.</span></p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECTION 11 & 14 (Geometry) -->
+            <section class="mb-20">
+                <div class="mb-10">
+                    <span class="en-mono text-[10px] text-[#F4A261] uppercase tracking-[0.2em] block mb-2">SECTION 11.0 & 14.0</span>
+                    <h3 class="text-3xl font-black f-amiri text-white mb-4"><span class="lang-ar">التشكيل الهندسي والاتساق البصري</span><span class="lang-en hidden">Geometric composition and visual consistency</span></h3>
+                    <p class="text-lg opacity-70 leading-relaxed max-w-4xl text-white/80">
+                        <span class="lang-ar">لتجنب أي "ضوضاء بصرية"، تخضع جميع الأيقونات لقوانين هندسية صارمة جداً تتعلق بسُمك الخط الحواف لتظهر وكأنها رُسمت بيد شخص واحد وفي نفس اللحظة.</span><span class="lang-en hidden">To avoid any "visual noise", all icons are subject to very strict geometric rules regarding the thickness of the line edges to appear as if they were drawn by one person at the same time.</span>
+                    </p>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-12 items-center">
+                    <div class="space-y-6">
+                        <div class="flex items-start gap-4 p-6 bg-white/5 border border-white/10 rounded-2xl">
+                            <div class="w-8 h-8 rounded-full bg-green-500/20 flex items-center justify-center text-green-500 mt-1"><i data-lucide="check" class="w-5 h-5"></i></div>
+                            <div>
+                                <span class="font-bold block text-lg text-white mb-1"><span class="lang-ar">النمط الخطي المتفرغ (Outline Icons)</span><span class="lang-en hidden">Outline icons</span></span>
+                                <p class="text-sm opacity-60 text-white/70"><span class="lang-ar">عدم استخدام الأيقونات الممتلئة (Solid/Filled) لضمان الخفة والحداثة.</span><span class="lang-en hidden">Do not use solid/filled icons to ensure lightness and modernity.</span></p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-4 p-6 bg-white/5 border border-white/10 rounded-2xl">
+                            <div class="w-8 h-8 rounded-full bg-green-500/20 flex items-center justify-center text-green-500 mt-1"><i data-lucide="check" class="w-5 h-5"></i></div>
+                            <div>
+                                <span class="font-bold block text-lg text-white mb-1"><span class="lang-ar">السمك الموحد (Stroke Width = 2px)</span><span class="lang-en hidden">Uniform thickness (Stroke Width = 2px)</span></span>
+                                <p class="text-sm opacity-60 text-white/70"><span class="lang-ar">قانون ثابت غير قابل للكسر، إلا عند تغيير حجم الأيقونة لنسب ضخمة.</span><span class="lang-en hidden">Fixed, unbreakable rule, except when resizing the icon to huge proportions.</span></p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-4 p-6 bg-white/5 border border-white/10 rounded-2xl">
+                            <div class="w-8 h-8 rounded-full bg-green-500/20 flex items-center justify-center text-green-500 mt-1"><i data-lucide="check" class="w-5 h-5"></i></div>
+                            <div>
+                                <span class="font-bold block text-lg text-white mb-1"><span class="lang-ar">النهايات الدائرية (Round Caps & Joins)</span><span class="lang-en hidden">Round Caps & Joins</span></span>
+                                <p class="text-sm opacity-60 text-white/70"><span class="lang-ar">جميع حواف وتقاطعات خطوط الأيقونة تكون دائرية ليعكس الطابع العضوي والودود.</span><span class="lang-en hidden">All edges and intersections of the icon's lines are rounded to reflect an organic and friendly feel.</span></p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-white/5 p-10 rounded-3xl border border-white/10 backdrop-blur-sm">
+                        <p class="text-center font-bold opacity-40 mb-8 text-xs en-mono uppercase tracking-widest text-white/60">Functional Specimen (Lucide)</p>
+                        <div class="grid grid-cols-3 gap-6">
+                            <div class="bg-white/5 border border-white/10 h-28 rounded-2xl flex flex-col justify-center items-center gap-3 text-white/80 group hover:bg-[#F4A261]/10 hover:border-[#F4A261]/30 transition-all duration-300 shadow-lg"><i data-lucide="search" stroke-width="2" class="w-6 h-6"></i><span class="en-mono text-[9px] uppercase tracking-wider opacity-40">Search</span></div>
+                            <div class="bg-white/5 border border-white/10 h-28 rounded-2xl flex flex-col justify-center items-center gap-3 text-white/80 group hover:bg-[#F4A261]/10 hover:border-[#F4A261]/30 transition-all duration-300 shadow-lg"><i data-lucide="menu" stroke-width="2" class="w-6 h-6"></i><span class="en-mono text-[9px] uppercase tracking-wider opacity-40">Menu</span></div>
+                            <div class="bg-white/5 border border-white/10 h-28 rounded-2xl flex flex-col justify-center items-center gap-3 text-white/80 group hover:bg-[#F4A261]/10 hover:border-[#F4A261]/30 transition-all duration-300 shadow-lg"><i data-lucide="map-pin" stroke-width="2" class="w-6 h-6"></i><span class="en-mono text-[9px] uppercase tracking-wider opacity-40">Location</span></div>
+                            
+                            <div class="bg-white/5 border border-white/10 h-28 rounded-2xl flex flex-col justify-center items-center gap-3 text-white/80 group hover:bg-[#F4A261]/10 hover:border-[#F4A261]/30 transition-all duration-300 shadow-lg"><i data-lucide="chevron-left" stroke-width="2" class="w-6 h-6"></i><span class="en-mono text-[9px] uppercase tracking-wider opacity-40">Arrow</span></div>
+                            <div class="bg-white/5 border border-white/10 h-28 rounded-2xl flex flex-col justify-center items-center gap-3 text-white/80 group hover:bg-[#F4A261]/10 hover:border-[#F4A261]/30 transition-all duration-300 shadow-lg"><i data-lucide="clock" stroke-width="2" class="w-6 h-6"></i><span class="en-mono text-[9px] uppercase tracking-wider opacity-40">Clock</span></div>
+                            <div class="bg-white/5 border border-white/10 h-28 rounded-2xl flex flex-col justify-center items-center gap-3 text-white/80 group hover:bg-[#F4A261]/10 hover:border-[#F4A261]/30 transition-all duration-300 shadow-lg"><i data-lucide="utensils" stroke-width="2" class="w-6 h-6"></i><span class="en-mono text-[9px] uppercase tracking-wider opacity-40">Dining</span></div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECTION 15 & 16 -->
+            <section class="mb-20">
+                <div class="mb-10">
+                    <span class="en-mono text-[10px] text-[#F4A261] uppercase tracking-[0.2em] block mb-2">SECTION 15.0 & 16.0</span>
+                    <h3 class="text-3xl font-black f-amiri text-white mb-4"><span class="lang-ar">التلوين الديناميكي والتفاعل العاطفي</span><span class="lang-en hidden">Dynamic coloring and emotional interaction</span></h3>
+                    <p class="text-lg opacity-70 leading-relaxed max-w-4xl text-white/80">
+                        <span class="lang-ar">تصميم الأيقونات التفاعلية يجب أن يخدم وظيفتين: إيصال وضوح هيكلي لوني، وابتكار مشاعر وانطباعات محلية متصلة بالذاكرة.</span><span class="lang-en hidden">Interactive icon design should serve two functions: conveying structural and color clarity, and creating local, memorable feelings and impressions.</span>
+                    </p>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-12">
+                    <!-- Color Rules -->
+                    <div class="p-8 border border-white/10 rounded-2xl bg-white/5 backdrop-blur-sm">
+                        <h4 class="font-bold text-xl mb-4 text-white border-b border-white/10 pb-4"><span class="lang-ar">وراثة الألوان (currentColor)</span><span class="lang-en hidden">Inheriting colors (currentColor)</span></h4>
+                        <p class="text-sm opacity-70 leading-relaxed text-white/80 mb-8">
+                            <span class="lang-ar">ممنوع تماماً ترميز ألوان ثابتة داخل عقدة الـ SVG. يجب أن ترث جميع الأيقونات لون الحاوية الأب عبر خاصية</span><span class="lang-en hidden">It is strictly forbidden to encode fixed colors inside an SVG node. All icons must inherit the color of the parent container via a property</span> <code class="en-mono bg-white/10 px-2 py-1 rounded text-[#F4A261]">currentColor</code> <span class="lang-ar">لتتفاعل بسلاسة مع حالات التفعيل (Hover/Active) وتبديل النُسق المبسط.</span><span class="lang-en hidden">To interact seamlessly with Hover/Active states and simplified theme switching.</span>
+                        </p>
+                        
+                        <div class="grid grid-cols-3 gap-4 mb-4">
+                            <div class="bg-white/5 flex flex-col items-center justify-center p-6 rounded-xl text-white/30 border border-white/5"><i data-lucide="heart"></i><span class="text-[9px] mt-4 opacity-40 en-mono uppercase">Default</span></div>
+                            <div class="bg-teal-500/10 flex flex-col items-center justify-center p-6 rounded-xl text-teal-500 border border-teal-500/30"><i data-lucide="heart" class="fill-current"></i><span class="text-[9px] mt-4 en-mono uppercase">Active</span></div>
+                            <div class="bg-red-500/10 flex flex-col items-center justify-center p-6 rounded-xl text-red-500 border border-red-500/30"><i data-lucide="info"></i><span class="text-[9px] mt-4 en-mono uppercase">Semantic</span></div>
+                        </div>
+                    </div>
+
+                    <!-- Cultural Interaction (Siniya) -->
+                    <div class="p-8 border border-[#F4A261]/20 rounded-2xl bg-[#F4A261]/5 shadow-2xl relative overflow-hidden group">
+                        <div class="absolute inset-0 opacity-10" style="background-image: radial-gradient(circle at 100% 0%, #F4A261 0%, transparent 50%);"></div>
+                        <h4 class="font-bold text-xl mb-4 text-[#F4A261] border-b border-[#F4A261]/20 pb-4 relative z-10"><span class="lang-ar">استبدال الـ (Cart) بمفهوم (الصينية)</span><span class="lang-en hidden">Replacing "Cart" with the concept of "Siniya" (Sudanese Tray)</span></h4>
+                        <p class="text-sm opacity-80 leading-relaxed text-white/90 mb-8 relative z-10">
+                            <span class="lang-ar">التقليل من مصطلحات التسوق الإلكتوني الجامدة ("Add to Cart") وربطها بالتجربة والضيافة. تفاعل الإضافة للطلبات يتحول لرسوم متحركة (Micro-interaction) حيث تنزل الأطباق بصرياً نحو "الصينية"، مما يعزز ردود الفعل العاطفية (Emotional Feedback) ويرسخ تموضع العلامة.</span><span class="lang-en hidden">Reducing the rigid terms of online shopping (“Add to Cart”) and linking them to the experience and hospitality. Addition interaction for orders turns into a micro-interaction as the dishes visually descend towards the tray, enhancing emotional feedback and solidifying the brand's positioning.</span>
+                        </p>
+                        
+                        <div class="flex flex-col items-center justify-center relative z-10 py-4">
+                            <!-- Large Circular Siniya Visualization -->
+                            <div class="w-48 h-48 rounded-full bg-gradient-to-br from-[#E5E7EB] via-[#9CA3AF] to-[#4B5563] shadow-[0_20px_50px_rgba(0,0,0,0.5)] flex items-center justify-center relative overflow-hidden border-4 border-[#D1D5DB]/30 group-hover:scale-105 transition-transform duration-500">
+                                <div class="absolute inset-0 bg-[radial-gradient(circle_at_30%_30%,rgba(255,255,255,0.4),transparent)]"></div>
+                                <div class="w-[85%] h-[85%] rounded-full border-2 border-white/10 shadow-inner"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECTION 17 -->
+            <section class="mb-12">
+                <div class="mb-10">
+                    <span class="en-mono text-[10px] text-[#F4A261] uppercase tracking-[0.2em] block mb-2">SECTION 17.0</span>
+                    <h3 class="text-3xl font-black f-amiri text-white mb-4"><span class="lang-ar">قانون المرايا للمحتوى العربي (RTL Mirroring Law)</span><span class="lang-en hidden">Mirror Law for Arabic Content (RTL Mirroring Law)</span></h3>
+                    <p class="text-lg opacity-70 leading-relaxed max-w-4xl text-white/80">
+                        <span class="lang-ar">لأن التطبيق يدعم الواجهة العربية (من اليمين لليسار) والإنجليزية، فإن مجرد محاذاة النص ليست كافية. يتوجب على واجهة المستخدم عكس (Mirror) أي أيقونة تدل على اتجاه حركي أو تسارعي. عدم الالتزام بذلك يكسر الإدراك التوجيهي للمستخدم العربي.</span>
+                        <span class="lang-en hidden">Because the application supports Arabic (right to left) and English interface, simply aligning the text is not enough. The user interface must mirror any icon that indicates a direction of movement or acceleration. Failure to adhere to this breaks the Arab user's orientation awareness.</span>
+                    </p>
+                </div>
+
+                <div class="bg-white/5 border border-white/10 rounded-3xl overflow-hidden shadow-2xl backdrop-blur-sm">
+                    <div class="grid grid-cols-2 bg-white/5 border-b border-white/10">
+                        <div class="p-6 text-[#F4A261] font-bold text-center border-r border-white/10"><span class="lang-ar">أيقونات يُمنع عكسها (Do NOT Mirror)</span><span class="lang-en hidden">Do NOT Mirror icons</span></div>
+                        <div class="p-6 text-teal-400 font-bold text-center"><span class="lang-ar">أيقونات إجبارية العكس (MUST Mirror)</span><span class="lang-en hidden">Mandatory Mirror icons (MUST Mirror)</span></div>
+                    </div>
+                    
+                    <div class="grid grid-cols-2 divide-x divide-white/10 h-full">
+                        <!-- Non directional -->
+                        <div class="p-8 space-y-8">
+                            <div class="flex items-center gap-6 group">
+                                <div class="w-14 h-14 rounded-2xl bg-white/5 flex items-center justify-center border border-white/10 text-white/70 group-hover:bg-white/10 transition-colors shadow-lg"><i data-lucide="search" class="w-6 h-6"></i></div>
+                                <div><strong class="block text-white text-lg"><span class="lang-ar">أيقونة البحث</span><span class="lang-en hidden">Search icon</span></strong><p class="opacity-40 text-xs text-white/60"><span class="lang-ar">شكل العدسة الزجاجية عالمي.</span><span class="lang-en hidden">The glass lens shape is universal.</span></p></div>
+                            </div>
+                            <div class="flex items-center gap-6 group">
+                                <div class="w-14 h-14 rounded-2xl bg-white/5 flex items-center justify-center border border-white/10 text-white/70 group-hover:bg-white/10 transition-colors shadow-lg"><i data-lucide="clock" class="w-6 h-6"></i></div>
+                                <div><strong class="block text-white text-lg"><span class="lang-ar">عقارب الساعة</span><span class="lang-en hidden">Clockwise</span></strong><p class="opacity-40 text-xs text-white/60"><span class="lang-ar">دوران الزمن قياسي وغير مرتبط باللغة.</span><span class="lang-en hidden">Clock rotation is standard and not language-bound.</span></p></div>
+                            </div>
+                            <div class="flex items-center gap-6 group">
+                                <div class="w-14 h-14 rounded-2xl bg-white/5 flex items-center justify-center border border-white/10 text-white/70 group-hover:bg-white/10 transition-colors shadow-lg"><i data-lucide="check" class="w-6 h-6"></i></div>
+                                <div><strong class="block text-white text-lg"><span class="lang-ar">علامات التأكيد</span><span class="lang-en hidden">Confirmation signs</span></strong><p class="opacity-40 text-xs text-white/60"><span class="lang-ar">صح أو خطأ علامات دولية مجردة.</span><span class="lang-en hidden">True/false are universal abstract marks.</span></p></div>
+                            </div>
+                        </div>
+                        
+                        <!-- Directional -->
+                        <div class="p-8 space-y-8 bg-teal-500/5">
+                            <div class="flex items-center gap-6 group">
+                                <div class="relative">
+                                    <div class="w-14 h-14 rounded-2xl bg-teal-500/10 flex items-center justify-center border border-teal-500/30 text-teal-400 transform rotate-180 transition-transform shadow-lg"><i data-lucide="arrow-right" class="w-6 h-6"></i></div>
+                                </div>
+                                <div><strong class="block text-white text-lg"><span class="lang-ar">الأسهم التوجيهية</span><span class="lang-en hidden">Guiding arrows</span></strong><p class="opacity-40 text-xs text-white/60"><span class="lang-ar">المستقبل والتقدم في اللغة العربية نحو اليسار.</span><span class="lang-en hidden">Future and progress in Arabic flow to the left.</span></p></div>
+                            </div>
+                            <div class="flex items-center gap-6 group">
+                                <div class="w-14 h-14 rounded-2xl bg-teal-500/10 flex items-center justify-center border border-teal-500/30 text-teal-400 transform rotate-180 shadow-lg"><i data-lucide="log-out" class="w-6 h-6"></i></div>
+                                <div><strong class="block text-white text-lg"><span class="lang-ar">أيقونات الخروج/الدخول</span><span class="lang-en hidden">Logout/login icons</span></strong><p class="opacity-40 text-xs text-white/60"><span class="lang-ar">دائماً ما تعكس حركة النص وتدفقه.</span><span class="lang-en hidden">Always reflects the direction of text flow.</span></p></div>
+                            </div>
+                            <div class="flex items-center gap-6 group">
+                                <div class="w-14 h-14 rounded-2xl bg-teal-500/10 flex items-center justify-center border border-teal-500/30 text-teal-400 transform scale-x-[-1] shadow-lg"><i data-lucide="refresh-cw" class="w-6 h-6"></i></div>
+                                <div><strong class="block text-white text-lg"><span class="lang-ar">أيقونات التحديث</span><span class="lang-en hidden">Refresh icons</span></strong><p class="opacity-40 text-xs text-white/60"><span class="lang-ar">الدوران يتبع اتجاه حركة العين واللغة.</span><span class="lang-en hidden">Rotation follows eye and language movement.</span></p></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+    </main>
+
+    <script>
+        lucide.createIcons();
+    </script>
+
+  <SourceLinks 
+    sources={[
+      { 
+        titleAr: "١٥ مثالاً لتصاميم مواقع المطاعم المتميزة ٢٠٢٦", 
+        titleEn: "15 Best Restaurant Website Designs 2026",
+        url: "https://www.pravaahconsulting.com/post/restaurant-website-designs" 
+      },
+      { 
+        titleAr: "نصائح تصوير الطعام لموقعك الإلكتروني", 
+        titleEn: "Food Photography Tips for Your Website - Square",
+        url: "https://squareup.com/us/en/the-bottom-line/operating-your-business/ecommerce-food-photography-tips" 
+      },
+      { 
+        titleAr: "السرد القصصي في تصوير المطاعم", 
+        titleEn: "Storytelling in Restaurant Photography",
+        url: "https://nancyingersoll.com/2025/04/15/storytelling-in-food-photography-capturing-the-full-menu-experience/" 
+      }
+    ]}
+  />
+</BaseLayout>

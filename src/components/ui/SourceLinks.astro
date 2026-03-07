@@ -1,0 +1,40 @@
+---
+interface Props {
+  sources: {
+    titleAr: string;
+    titleEn: string;
+    url: string;
+  }[];
+}
+
+const { sources } = Astro.props;
+---
+
+<section class="py-12 bg-[#F5F2EB]/50 border-t border-[#2B1A14]/10">
+  <div class="doc-container">
+    <div class="flex items-center gap-2 mb-6 text-[#9B2226]">
+      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-library"><path d="m16 6 4 14"/><path d="M12 6v14"/><path d="M8 8v12"/><path d="M4 4v16"/><path d="M2 20h20"/></svg>
+      <h3 class="text-xl font-bold">
+        <span class="lang-ar">المصادر والدراسات المرجعية</span>
+        <span class="lang-en hidden">Sources & Reference Studies</span>
+      </h3>
+    </div>
+    
+    <div class="grid md:grid-cols-2 gap-4">
+      {sources.map(source => (
+        <a 
+          href={source.url} 
+          target="_blank" 
+          rel="noopener noreferrer"
+          class="flex items-center justify-between p-4 bg-white border border-[#2B1A14]/10 rounded-xl hover:border-[#9B2226] hover:shadow-sm transition-all group"
+        >
+          <div class="flex-1">
+            <span class="lang-ar text-sm font-bold block mb-1 group-hover:text-[#9B2226]">{source.titleAr}</span>
+            <span class="lang-en hidden text-xs opacity-60 block group-hover:text-[#9B2226]">{source.titleEn}</span>
+          </div>
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-external-link opacity-30 group-hover:opacity-100 group-hover:translate-x-1 transition-all"><path d="M15 3h6v6"/><path d="M10 14 21 3"/><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/></svg>
+        </a>
+      ))}
+    </div>
+  </div>
+</section>

@@ -1,0 +1,36 @@
+---
+import BaseLayout from './BaseLayout.astro';
+
+interface Props {
+  titleAr: string;
+  titleEn: string;
+  descriptionAr: string;
+  descriptionEn: string;
+}
+
+const { titleAr, titleEn, descriptionAr, descriptionEn } = Astro.props;
+---
+
+<BaseLayout title={titleAr} description={descriptionAr}>
+  <!-- Decision Layout intentionally keeps the max-width narrow to increase reading focus -->
+  <div class="max-w-4xl mx-auto px-6 py-8">
+    <header class="mb-12 border-b border-subtle pb-6 mt-8">
+      <p class="text-xs font-bold tracking-widest uppercase text-secondary mb-3 inline-block">
+        <span class="lang-ar">القرار والموافقة</span>
+        <span class="lang-en hidden" dir="ltr">Decision & Approval</span>
+      </p>
+      <h1 class="text-4xl md:text-5xl font-black mb-6 tracking-tight">
+        <span class="lang-ar">{titleAr}</span>
+        <span class="lang-en hidden" dir="ltr">{titleEn}</span>
+      </h1>
+      <p class="text-xl text-secondary leading-relaxed max-w-3xl pl-0 rtl:pr-4 ltr:pl-4 border-l-0 rtl:border-r-4 ltr:border-l-4 border-[#9B2226]/20">
+        <span class="lang-ar">{descriptionAr}</span>
+        <span class="lang-en hidden" dir="ltr">{descriptionEn}</span>
+      </p>
+    </header>
+
+    <div class="space-y-12">
+      <slot />
+    </div>
+  </div>
+</BaseLayout>

@@ -1,0 +1,57 @@
+---
+import BaseLayout from './BaseLayout.astro';
+
+interface Props {
+  title: string;
+  description: string;
+  sections?: { id: string; title: string }[];
+}
+
+const { title, description, sections = [] } = Astro.props;
+---
+
+<BaseLayout title={title} description={description}>
+  <div class="max-w-7xl mx-auto px-6 py-8 flex flex-col lg:flex-row gap-12">
+    <!-- Sidebar Nav (Desktop) -->
+    {sections.length > 0 && (
+      <aside class="hidden lg:block w-64 shrink-0">
+        <div class="sticky top-24">
+          <h3 class="font-bold text-sm text-muted uppercase tracking-wider mb-4">في هذه الصفحة</h3>
+          <nav class="flex flex-col gap-3">
+            {sections.map(s => (
+              <a href={`#${s.id}`} class="text-secondary hover:text-primary text-sm transition-colors border-r-2 border-transparent hover:border-[#9B2226] pr-3">
+                {s.title}
+              </a>
+            ))}
+          </nav>
+        </div>
+      </aside>
+    )}
+
+    <!-- Main Content -->
+    <div class="flex-1 max-w-3xl">
+      <header class="mb-12">
+        <h1 class="text-4xl md:text-5xl font-black mb-4 tracking-tight">{title}</h1>
+        <p class="text-xl text-secondary leading-relaxed">{description}</p>
+      </header>
+
+      <!-- Mobile In-page Nav -->
+      {sections.length > 0 && (
+        <div class="lg:hidden mb-12 p-6 bg-muted rounded-xl">
+          <h3 class="font-bold text-sm text-secondary mb-3">محتويات الصفحة</h3>
+          <nav class="flex flex-col gap-2">
+            {sections.map(s => (
+              <a href={`#${s.id}`} class="text-[#9B2226] font-medium underline underline-offset-4 decoration-subtle hover:decoration-current">
+                {s.title}
+              </a>
+            ))}
+          </nav>
+        </div>
+      )}
+
+      <div class="space-y-16">
+        <slot />
+      </div>
+    </div>
+  </div>
+</BaseLayout>

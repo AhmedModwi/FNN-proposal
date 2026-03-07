@@ -1,0 +1,79 @@
+---
+import '../styles/global.css';
+import TopNav from '../components/navigation/TopNav.astro';
+
+interface Props {
+	title: string;
+	description?: string;
+}
+
+const { title, description = "A premium digital proposal for Al-Fananin restaurant." } = Astro.props;
+---
+
+<!doctype html>
+<html lang="ar" dir="rtl">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="description" content={description} />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="generator" content={Astro.generator} />
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400;1,700&family=Cairo:wght@400;700;900&family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+		<title>{title} | Al-Fananin Proposal</title>
+		
+		<style is:global>
+			html, body {
+				overflow-x: hidden !important;
+				position: relative;
+				width: 100% !important;
+				margin: 0;
+				padding: 0;
+			}
+			* {
+				box-sizing: border-box;
+			}
+		</style>
+		
+		<script is:inline>
+			(function() {
+				try {
+					const lang = localStorage.getItem('fnn-lang') || 'ar';
+					document.documentElement.lang = lang;
+					document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
+				} catch (e) {}
+			})();
+		</script>
+		<!-- Lucide Icons -->
+		<script src="https://unpkg.com/lucide@latest"></script>
+	</head>
+	<body class="bg-base text-primary min-h-screen flex flex-col font-arabic antialiased selection:bg-[#9B2226] selection:text-white overflow-x-hidden w-full max-w-[100vw]">
+		<TopNav />
+		<main class="flex-grow pt-24 pb-16 overflow-x-hidden">
+			<slot />
+		</main>
+
+		<script is:inline>
+			// Initialize Lucide Icons on load and after any swaps
+			function initIcons() {
+				if (window.lucide) {
+					window.lucide.createIcons();
+				}
+			}
+			window.addEventListener('load', initIcons);
+			document.addEventListener('astro:page-load', initIcons);
+			// Also run immediately if script is already there
+			initIcons();
+		</script>
+		<footer class="py-12 border-t border-subtle mt-16 text-center text-muted text-sm">
+			<div class="max-w-6xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-4">
+				<p class="lang-ar">© 2026 مقترح الفنانين الرقمي. المرحلة الأولى.</p>
+				<p class="lang-en hidden">© 2026 Al-Fananin Digital Proposal. Phase 1.</p>
+				
+				<p class="lang-ar">بنيت لتقديم رؤية واضحة للمستقبل الرقمي.</p>
+				<p class="lang-en hidden">Built to provide a clear vision for the digital future.</p>
+			</div>
+		</footer>
+	</body>
+</html>

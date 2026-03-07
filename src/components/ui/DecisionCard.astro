@@ -1,0 +1,68 @@
+---
+interface Props {
+  titleAr: string;
+  titleEn: string;
+  contextAr: string;
+  contextEn: string;
+  recommendationAr: string;
+  recommendationEn: string;
+  actionRequiredAr: string;
+  actionRequiredEn: string;
+}
+
+const { titleAr, titleEn, contextAr, contextEn, recommendationAr, recommendationEn, actionRequiredAr, actionRequiredEn } = Astro.props;
+---
+
+<div class="bg-surface rounded-2xl border border-subtle shadow-sm overflow-hidden flex flex-col md:flex-row">
+  <!-- Status Badge Side -->
+  <div class="bg-muted p-6 flex flex-col justify-center items-center md:w-48 shrink-0 border-b md:border-b-0 ltr:md:border-r rtl:md:border-l border-subtle">
+    <div class="w-12 h-12 rounded-full bg-white flex items-center justify-center mb-3 shadow-sm text-[#9B2226]">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"></path>
+        <path d="m9 12 2 2 4-4"></path>
+      </svg>
+    </div>
+    <span class="text-sm font-bold text-secondary uppercase tracking-widest text-center">
+      <span class="lang-ar">مطلوب التوجيه</span>
+      <span class="lang-en hidden">Action Needed</span>
+    </span>
+  </div>
+
+  <!-- Content Side -->
+  <div class="p-6 md:p-8 flex-1 space-y-6">
+    <div>
+      <h3 class="text-2xl font-bold mb-2">
+        <span class="lang-ar">{titleAr}</span>
+        <span class="lang-en hidden">{titleEn}</span>
+      </h3>
+      <p class="text-secondary leading-relaxed">
+        <span class="lang-ar">{contextAr}</span>
+        <span class="lang-en hidden">{contextEn}</span>
+      </p>
+    </div>
+
+    <div class="bg-[#f0f9ff]/50 border border-[#bae6fd] rounded-xl p-5 space-y-2">
+      <h4 class="font-bold text-[#0369a1] flex items-center gap-2">
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>
+        <span class="lang-ar">التوصية الحالية</span>
+        <span class="lang-en hidden">Recommendation</span>
+      </h4>
+      <p class="text-primary">
+        <span class="lang-ar">{recommendationAr}</span>
+        <span class="lang-en hidden">{recommendationEn}</span>
+      </p>
+    </div>
+
+    <div class="bg-muted rounded-xl p-5 space-y-2">
+      <h4 class="font-bold text-secondary flex items-center gap-2">
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" x2="8" y1="13" y2="13"/><line x1="16" x2="8" y1="17" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+        <span class="lang-ar">المطلوب من المالك</span>
+        <span class="lang-en hidden">Required Action</span>
+      </h4>
+      <p class="text-primary font-medium">
+        <span class="lang-ar">{actionRequiredAr}</span>
+        <span class="lang-en hidden">{actionRequiredEn}</span>
+      </p>
+    </div>
+  </div>
+</div>

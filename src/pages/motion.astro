@@ -1,0 +1,675 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import SourceLinks from '../components/ui/SourceLinks.astro';
+---
+
+<BaseLayout title="Motion & Micro-interactions System — Al-Fananin">
+  <style is:global>
+
+        body {
+            color: var(--color-text-primary);
+            background-color: var(--color-bg-base);
+        }
+
+        .en-font {
+            font-family: 'Inter', system-ui, sans-serif;
+            direction: ltr;
+            display: inline-block;
+        }
+
+        .doc-container {
+            max-width: 1040px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        section {
+            padding: 5rem 0;
+            border-bottom: 1px solid var(--border-light);
+        }
+
+        section:last-of-type {
+            border-bottom: none;
+        }
+
+        .section-header {
+            margin-bottom: 3.5rem;
+            max-width: 800px;
+        }
+
+        .section-num {
+            font-family: 'Inter', sans-serif;
+            font-weight: 700;
+            color: var(--text-muted);
+            font-size: 0.875rem;
+            letter-spacing: 0.05em;
+            margin-bottom: 0.75rem;
+            display: block;
+        }
+
+        .section-title {
+            font-size: 2.25rem;
+            font-weight: bold;
+            margin-bottom: 1.25rem;
+            line-height: 1.3;
+        }
+
+        .section-desc {
+            font-size: 1.125rem;
+            color: var(--text-muted);
+        }
+
+        .tag {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            padding: 0.25rem 0.5rem;
+            border-radius: 4px;
+            background: rgba(43, 26, 20, 0.05);
+            color: var(--text-muted);
+        }
+
+        /* Motion Preview Utilities */
+        .preview-box {
+            background: white;
+            border: 1px solid var(--border-light);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+            min-height: 160px;
+        }
+
+        .motion-fast { transition: all var(--transition-fast) ease-in-out; }
+        .motion-base { transition: all var(--transition-base) ease-in-out; }
+        .motion-slow { transition: all var(--transition-slow) cubic-bezier(0.4, 0, 0.2, 1); }
+
+        /* Generic UI Elements for demos */
+        .demo-btn {
+            background-color: var(--text-main);
+            color: white;
+            padding: 0.5rem 1.5rem;
+            border-radius: 999px;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.875rem;
+            cursor: pointer;
+            border: none;
+        }
+        
+        .demo-btn:hover {
+            transform: scale(0.98);
+            opacity: 0.9;
+        }
+
+        .demo-card {
+            background: white;
+            border: 1px solid var(--border-light);
+            border-radius: 8px;
+            padding: 1rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+            cursor: pointer;
+        }
+        
+        .demo-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+
+        .skeleton {
+            background: #e2e8f0;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .skeleton::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            transform: translateX(-100%);
+            background-image: linear-gradient(
+                90deg,
+                rgba(255, 255, 255, 0) 0,
+                rgba(255, 255, 255, 0.5) 20%,
+                rgba(255, 255, 255, 0.5) 60%,
+                rgba(255, 255, 255, 0)
+            );
+            animation: shimmer 2s infinite;
+        }
+        
+        @keyframes shimmer {
+            100% {
+                transform: translateX(100%);
+            }
+        }
+
+        /* Flow Diagram */
+        .flow-step {
+            position: relative;
+        }
+        .flow-step:not(:last-child)::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: -2rem;
+            width: 2rem;
+            height: 2px;
+            background: var(--border-light);
+            z-index: -1;
+        }
+
+        @media screen and (prefers-reduced-motion: reduce) {
+            .motion-fast, .motion-base, .motion-slow, .demo-btn, .demo-card, .skeleton::after {
+                transition: opacity calc(var(--transition-base) * 2) ease-in-out !important;
+                transform: none !important;
+                animation: none !important;
+            }
+        }
+    
+  </style>
+
+
+
+    <header class="pt-24 pb-16 bg-white border-b border-gray-200">
+        <div class="doc-container text-center">
+            <span class="en-font text-xs font-bold tracking-widest uppercase text-gray-500 mb-6 block">UX Architecture Specification v1.0</span>
+            <h1 class="text-4xl md:text-5xl font-bold mb-6"><span class="lang-ar">نظام الحركة والتفاعلات الدقيقة</span><span class="lang-en hidden">Motion system and micro interactions</span></h1>
+            <p class="text-xl max-w-2xl mx-auto opacity-75 leading-relaxed">
+                <span class="lang-ar">اللغة السلوكية التي تمنح الواجهة الوضوح والإحساس بالحياة</span><span class="lang-en hidden">Behavioral language that gives the interface clarity and a sense of life</span>
+            </p>
+        </div>
+    </header>
+
+    <main>
+        <!-- RESEARCH-DRIVEN FOUNDATION -->
+        <section class="bg-muted/50 border-b border-subtle py-16 md:py-24 px-6 md:px-12">
+          <div class="max-w-7xl mx-auto">
+            <div class="mb-12 max-w-4xl">
+              <span class="en-text text-xs font-bold tracking-widest uppercase text-secondary mb-3 block" dir="ltr">Behavioral Engineering Foundations</span>
+              <h2 class="text-3xl md:text-5xl font-black mb-6 f-amiri leading-[1.2]">
+                <span class="lang-ar">إيقاعات الاستجابة الرقمية: <br/><span class="text-blue-600">لماذا تتحرك الواجهة بهذا الشكل؟</span></span>
+                <span class="lang-en hidden" dir="ltr">Digital Response Rhythms: <br/><span class="text-blue-600">Why the UI Moves This Way?</span></span>
+              </h2>
+              <p class="text-xl md:text-2xl text-secondary leading-relaxed f-amiri border-r-4 border-blue-600/20 pr-6">
+                <span class="lang-ar">بما أن</span><span class="lang-en hidden">Since</span> <strong><span class="lang-ar">72% من عمليات البحث عن المطاعم تتم عبر الجوال</span><span class="lang-en hidden">72% of restaurant searches happen on mobile</span></strong><span class="lang-ar">، فإن زمن الاستجابة (Pacing) يحدد مدى ثقة الضيف في كفاءة المطعم الرقمي. قمنا بهندسة التوقيتات بناءً على النتائج التالية:</span><span class="lang-en hidden">, response time (Pacing) determines the guest's trust in the digital efficiency. We engineered the timings based on these results:</span>
+              </p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-6">
+              <div class="bg-white p-6 border rounded-xl shadow-sm">
+                <h4 class="font-bold text-blue-600 mb-2 f-amiri ar-text"><span class="lang-ar">قانون الثواني (Reaction Time)</span><span class="lang-en hidden">Reaction Law</span></h4>
+                <p class="text-xs opacity-80 leading-relaxed f-amiri ar-text"><span class="lang-ar">الاستجابة في أقل من 400ms تمنح المستخدم إحساساً "بالقدرة والتحكم". نظامنا يلتزم بـ 300ms كحد أقصى للعمليات القياسية، مما يجعل تصفح المنيو يبدو كالبرق.</span><span class="lang-en hidden">Response under 400ms gives the user a sense of "power and control". Our system commits to 300ms max for standard operations, making menu browsing lightning fast.</span></p>
+              </div>
+              <div class="bg-white p-6 border rounded-xl shadow-sm">
+                <h4 class="font-bold text-blue-600 mb-2 f-amiri ar-text"><span class="lang-ar">ثقة التحميل (Loading Trust)</span><span class="lang-en hidden">Loading Trust</span></h4>
+                <p class="text-xs opacity-80 leading-relaxed f-amiri ar-text"><span class="lang-ar">استخدام شاشات الهيكل (Skeletons) بدلاً من المؤشرات الدوارة يقلل من "الزمن المُدرك" للانتظار. هذا التكتيك السلوكي يحافظ على بقاء الضيف في الموقع لفترات أطول.</span><span class="lang-en hidden">Using Skeletons instead of spinners reduces "perceived wait time". This behavioral tactic keeps the guest on-site longer.</span></p>
+              </div>
+              <div class="bg-white p-6 border rounded-xl shadow-sm">
+                <h4 class="font-bold text-blue-600 mb-2 f-amiri ar-text"><span class="lang-ar">انسيابية الـ RTL (RTL Flow)</span><span class="lang-en hidden">RTL Flow</span></h4>
+                <p class="text-xs opacity-80 leading-relaxed f-amiri ar-text"><span class="lang-ar">عكس الحركات الاتجاهية للتوافق مع دفق قراءة الواجهة العربية يقلل من الجهد الذهني (Cognitive Load)، مما يسهل الوصول للمعلومات الأساسية (العنوان، المنيو) بسلاسة تامة.</span><span class="lang-en hidden">Mirroring movements for RTL flows reduces cognitive load, making access to key information (address, menu) perfectly seamless.</span></p>
+              </div>
+            </div>
+          </div>
+        </section>
+        <!-- SECTION 1 & 2 -->
+        <section class="doc-container">
+            <div class="section-header">
+                <span class="section-num en-font">SECTION 1.0 & 2.0</span>
+                <h2 class="section-title"><span class="lang-ar">فلسفة الحركة ووظيفتها</span><span class="lang-en hidden">Movement philosophy and function</span></h2>
+                <p class="section-desc">
+                    <span class="lang-ar">الحركة في الواجهة ليست زينة بصرية، بل نظام سلوكي دقيق يوضح السبب والنتيجة، يؤكد نجاح التفاعل، يوجه الانتباه، ويحوّل الواجهة من سطح جامد إلى تجربة مفهومة وراقية. الحركة الصاخبة تشتت، بينما الحركة المنضبطة تطمئن.</span><span class="lang-en hidden">Movement in the interface is not a visual decoration, but rather a precise behavioral system that explains cause and effect, confirms the success of the interaction, directs attention, and transforms the interface from a rigid surface into an understandable and uplifting experience. Loud movement is distracting, while controlled movement is reassuring.</span>
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-4 gap-6">
+                <!-- Principles -->
+                <div class="bg-white p-6 rounded-xl border border-gray-200">
+                    <h3 class="font-bold text-lg mb-2"><span class="lang-ar">الوضوح</span><span class="lang-en hidden">Clarity</span></h3>
+                    <p class="text-sm opacity-70 mb-4"><span class="lang-ar">يجب أن تشرح الحركة ما تغير في الواجهة ولماذا.</span><span class="lang-en hidden">The animation should explain what changed in the interface and why.</span></p>
+                    <span class="tag">Feedback</span>
+                </div>
+                <div class="bg-white p-6 rounded-xl border border-gray-200">
+                    <h3 class="font-bold text-lg mb-2"><span class="lang-ar">السبب والنتيجة</span><span class="lang-en hidden">Cause and effect</span></h3>
+                    <p class="text-sm opacity-70 mb-4"><span class="lang-ar">الإجراء الذي يتخذه المستخدم يجب أن يولد استجابة مرئية فورية ومترابطة.</span><span class="lang-en hidden">The action the user takes must generate an immediate and relatable visual response.</span></p>
+                    <span class="tag">Cause & Effect</span>
+                </div>
+                <div class="bg-white p-6 rounded-xl border border-gray-200">
+                    <h3 class="font-bold text-lg mb-2"><span class="lang-ar">الانضباط</span><span class="lang-en hidden">Discipline</span></h3>
+                    <p class="text-sm opacity-70 mb-4"><span class="lang-ar">الحركة اللانهائية أو الاستعراضية ممنوعة. الحركة تبدأ وتنتهي بهدف.</span><span class="lang-en hidden">Endless or reflexive movement is prohibited. Movement begins and ends with a goal.</span></p>
+                    <span class="tag">Restraint</span>
+                </div>
+                <div class="bg-white p-6 rounded-xl border border-gray-200">
+                    <h3 class="font-bold text-lg mb-2"><span class="lang-ar">المكافأة العاطفية</span><span class="lang-en hidden">Emotional reward</span></h3>
+                    <p class="text-sm opacity-70 mb-4"><span class="lang-ar">توفير شعور بالرضا الخفي بعد إتمام مهام رئيسية بشكل يعكس الكرم والترحيب.</span><span class="lang-en hidden">Providing a sense of hidden satisfaction after completing key tasks in a way that reflects generosity and welcome.</span></p>
+                    <span class="tag">Delight</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 3 -->
+        <section class="bg-gray-50 border-y border-gray-200">
+            <div class="doc-container">
+                <div class="section-header">
+                    <span class="section-num en-font">SECTION 3.0</span>
+                    <h2 class="section-title"><span class="lang-ar">دورة التفاعل الدقيق ذات الـ 4 مراحل</span><span class="lang-en hidden">4-stage microreaction cycle</span></h2>
+                    <p class="section-desc">
+                        <span class="lang-ar">كل حركة ميكرو-تفاعلية مبنية على دورة منطقية متسلسلة لضمان عدم وجود حركة عبثية.</span><span class="lang-en hidden">Each micro-interactive movement is based on a sequential logical cycle to ensure that there is no frivolous movement.</span>
+                    </p>
+                </div>
+
+                <div class="flex flex-col md:flex-row gap-4 items-stretch text-center justify-between mt-12 bg-white p-8 rounded-2xl shadow-sm border border-gray-100 relative">
+                    
+                    <div class="flex-1 flow-step bg-gray-50 p-6 rounded-xl border border-gray-200">
+                        <span class="tag mb-3 block">Trigger</span>
+                        <h4 class="font-bold flex items-center justify-center gap-2 mb-2"><i data-lucide="zap" class="w-4 h-4 text-amber-500"></i><span class="lang-ar">المُحفّز</span><span class="lang-en hidden">Catalyst</span></h4>
+                        <p class="text-sm opacity-70"><span class="lang-ar">يبدأ من المستخدم (نقرة) أو النظام (اكتمال تحميل).</span><span class="lang-en hidden">It starts from the user (click) or system (download complete).</span></p>
+                    </div>
+
+                    <div class="flex-1 flow-step bg-gray-50 p-6 rounded-xl border border-gray-200">
+                        <span class="tag mb-3 block">Rules</span>
+                        <h4 class="font-bold flex items-center justify-center gap-2 mb-2"><i data-lucide="scale" class="w-4 h-4 text-blue-500"></i><span class="lang-ar">القواعد</span><span class="lang-en hidden">Rules</span></h4>
+                        <p class="text-sm opacity-70"><span class="lang-ar">المنطق الخفي: מה يمكن أن يحدث وكيف؟ (مثل قيود الحجم والمسافة).</span><span class="lang-en hidden">Hidden logic: What can happen and how? (such as size and distance restrictions).</span></p>
+                    </div>
+
+                    <div class="flex-1 flow-step bg-gray-50 p-6 rounded-xl border border-gray-200">
+                        <span class="tag mb-3 block">Feedback</span>
+                        <h4 class="font-bold flex items-center justify-center gap-2 mb-2"><i data-lucide="eye" class="w-4 h-4 text-green-500"></i><span class="lang-ar">التأكيد المرئي</span><span class="lang-en hidden">Visual confirmation</span></h4>
+                        <p class="text-sm opacity-70"><span class="lang-ar">الاستجابة الحركية التي يراها المستخدم، وتمنحه إحساساً بالتحكم.</span><span class="lang-en hidden">The kinetic response that the user sees, and gives him a sense of control.</span></p>
+                    </div>
+
+                    <div class="flex-1 bg-gray-50 p-6 rounded-xl border border-gray-200">
+                        <span class="tag mb-3 block">Loops & Modes</span>
+                        <h4 class="font-bold flex items-center justify-center gap-2 mb-2"><i data-lucide="repeat-1" class="w-4 h-4 text-purple-500"></i><span class="lang-ar">التكرار والحالة</span><span class="lang-en hidden">Recurrence and status</span></h4>
+                        <p class="text-sm opacity-70"><span class="lang-ar">هل تتكرر الحركة؟ (يفضل دائماً: مرة واحدة).</span><span class="lang-en hidden">Is the movement repeated? (Always prefer: once).</span></p>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 4 -->
+        <section class="doc-container">
+            <div class="section-header">
+                <span class="section-num en-font">SECTION 4.0</span>
+                <h2 class="section-title"><span class="lang-ar">قانون الزمن: وحدات الحركة التأسيسية</span><span class="lang-en hidden">The law of time: constituent units of motion</span></h2>
+                <p class="section-desc">
+                    <span class="lang-ar">السرعات العشوائية مرفوضة. يتم تعريف جميع الحركات من خلال ثلاث وحدات زمنية صارمة لضمان الاتساق والإيقاع الدقيق في كامل النظام.</span><span class="lang-en hidden">Random speeds are rejected. All movements are defined by three strict time units to ensure consistency and precise rhythm throughout the system.</span>
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Fast -->
+                <div class="border border-gray-200 rounded-xl p-6 bg-white shadow-sm hover:shadow-md motion-base cursor-pointer group">
+                    <div class="flex justify-between items-center mb-6 border-b pb-4">
+                        <h3 class="font-bold text-lg"><span class="lang-ar">سريع وانعكاسي</span><span class="lang-en hidden">Fast and reflexive</span></h3>
+                        <span class="en-font font-bold text-gray-800 text-xl border rounded px-2">150ms</span>
+                    </div>
+                    <span class="tag mb-4 inline-block">--transition-fast</span>
+                    <ul class="text-sm opacity-80 space-y-2 mb-6 list-disc list-inside">
+                        <li><span class="lang-ar">تأثيرات المرور (Hover).</span><span class="lang-en hidden">Hover effects.</span></li>
+                        <li><span class="lang-ar">حالات التفعيل الفورية (Active states).</span><span class="lang-en hidden">Active states.</span></li>
+                        <li><span class="lang-ar">تغير ألوان الأيقونات.</span><span class="lang-en hidden">Change icon colors.</span></li>
+                    </ul>
+                    <div class="preview-box bg-gray-50 flex-col gap-2">
+                        <button class="bg-gray-200 hover:bg-gray-300 text-gray-800 font-bold py-2 px-4 rounded motion-fast">Hover Me</button>
+                    </div>
+                </div>
+
+                <!-- Base -->
+                <div class="border border-gray-200 rounded-xl p-6 bg-white shadow-sm hover:shadow-md motion-base cursor-pointer group">
+                    <div class="flex justify-between items-center mb-6 border-b pb-4">
+                        <h3 class="font-bold text-lg"><span class="lang-ar">القياسي</span><span class="lang-en hidden">Standard</span></h3>
+                        <span class="en-font font-bold text-gray-800 text-xl border rounded px-2">300ms</span>
+                    </div>
+                    <span class="tag mb-4 inline-block">--transition-base</span>
+                    <ul class="text-sm opacity-80 space-y-2 mb-6 list-disc list-inside">
+                        <li><span class="lang-ar">تبديل الأيقونات والرموز.</span><span class="lang-en hidden">Toggle icons and icons.</span></li>
+                        <li><span class="lang-ar">القفزات البيسطة (Subtle bounce).</span><span class="lang-en hidden">Subtle bounce.</span></li>
+                        <li><span class="lang-ar">تغيرات الظلال والأسطح.</span><span class="lang-en hidden">Changes in shadows and surfaces.</span></li>
+                    </ul>
+                    <div class="preview-box bg-gray-50">
+                       <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center text-blue-600 motion-base group-hover:scale-110 group-hover:bg-blue-200">
+                           <i data-lucide="check" class="w-8 h-8 opacity-0 group-hover:opacity-100 motion-base absolute"></i>
+                           <i data-lucide="circle" class="w-8 h-8 group-hover:opacity-0 motion-base absolute"></i>
+                       </div>
+                    </div>
+                </div>
+
+                <!-- Slow -->
+                <div class="border border-gray-200 rounded-xl p-6 bg-white shadow-sm hover:shadow-md motion-base cursor-pointer group">
+                    <div class="flex justify-between items-center mb-6 border-b pb-4">
+                        <h3 class="font-bold text-lg"><span class="lang-ar">متأنٍ واستعراضي</span><span class="lang-en hidden">Careful and showcasing</span></h3>
+                        <span class="en-font font-bold text-gray-800 text-xl border rounded px-2">500ms</span>
+                    </div>
+                    <span class="tag mb-4 inline-block">--transition-slow</span>
+                    <ul class="text-sm opacity-80 space-y-2 mb-6 list-disc list-inside">
+                        <li><span class="lang-ar">دخول النوافذ المنبثقة (Modals).</span><span class="lang-en hidden">Enter pop-up windows (Modals).</span></li>
+                        <li><span class="lang-ar">الأدراج الجانبية (Drawers).</span><span class="lang-en hidden">Side drawers.</span></li>
+                        <li><span class="lang-ar">كشف الأقسام الرئيسية في الصفحة.</span><span class="lang-en hidden">Reveal the main sections of the page.</span></li>
+                    </ul>
+                    <div class="preview-box bg-gray-50 overflow-hidden relative">
+                        <div class="w-full h-full bg-white absolute -bottom-full group-hover:bottom-0 motion-slow rounded-t-xl border-t shadow-lg flex items-center justify-center">
+                            <span class="text-sm font-bold text-gray-500">Drawer Revealed</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 5, 6, 7 -->
+        <section class="bg-gray-50 border-y border-gray-200">
+            <div class="doc-container">
+                <div class="section-header">
+                    <span class="section-num en-font">SECTION 5.0, 6.0, 7.0</span>
+                    <h2 class="section-title"><span class="lang-ar">تصنيف المُحفّزات (Triggers)</span><span class="lang-en hidden">Classification of triggers</span></h2>
+                    <p class="section-desc"><span class="lang-ar">تنقسم أسباب الحركة إلى نوعين رئيسيين يتبعان مصدر إثارة الحدث.</span><span class="lang-en hidden">The causes of movement are divided into two main types that follow the source of the excitement of the event.</span></p>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-12">
+                    
+                    <!-- User Triggers -->
+                    <div>
+                        <div class="flex items-center gap-3 mb-6">
+                            <div class="w-10 h-10 rounded-full bg-teal-100 flex items-center justify-center text-teal-700"><i data-lucide="mouse-pointer-2" class="w-5 h-5"></i></div>
+                            <h3 class="text-2xl font-bold"><span class="lang-ar">محفزات يعتمدها المستخدم</span><span class="lang-en hidden">User-dependent triggers</span></h3>
+                        </div>
+                        <p class="mb-6 opacity-80"><span class="lang-ar">أفعال مباشرة تبدأ بقرار بشري. تتطلب استجابة سريعة جداً وواضحة.</span><span class="lang-en hidden">Direct actions that begin with a human decision. It requires a very quick and clear response.</span></p>
+                        
+                        <div class="space-y-4">
+                            <div class="bg-white p-4 border rounded-lg flex items-center justify-between">
+                                <div><strong class="block"><span class="lang-ar">النقر (Click / Tap)</span><span class="lang-en hidden">Click / Tap</span></strong><span class="text-sm opacity-60"><span class="lang-ar">يؤدي إلى انكماش مرن (Compression) واعتراف باللمس.</span><span class="lang-en hidden">It leads to elastic contraction and tactile recognition.</span></span></div>
+                                <span class="tag">User-Triggered</span>
+                            </div>
+                            <div class="bg-white p-4 border rounded-lg flex items-center justify-between">
+                                <div><strong class="block"><span class="lang-ar">المرور (Hover)</span><span class="lang-en hidden">Hover</span></strong><span class="text-sm opacity-60"><span class="lang-ar">تلميح بصري ناعم يؤكد قابلية النقر.</span><span class="lang-en hidden">Soft visual cue emphasizes clickability.</span></span></div>
+                                <span class="tag">User-Triggered</span>
+                            </div>
+                            <div class="bg-white p-4 border rounded-lg flex items-center justify-between">
+                                <div><strong class="block"><span class="lang-ar">التمرير (Swipe / Scroll)</span><span class="lang-en hidden">Scrolling (Swipe / Scroll)</span></strong><span class="text-sm opacity-60"><span class="lang-ar">حركة مرتبطة بمسافة سحب الأصبع أو الفأرة.</span><span class="lang-en hidden">Movement related to the distance of a finger or mouse drag.</span></span></div>
+                                <span class="tag">User-Triggered</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- System Triggers -->
+                    <div>
+                        <div class="flex items-center gap-3 mb-6">
+                            <div class="w-10 h-10 rounded-full bg-amber-100 flex items-center justify-center text-amber-700"><i data-lucide="server" class="w-5 h-5"></i></div>
+                            <h3 class="text-2xl font-bold"><span class="lang-ar">محفزات يعتمدها النظام</span><span class="lang-en hidden">System-based incentives</span></h3>
+                        </div>
+                        <p class="mb-6 opacity-80"><span class="lang-ar">أحداث تحدث بالخلفية بدون تدخل فوري. تتطلب حركات تلفت الانتباه بلطف.</span><span class="lang-en hidden">Events that occur in the background without immediate intervention. Requires movements that gently attract attention.</span></p>
+                        
+                        <div class="space-y-4">
+                            <div class="bg-white p-4 border rounded-lg flex items-center justify-between">
+                                <div><strong class="block"><span class="lang-ar">التحميل (Data Loading)</span><span class="lang-en hidden">Data Loading</span></strong><span class="text-sm opacity-60"><span class="lang-ar">شاشات الهيكل (Skeleton) تطمئن بوجود بيانات قادمة.</span><span class="lang-en hidden">Skeleton displays reassure you that there is incoming data.</span></span></div>
+                                <span class="tag">System-Triggered</span>
+                            </div>
+                            <div class="bg-white p-4 border rounded-lg flex items-center justify-between">
+                                <div><strong class="block"><span class="lang-ar">اكتمال العملية (Success)</span><span class="lang-en hidden">Success</span></strong><span class="text-sm opacity-60"><span class="lang-ar">ظهور أيقونة نجاح ناعمة كبديل لتحديث عنيف للشاشة.</span><span class="lang-en hidden">A soft success icon appears as an alternative to a violent screen refresh.</span></span></div>
+                                <span class="tag">System-Triggered</span>
+                            </div>
+                            <div class="bg-white p-4 border rounded-lg flex items-center justify-between">
+                                <div><strong class="block"><span class="lang-ar">وصول إشعار (Notification)</span><span class="lang-en hidden">Notification arrives</span></strong><span class="text-sm opacity-60"><span class="lang-ar">اهتزاز بسيط (Shake) لجذب العين دون مقاطعة المهام.</span><span class="lang-en hidden">A simple shake to attract the eye without interrupting tasks.</span></span></div>
+                                <span class="tag">System-Triggered</span>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 8 -->
+        <section class="doc-container">
+            <div class="section-header">
+                <span class="section-num en-font">SECTION 8.0</span>
+                <h2 class="section-title"><span class="lang-ar">قانون الـ RTL للحركة الاتجاهية</span><span class="lang-en hidden">RTL law of directional motion</span></h2>
+                <p class="section-desc">
+                    <span class="lang-ar">في الواجهات العربية، القراءة تتدفق من اليمين إلى اليسار. بالتالي، محور زمن الحركة الاتجاهية (التقدم، التراجع، الدخول، الخروج) يجب أن يُعكس (Mirror) ليتوافق مع الإدراك البصري للمستخدم العربي.</span><span class="lang-en hidden">In Arabic interfaces, reading flows from right to left. Therefore, the time axis of the directional movement (advance, retreat, entry, exit) must be mirrored to match the visual perception of the Arab user.</span>
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-8">
+                <!-- Group A: Must Mirror -->
+                <div class="bg-teal-50/50 p-8 rounded-2xl border border-teal-100">
+                    <h3 class="font-bold text-teal-900 mb-6 text-xl border-b border-teal-200 pb-2"><span class="lang-ar">حركات تُعكس إلزامياً (MUST Mirror)</span><span class="lang-en hidden">Movements are mandatory mirrored (MUST Mirror)</span></h3>
+                    <p class="text-sm opacity-80 mb-8"><span class="lang-ar">أي حركة تدل على التقدم في الزمن أو الاتجاهية أو الدخول الجانبي لمكونات تمتد مع النص.</span><span class="lang-en hidden">Any movement indicates progress in time, directionality, or lateral entry of components that extend with the text.</span></p>
+                    
+                    <div class="space-y-6">
+                        <div class="flex items-center justify-between">
+                            <span class="font-bold"><span class="lang-ar">أشرطة التقدم (Progress Bars)</span><span class="lang-en hidden">Progress Bars</span></span>
+                            <div class="w-1/2 h-2 bg-gray-200 rounded overflow-hidden" dir="rtl">
+                                <div class="w-full h-full bg-teal-500 animate-[progress_2s_infinite]"></div>
+                            </div>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <span class="font-bold"><span class="lang-ar">انتقال الخطوات (Step Flows)</span><span class="lang-en hidden">Step Flows</span></span>
+                            <div class="flex gap-2">
+                                <i data-lucide="arrow-left" class="animate-pulse text-teal-600"></i>
+                            </div>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <span class="font-bold"><span class="lang-ar">الأدراج (Drawers)</span><span class="lang-en hidden">Drawers</span></span>
+                            <span class="text-xs en-font bg-white px-2 py-1 rounded border">Enter from Right</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Group B: Do NOT Mirror -->
+                <div class="bg-gray-100 p-8 rounded-2xl border border-gray-200">
+                    <h3 class="font-bold text-gray-900 mb-6 text-xl border-b border-gray-300 pb-2"><span class="lang-ar">حركات لا يجوز عكسها (Do NOT Mirror)</span><span class="lang-en hidden">Movements that may not be reversed (Do NOT Mirror)</span></h3>
+                    <p class="text-sm opacity-80 mb-8"><span class="lang-ar">الحركات القائمة على قوانين دوران فيزيائية عالمية غير مرتبطة باتجاه لغة القراءة.</span><span class="lang-en hidden">Movements based on universal physical rotation laws are not related to the direction of the reading language.</span></p>
+                    
+                    <div class="space-y-6">
+                        <div class="flex items-center justify-between">
+                            <span class="font-bold"><span class="lang-ar">التحديث الدائري (Refresh)</span><span class="lang-en hidden">Circular Refresh</span></span>
+                            <i data-lucide="loader-2" class="animate-spin text-gray-500"></i>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <span class="font-bold"><span class="lang-ar">عقارب الساعة (Clock)</span><span class="lang-en hidden">Clock</span></span>
+                            <i data-lucide="clock" class="text-gray-500"></i>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <span class="font-bold"><span class="lang-ar">عناصر التحكم بالوسائط</span><span class="lang-en hidden">Media controls</span></span>
+                            <div class="flex gap-1" dir="ltr">
+                                <i data-lucide="play" class="w-4 h-4 fill-current text-gray-500"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <style>
+                @keyframes progress { 0% { width: 0%; } 100% { width: 100%; } }
+            </style>
+        </section>
+
+        <!-- SECTION 9 -->
+        <section class="bg-gray-50 border-y border-gray-200">
+            <div class="doc-container">
+                <div class="section-header">
+                    <span class="section-num en-font">SECTION 9.0</span>
+                    <h2 class="section-title"><span class="lang-ar">أمثلة تطبيقية (UI Component Motion)</span><span class="lang-en hidden">Application examples (UI Component Motion)</span></h2>
+                    <p class="section-desc"><span class="lang-ar">عينات موثقة لطبيعة الحركة في المكونات الأكثر تفاعلاً.</span><span class="lang-en hidden">Documented samples of the nature of movement in the most reactive components.</span></p>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-8">
+                    <!-- Siniya Concept -->
+                    <div class="bg-white p-8 rounded-xl border border-gray-200 shadow-sm relative overflow-hidden group">
+                        <div class="absolute inset-0 bg-gradient-to-b from-transparent to-orange-50/50 opacity-0 group-hover:opacity-100 motion-slow"></div>
+                        <span class="tag absolute top-4 left-4 z-10">Micro-interaction sequence</span>
+                        <h3 class="font-bold text-lg mb-2 relative z-10 text-orange-800"><span class="lang-ar">الصينية التفاعلية (Interactive Siniya)</span><span class="lang-en hidden">Interactive Siniya</span></h3>
+                        <p class="text-sm opacity-70 mb-8 relative z-10"><span class="lang-ar">بديلاً عن سلة التسوق الجامدة. عند أضافة صنف: (1) ينكمش الزر كتأكيد، (2) يهبط أيقون مرئي بانحناء نحو الصينية السفلية، (3) تقوم الصينية بقفزة احتفالية خفيفة وناعمة جداً.</span><span class="lang-en hidden">An alternative to the rigid shopping cart. When an item is added: (1) the button shrinks as confirmation, (2) a visual icon descends in a curtsey towards the bottom tray, (3) the tray makes a very soft and light celebratory jump.</span></p>
+                        
+                        <div class="flex flex-col items-center gap-6 relative z-10 h-40 justify-center">
+                            <!-- Redesigned Siniya: Silver Circle, Larger, Falcon Perspective -->
+                            <div class="w-32 h-32 rounded-full bg-gradient-to-br from-[#D1D5DB] via-[#9CA3AF] to-[#6B7280] shadow-2xl border-2 border-[#E5E7EB] flex items-center justify-center relative group-hover:scale-105 transition-transform motion-base overflow-hidden">
+                               <div class="absolute inset-0 bg-[radial-gradient(circle_at_30%_30%,rgba(255,255,255,0.4),transparent)]"></div>
+                               <div class="w-28 h-28 rounded-full border border-white/20"></div>
+                               <!-- Hover Badge -->
+                               <span class="bg-gray-800 text-white text-[10px] en-font font-bold w-5 h-5 rounded-full absolute top-4 right-4 flex items-center justify-center transform scale-0 group-hover:scale-100 transition-transform delay-150">1</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Modal Entrance -->
+                    <div class="bg-white p-8 rounded-xl border border-gray-200 shadow-sm relative overflow-hidden group cursor-pointer">
+                        <span class="tag absolute top-4 left-4 z-10">Scale & Opacity</span>
+                        <h3 class="font-bold text-lg mb-2 relative z-10"><span class="lang-ar">النوافذ المنبثقة (Modals)</span><span class="lang-en hidden">Pop-ups (Modals)</span></h3>
+                        <p class="text-sm opacity-70 mb-8 relative z-10"><span class="lang-ar">لا تظهر فجأة. تدخل النوافذ من وضعية تصغير وتشفيف (Scale 95%, Opacity 0%) إلى حجمها الطبيعي، لمحاكاة الاقتراب من عدسة الكاميرا، وبتوقيت (Slow / 500ms).</span><span class="lang-en hidden">It doesn't appear suddenly. The windows go from reduced and blurred (Scale 95%, Opacity 0%) to their normal size, to simulate approaching the camera lens, and with a timing of (Slow / 500ms).</span></p>
+                        
+                        <div class="absolute inset-0 bg-gray-900/40 opacity-0 group-hover:opacity-100 motion-slow z-0 flex items-center justify-center">
+                            <div class="bg-white p-4 rounded-xl shadow-2xl w-3/4 opacity-0 transform scale-95 translate-y-4 group-hover:opacity-100 group-hover:scale-100 group-hover:translate-y-0 motion-slow">
+                                <div class="w-1/3 h-3 bg-gray-200 rounded mb-2"></div>
+                                <div class="w-full h-8 bg-gray-100 rounded"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 10 -->
+        <section class="doc-container">
+            <div class="section-header">
+                <span class="section-num en-font">SECTION 10.0</span>
+                <h2 class="section-title"><span class="lang-ar">السرد القصصي عبر التمرير (Scroll Storytelling)</span><span class="lang-en hidden">Scroll Storytelling</span></h2>
+                <p class="section-desc">
+                    <span class="lang-ar">التمرير ليس وسيلة تنقل فحسب، بل هو "ناظم للإيقاع السردي". نستخدم تأثيرات التمرير لكشف المحتوى تصاعدياً، مما يمنح إحساساً بالعمق والفخامة، شريطة أن تظل هادئة وغير استعراضية (Theatrical).</span><span class="lang-en hidden">Scrolling is not only a means of navigation, but also a “regulator of narrative rhythm.” We use scrolling effects to unfold the content incrementally, giving a sense of depth and grandeur, provided it remains quiet and non-theatrical.</span>
+                </p>
+            </div>
+
+            <div class="bg-[#2B1A14] text-white p-12 rounded-2xl relative overflow-hidden group">
+                <div class="max-w-md relative z-10 space-y-8">
+                    <div class="bg-white/10 backdrop-blur border border-white/20 p-6 rounded-xl transform translate-y-4 opacity-50 group-hover:translate-y-0 group-hover:opacity-100 motion-slow">
+                        <h4 class="font-bold text-xl mb-2 text-[#F4A261]"><span class="lang-ar">اكتشاف تدريجي</span><span class="lang-en hidden">Gradual discovery</span></h4>
+                        <p class="text-sm opacity-80"><span class="lang-ar">تظهر الطبقات من الأسفل إلى الأعلى وتكتسب شفافية كاملة أثناء مرور المستخدم، للتركيز على رسالة واحدة في كل مرة.</span><span class="lang-en hidden">Layers appear from the bottom up and gain full transparency as the user scrolls, to focus on one message at a time.</span></p>
+                    </div>
+                    <div class="bg-white/10 backdrop-blur border border-white/20 p-6 rounded-xl transform translate-y-8 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-700 ease-out delay-150">
+                        <h4 class="font-bold text-xl mb-2"><span class="lang-ar">بارالاكس مُهذب (Mild Parallax)</span><span class="lang-en hidden">Mild Parallax</span></h4>
+                        <p class="text-sm opacity-80"><span class="lang-ar">حركة بسيطة بطيئة للخلفيات لا تتجاوز مسافات قصيرة لإضفاء عمق مكاني رقيق للغاية محصور على الصور الفوتوغرافية.</span><span class="lang-en hidden">Simple, slow movement of backgrounds over short distances to give photographs a very subtle spatial depth.</span></p>
+                    </div>
+                </div>
+                <!-- Abstract Parallax BG -->
+                <div class="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCI+PGNpcmNsZSBjeD0iMiIgY3k9IjIiIHI9IjEiIGZpbGw9InJnYmEoMjU1LDI1NSwyNTUsMC4wNSkiLz48L3N2Zz4=')] opacity-50 transform scale-110 group-hover:scale-100 transition-transform duration-[2s] ease-out"></div>
+            </div>
+        </section>
+
+        <!-- SECTION 11 -->
+        <section class="bg-gray-50 border-y border-gray-200">
+            <div class="doc-container">
+                <div class="section-header">
+                    <span class="section-num en-font">SECTION 11.0</span>
+                    <h2 class="section-title"><span class="lang-ar">حالات التحميل المطمئنة (Loading States)</span><span class="lang-en hidden">Reassuring Loading States</span></h2>
+                    <p class="section-desc">
+                        <span class="lang-ar">المؤشرات الدوارة (Spinners) العشوائية تستدعي القلق وتعطي إحساساً بطول الانتظار. يُكتفى باستخدام مؤشرات الهياكل العظمية (Skeleton Screens) الوامضة التي تحاكي الشكل النهائي للمحتوى القادم، مما يقلل "الزمن المُدرك" للانتظار بنسبة كبيرة.</span><span class="lang-en hidden">Random spinning indicators cause anxiety and give a feeling of long waiting. Only flashing Skeleton Screens are used to mimic the final appearance of upcoming content, significantly reducing the “perceived wait time”.</span>
+                    </p>
+                </div>
+
+                <div class="max-w-2xl mx-auto flex flex-col items-center">
+                    <div class="w-full bg-white border border-gray-200 p-6 rounded-xl shadow-sm mb-4">
+                        <div class="flex gap-4 items-center">
+                            <div class="w-16 h-16 rounded-lg skeleton"></div>
+                            <div class="flex-1 space-y-3">
+                                <div class="h-4 w-3/4 skeleton rounded"></div>
+                                <div class="h-3 w-1/2 skeleton rounded"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <span class="text-xs en-font text-gray-500 font-bold uppercase tracking-wider">Shimmer Pulse (Infinite loop until data arrives)</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 12 -->
+        <section class="doc-container">
+            <div class="section-header">
+                <span class="section-num en-font">SECTION 12.0</span>
+                <h2 class="section-title text-red-800"><span class="lang-ar">قانون الانضباط وإمكانية الوصول (Restraint Law)</span><span class="lang-en hidden">Discipline and Accessibility Law</span></h2>
+                <p class="section-desc">
+                    <span class="lang-ar">الحركة الاستعراضية التي لا تخدم غرضاً وظيفياً تُعد عبئاً إدراكياً وتُمنع تماماً. علاوة على ذلك، النظام يتوافق إلزامياً مع طلبات تقليل الحركة من أنظمة التشغيل.</span><span class="lang-en hidden">Exhibitive movement that does not serve a functional purpose is considered a cognitive burden and is strictly prohibited. Furthermore, the system obligatorily complies with motion reduction requests from operating systems.</span>
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-8 items-center bg-red-50/30 p-8 rounded-2xl border border-red-100">
+                <div class="space-y-4">
+                    <h3 class="font-bold text-xl text-red-900 mb-4"><span class="lang-ar">حالة النظام المُخفّض للحركة</span><span class="lang-en hidden">State of the reduced motion system</span><br><span class="en-font text-sm opacity-60">(prefers-reduced-motion: reduce)</span></h3>
+                    <ul class="list-disc list-inside space-y-2 text-sm opacity-90 text-gray-800">
+                        <li><span class="lang-ar">يتم إلغاء تأثير البارالاكس تماماً.</span><span class="lang-en hidden">The effect of Paralax is completely eliminated.</span></li>
+                        <li><span class="lang-ar">يتم تحويل انتقالات المكونات المكانية (Sliding) إلى انتقالات شفافة (Fade).</span><span class="lang-en hidden">Spatial component transitions (Sliding) are converted to transparent transitions (Fade).</span></li>
+                        <li><span class="lang-ar">إلغاء التكبير والتصغير (Scaling) في النوافذ المنبثقة.</span><span class="lang-en hidden">Cancel zooming and zooming in pop-up windows.</span></li>
+                        <li><span class="lang-ar">إيقاف الومضات اللانهائية القوية وتخفيفها.</span><span class="lang-en hidden">Stop and reduce the endless intense flashes.</span></li>
+                    </ul>
+                </div>
+                <!-- Visual mock of reduced motion -->
+                <div class="grid grid-cols-2 gap-4 text-center text-sm">
+                    <div class="bg-white border rounded p-4 opacity-50"><i data-lucide="x" class="mx-auto mb-2 text-red-500"></i><span class="lang-ar">لا انزلاقات</span><span class="lang-en hidden">No slips</span></div>
+                    <div class="bg-white border rounded p-4 opacity-50"><i data-lucide="x" class="mx-auto mb-2 text-red-500"></i><span class="lang-ar">لا تكبير استعراضي</span><span class="lang-en hidden">No show zoom</span></div>
+                    <div class="bg-white border text-green-800 font-bold border-green-200 rounded p-4 bg-green-50 col-span-2 flex items-center justify-center gap-2"><i data-lucide="check" class="text-green-600"></i><span class="lang-ar">تغير بشفافية العتامة (Opacity) فقط</span><span class="lang-en hidden">Change the transparency and opacity only</span></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 13 & 14 -->
+        <section class="bg-gray-900 text-white mt-12 py-20">
+            <div class="doc-container">
+                <div class="max-w-3xl mb-12">
+                    <span class="section-num en-font text-gray-400">SECTION 13.0 & 14.0</span>
+                    <h2 class="section-title"><span class="lang-ar">ملخص النظام والقيود النهائية</span><span class="lang-en hidden">System summary and final restrictions</span></h2>
+                </div>
+
+                <div class="grid md:grid-cols-3 gap-6">
+                    <div class="bg-white/10 backdrop-blur p-6 rounded-xl border border-white/10">
+                        <i data-lucide="fingerprint" class="text-teal-400 mb-4 opacity-80"></i>
+                        <h4 class="font-bold mb-2"><span class="lang-ar">القصدية الصارمة</span><span class="lang-en hidden">Strict intentionality</span></h4>
+                        <p class="text-xs opacity-70 leading-relaxed"><span class="lang-ar">الحركة يجب أن تكون مقصودة وليست زينة. كل حركة تبدأ بمسبب واضح (Trigger) وتوفر تأكيداً (Feedback).</span><span class="lang-en hidden">Movement should be intentional, not decorative. Every movement begins with a clear trigger (Trigger) and provides confirmation (Feedback).</span></p>
+                    </div>
+                    <div class="bg-white/10 backdrop-blur p-6 rounded-xl border border-white/10">
+                        <i data-lucide="hourglass" class="text-amber-400 mb-4 opacity-80"></i>
+                        <h4 class="font-bold mb-2"><span class="lang-ar">النظام الزمني الموحد</span><span class="lang-en hidden">Unified time system</span></h4>
+                        <p class="text-xs opacity-70 leading-relaxed"><span class="lang-ar">ممنوع استخدام أزمنة عشوائية. الالتزام المطلق بـ 3 مستويات: سريع (150ms)، قياسي (300ms)، بطيء (500ms).</span><span class="lang-en hidden">Do not use random tenses. Absolute commitment with 3 levels: fast (150ms), standard (300ms), slow (500ms).</span></p>
+                    </div>
+                    <div class="bg-white/10 backdrop-blur p-6 rounded-xl border border-white/10">
+                        <i data-lucide="move-right" class="text-blue-400 mb-4 opacity-80 transform rotate-180"></i>
+                        <h4 class="font-bold mb-2"><span class="lang-ar">الانسجام الثقافي (RTL)</span><span class="lang-en hidden">Cultural Harmony (RTL)</span></h4>
+                        <p class="text-xs opacity-70 leading-relaxed"><span class="lang-ar">عكس الحركات الاتجاهية للتوافق مع دفق قراءة الواجهة العربية من اليمين إلى اليسار تلقائياً.</span><span class="lang-en hidden">Automatically reverse the directional movements to match the flow of reading the Arabic interface from right to left.</span></p>
+                    </div>
+                    <div class="bg-white/10 backdrop-blur p-6 rounded-xl border border-white/10">
+                        <i data-lucide="eye-off" class="text-red-400 mb-4 opacity-80"></i>
+                        <h4 class="font-bold mb-2"><span class="lang-ar">حق العزل الحركي</span><span class="lang-en hidden">The right to isolation</span></h4>
+                        <p class="text-xs opacity-70 leading-relaxed"><span class="lang-ar">يجب تحويل انتقالات الواجهة إلى تدرج بسيط في العتامة فور رصد تفضيلات المستخدم بطلب تعطيل الحركة.</span><span class="lang-en hidden">Interface transitions should be converted to a simple opacity gradient as soon as user preferences are detected by requesting disable animation.</span></p>
+                    </div>
+                    <div class="bg-white/10 backdrop-blur p-6 rounded-xl border border-white/10 md:col-span-2 flex items-center">
+                        <p class="text-sm font-bold w-full text-center tracking-wide opacity-50 en-font uppercase">
+                            Architecture Approved • Al-Fananin UX Systems
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        lucide.createIcons();
+    </script>
+
+  <SourceLinks 
+    sources={[
+      { 
+        titleAr: "١٠ أمثلة للتفاعل الدقيق لتقليل إحباط المستخدم", 
+        titleEn: "10 Micro-Interaction Examples to Elevate UX",
+        url: "https://netbramha.com/blogs/micro-interactions-to-elevate-ux/" 
+      },
+      { 
+        titleAr: "كيف تعزز التفاعلات الدقيقة تجربة الويب", 
+        titleEn: "How Micro-Interactions in Web Design Enhance UX",
+        url: "https://blog.designcrowd.com/article/2250/micro-interactions-in-web-design" 
+      }
+    ]}
+  />
+</BaseLayout>

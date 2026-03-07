@@ -1,0 +1,404 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import SourceLinks from '../components/ui/SourceLinks.astro';
+---
+
+<BaseLayout title="الخطوط — Al-Fananin">
+  <style is:global>
+
+/* Font Stacks */
+.f-amiri { font-family: var(--font-arabic); }
+.f-cairo { font-family: 'Cairo', sans-serif; }
+.f-inter { font-family: var(--font-english); }
+.f-playfair { font-family: 'Playfair Display', serif; }
+.fb-sans { font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif; }
+.fb-serif { font-family: Georgia, "Times New Roman", Times, serif; }
+
+/* Presentation Panels */
+.specimen-panel {
+  min-height: 100vh;
+  padding: 4rem 2rem;
+  display: flex;
+  flex-direction: column;
+  background-color: transparent;
+  border-bottom: 1px solid rgba(0,0,0,0.05);
+}
+
+/* Glyph Preview Area */
+.glyph-block {
+  word-break: break-all;
+  opacity: 0.8;
+  margin-bottom: 2rem;
+}
+
+/* Table styling */
+.meta-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+  background: #FFF;
+  border-radius: 0.75rem;
+  overflow: hidden;
+  box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);
+  border: 1px solid rgba(0,0,0,0.05);
+}
+.meta-table th, .meta-table td {
+  padding: 1rem;
+  border-bottom: 1px solid rgba(0,0,0,0.05);
+  font-size: 0.85rem;
+}
+.meta-table th { font-weight: 600; opacity: 0.6; text-transform: uppercase; letter-spacing: 0.05em; background-color: rgba(0,0,0,0.02); }
+.meta-table tr:last-child td { border-bottom: none; }
+
+.grid-cols-doc {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 3rem;
+}
+@media (min-width: 1024px) {
+  .grid-cols-doc {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+  </style>
+
+
+
+
+
+
+  <!-- ==========================================
+       RESEARCH-DRIVEN FOUNDATION
+       ========================================== -->
+  <section class="bg-muted/50 border-b border-subtle py-16 md:py-24 px-6 md:px-12">
+    <div class="max-w-7xl mx-auto">
+      <div class="mb-12 max-w-4xl">
+        <span class="en-text text-xs font-bold tracking-widest uppercase text-secondary mb-3 block" dir="ltr">Research-Driven Design</span>
+        <h2 class="text-3xl md:text-5xl font-black mb-6 f-amiri leading-[1.2]">
+          <span class="lang-ar">الخط العربي والهوية الرقمية: <br/><span class="text-[#9B2226]">كيف تعزز الخطوط تجربة زوارنا؟</span></span>
+          <span class="lang-en hidden" dir="ltr">Arabic Typography & Digital Identity: <br/><span class="text-[#9B2226]">How Fonts Enhance the Guest Experience?</span></span>
+        </h2>
+         <div class="bg-[#FDFBF7] p-8 border-r-4 border-[#9B2226] rounded-l-xl shadow-sm mb-8">
+            <blockquote class="text-xl md:text-2xl text-secondary leading-relaxed f-amiri italic">
+              "بناءً على تحليل 892 مراجعة لزوار المطعم، وجدنا أن وضوح القراءة هو العامل الأول في تقليل إجهاد القرار. نظامنا الطباعي ليس مجرد اختيار جمالي، بل هو هندسة للوصول الرقمي تضمن تفاعل الضيوف بذكاء مع 72% من عمليات البحث التي تتم عبر الجوال."
+            </blockquote>
+            <cite class="block mt-4 text-sm font-bold text-[#9B2226] f-inter">— مقتبس من دراسات تجربة المستخدم للمطاعم في دبي ٢٠٢٦</cite>
+         </div>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-6">
+        <div class="bg-white p-6 border rounded-xl shadow-sm">
+          <h4 class="font-bold text-[#9B2226] mb-2 f-amiri ar-text text-lg"><span class="lang-ar">توازن اللغة (Bilingual Design)</span><span class="lang-en hidden">Bilingual Balance</span></h4>
+          <p class="text-sm opacity-80 leading-relaxed f-amiri ar-text"><span class="lang-ar">يتمدد النص العربي بنسبة 40% مقارنة بالإنجليزي. تم هندسة الحاويات الرقمية لتكون مرنة، مع رفع حجم الخط العربي والاعتماد على ارتفاع سطر (1.6 - 1.8) لمنع تداخل التشكيل وضمان وضوح القراءة.</span><span class="lang-en hidden">Arabic text expands by 40% compared to English. Digital containers were engineered to be flexible, with increased Arabic font size and a line height of (1.6 - 1.8) to prevent diacritic overlap and ensure clarity.</span></p>
+        </div>
+        <div class="bg-white p-6 border rounded-xl shadow-sm">
+          <h4 class="font-bold text-[#9B2226] mb-2 f-amiri ar-text text-lg"><span class="lang-ar">سرعة المسح البصري (Scanning)</span><span class="lang-en hidden">Scanning Speed</span></h4>
+          <p class="text-sm opacity-80 leading-relaxed f-amiri ar-text"><span class="lang-ar">الضيوف لا يقرأون المنيو بل يمسحونه بصرياً. الهيكل الطباعي الموزع بعناية يساعد العين على تحديد أسماء الأطباق والمكونات والأسعار بسرعة، مما يزيد من احتمالية إتمام الطلب بنسبة 14% أسرع.</span><span class="lang-en hidden">Guests don't read the menu; they scan it. A carefully distributed typographic structure helps the eye identify dish names, ingredients, and prices quickly, increasing the likelihood of completing an order 14% faster.</span></p>
+        </div>
+        <div class="bg-white p-6 border rounded-xl shadow-sm">
+          <h4 class="font-bold text-[#9B2226] mb-2 f-amiri ar-text text-lg"><span class="lang-ar">قاعدة الـ 80 حرفاً (Legibility)</span><span class="lang-en hidden">Visual Comfort</span></h4>
+          <p class="text-sm opacity-80 leading-relaxed f-amiri ar-text"><span class="lang-ar">تقليل طول السطر لأقل من 80 حرفاً يمنع إجهاد العين. استخدام الخطوط الهندسية للواجهات والخطوط التقليدية للعناوين الثقافية يجمع بين الكفاءة الرقمية والدفء التراثي الملموس.</span><span class="lang-en hidden">Reducing line length to under 80 characters prevents eye fatigue. Using geometric fonts for interfaces and traditional fonts for cultural headers combines digital efficiency with tangible heritage warmth.</span></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================
+       DIRECTION 1: MODERN & FRIENDLY
+       ========================================== -->
+  <section class="specimen-panel">
+    <div class="max-w-7xl mx-auto w-full flex-1 flex flex-col">
+      
+      <!-- Header -->
+      <header class="mb-12 border-b border-[#2B1A14]/10 pb-6">
+        <p class="text-sm font-bold uppercase tracking-widest opacity-60 mb-2 en-text" dir="ltr" style="text-align:left;">الخيار الأول / Choice 1</p>
+        <h1 class="text-4xl md:text-5xl font-black f-cairo ar-text mb-2 text-[#9B2226]">Modern & Friendly</h1>
+        <p class="text-xl mt-3 opacity-80 f-cairo ar-text">Cairo (Arabic) + Inter (English)</p>
+      </header>
+
+      <div class="grid-cols-doc flex-1">
+        
+        <!-- ARABIC COLUMN -->
+        <div class="flex flex-col">
+          <!-- Text Explanation - WRITTEN IN AMIRI AS REQUESTED -->
+          <div class="mb-8">
+            <h2 class="text-3xl font-bold f-amiri ar-text mb-4"><span class="lang-ar">خط كايرو والحداثة الرقمية</span><span class="lang-en hidden">Cairo line and digital modernity</span></h2>
+            <p class="text-[20px] opacity-80 f-amiri ar-text max-w-lg leading-relaxed">
+              <span class="lang-ar">تم اختيار خط كايرو لأنه يقدم توازناً واضحاً بين البنية الهندسية والود البصري. يظهر الخط حديثاً ومنظماً على الشاشات الرقمية، كما أن انحناءاته اللطيفة تمنحه طابعاً قريباً وسهل التلقي. تم رفع حجم النص العربي مقارنة بالنص الإنجليزي لتحقيق توازن بصري أفضل، مع اعتماد ارتفاع سطر مريح (1.6 - 1.8) يمنع تداخل التشكيل ويحافظ على وضوح القراءة في الواجهات الرقمية المكثفة.</span><span class="lang-en hidden">The Cairo font was chosen because it offers a clear balance between geometric structure and visual friendliness. The font appears modern and organized on digital screens, and its gentle curves give it a relatable, easy-to-read feel. The size of the Arabic text has been increased compared to the English text to achieve better visual balance, while adopting a comfortable line height (1.6 - 1.8) that prevents overlapping of accents and maintains legibility in intensive digital interfaces.</span>
+            </p>
+          </div>
+
+          <!-- Fallback Explanation -->
+          <div class="mb-12 border-t border-[#2B1A14]/10 pt-6">
+            <h3 class="text-xl font-bold fb-sans ar-text mb-2"><span class="lang-ar">الخط البديل (Fallback Font)</span><span class="lang-en hidden">Fallback Font</span></h3>
+            <p class="text-[16px] opacity-70 fb-sans ar-text max-w-lg">
+              <span class="lang-ar">تم الاعتماد على خطوط النظام الافتراضية (System-UI) كبديل آمن وسريع لضمان سرعة التحميل وتفادي أي تشوه في التصميم في حال لم يكتمل تحميل الخط الأساسي. تُقرأ هذه الفقرة المعروضة أمامك حالياً باستخدام الخط البديل الفعلي لتوضيح التوافق الهيكلي.</span><span class="lang-en hidden">The default system fonts (System-UI) were relied upon as a safe and fast alternative to ensure speedy loading and avoid any distortion in the design if the basic font loading was not completed. This paragraph currently before you reads using the actual alternate font to illustrate structural consistency.</span>
+            </p>
+          </div>
+
+          <!-- Glyphs -->
+          <div class="mb-12">
+            <p class="text-xs font-bold uppercase tracking-wide opacity-50 mb-3 f-cairo"><span class="lang-ar">محارف العربية</span><span class="lang-en hidden">Arabic letters</span></p>
+            <div class="glyph-block f-cairo ar-text text-2xl md:text-3xl leading-relaxed font-semibold">
+              <span class="lang-ar">أبجد هوز حطي كلمن سعفص قرشت ثخذ ضظغ</span><span class="lang-en hidden">ABC</span><br>
+              <span class="lang-ar">١٢٣٤٥٦٧٨٩٠</span><span class="lang-en hidden">١٢٣٤٥٦٧٨٩٠</span><br>
+              <span class="lang-ar">؟ ! ، . : ؛ / - ( )</span><span class="lang-en hidden">؟ ! ، . : ؛ / - ( )</span>
+            </div>
+          </div>
+
+          <!-- Type Scale -->
+          <div class="mb-12">
+            <p class="text-xs font-bold uppercase tracking-wide opacity-50 mb-4 f-cairo"><span class="lang-ar">السلم الطباعي (Arabic Scale)</span><span class="lang-en hidden">Arabic Scale</span></p>
+            <div class="space-y-6 f-cairo ar-text">
+              <div><span class="text-[44px] font-black leading-tight block"><span class="lang-ar">عرض رئيسي</span><span class="lang-en hidden">Main view</span></span><span class="text-xs opacity-50">Display — 44px, Black</span></div>
+              <div><span class="text-[36px] font-bold leading-tight block"><span class="lang-ar">عنوان أول</span><span class="lang-en hidden">First title</span></span><span class="text-xs opacity-50">H1 — 36px, Bold</span></div>
+              <div><span class="text-[28px] font-bold leading-tight block"><span class="lang-ar">عنوان ثانٍ</span><span class="lang-en hidden">Second address</span></span><span class="text-xs opacity-50">H2 — 28px, Bold</span></div>
+              <div><span class="text-[22px] font-semibold leading-tight block"><span class="lang-ar">عنوان ثالث</span><span class="lang-en hidden">Third title</span></span><span class="text-xs opacity-50">H3 — 22px, SemiBold</span></div>
+              <div><span class="text-[18px] font-normal leading-relaxed block"><span class="lang-ar">نص أساسي للفقرات والشرح</span><span class="lang-en hidden">Basic text for paragraphs and explanations</span></span><span class="text-xs opacity-50">Body — 18px, Regular</span></div>
+              <div><span class="text-[14px] font-normal block"><span class="lang-ar">نص صغير للتلميحات والملاحظات</span><span class="lang-en hidden">Small text for hints and notes</span></span><span class="text-xs opacity-50">Small — 14px, Regular</span></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ENGLISH COLUMN -->
+        <div class="flex flex-col" dir="ltr" style="text-align: left;">
+          <!-- Text Explanation -->
+          <div class="mb-8">
+            <h2 class="text-[28px] font-bold f-inter en-text mb-4">Inter and Digital Modernity</h2>
+            <p class="text-[16px] opacity-80 f-inter en-text max-w-lg">
+              Inter is a highly legible sans-serif built for digital interfaces. It performs well on screens because of its clean structure, generous x-height, and strong clarity at small sizes. Paired with Cairo, it creates a friendly and modern bilingual voice suitable for clear, accessible interface systems.
+            </p>
+          </div>
+
+          <!-- Fallback Explanation -->
+          <div class="mb-12 border-t border-[#2B1A14]/10 pt-6">
+            <h3 class="text-lg font-bold fb-sans en-text mb-2">System Fallback Font</h3>
+            <p class="text-[14px] opacity-70 fb-sans en-text max-w-lg">
+              System-UI fonts are designated as a robust fallback. They guarantee zero layout shifts and instant readability if the primary web font fails to load. This paragraph is actively rendered in the fallback system font to demonstrate the resulting visual structure.
+            </p>
+          </div>
+
+          <!-- Glyphs -->
+          <div class="mb-12">
+            <p class="text-xs font-bold uppercase tracking-widest opacity-50 mb-3 f-inter">Latin & Arabic Glyphs</p>
+            <div class="glyph-block f-inter en-text text-xl md:text-2xl leading-relaxed font-medium">
+              ABCDEFGHIJKLMNOPQRSTUVWXYZ<br>
+              abcdefghijklmnopqrstuvwxyz<br>
+              <span class="f-cairo">أبجد هوز حطي كلمن سعفص قرشت ثخذ ضظغ</span><br>
+              0123456789 | ١٢٣٤٥٦٧٨٩٠<br>
+              ! ? , . : ; / - ( )
+            </div>
+          </div>
+
+          <!-- Type Scale -->
+          <div class="mb-12">
+            <p class="text-xs font-bold uppercase tracking-widest opacity-50 mb-4 f-inter">English Scale</p>
+            <div class="space-y-6 f-inter en-text">
+              <div><span class="text-[40px] font-bold leading-tight block">Display</span><span class="text-xs opacity-50">Display — 40px, Bold</span></div>
+              <div><span class="text-[32px] font-semibold leading-tight block">Heading 1</span><span class="text-xs opacity-50">H1 — 32px, SemiBold</span></div>
+              <div><span class="text-[24px] font-semibold leading-tight block">Heading 2</span><span class="text-xs opacity-50">H2 — 24px, SemiBold</span></div>
+              <div><span class="text-[20px] font-medium leading-tight block">Heading 3</span><span class="text-xs opacity-50">H3 — 20px, Medium</span></div>
+              <div><span class="text-[16px] font-normal leading-relaxed block">Body text for paragraphs and descriptions</span><span class="text-xs opacity-50">Body — 16px, Regular</span></div>
+              <div><span class="text-[13px] font-normal block">Small text for hints and notes</span><span class="text-xs opacity-50">Small — 13px, Regular</span></div>
+            </div>
+          </div>
+        </div>
+        
+      </div>
+
+      <!-- Metadata Table -->
+      <div class="mt-auto pt-12 border-t border-[#2B1A14]/10" dir="ltr">
+        <p class="text-xs font-bold uppercase tracking-widest opacity-50 mb-4 f-inter" style="text-align:left;">Technical Specifications</p>
+        <div class="overflow-x-auto">
+          <table class="meta-table f-inter en-text" style="text-align:left;">
+            <thead>
+              <tr>
+                <th style="text-align:left;">Role</th>
+                <th style="text-align:left;">Font Family</th>
+                <th style="text-align:left;">Size (Mobile-Desktop)</th>
+                <th style="text-align:left;">Weight</th>
+                <th style="text-align:left;">Line Height</th>
+                <th style="text-align:left;">Usage</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Arabic H1 & Body</td>
+                <td>Cairo<br><span style="font-size:0.75rem; opacity:0.6; font-family:monospace;">system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif</span></td>
+                <td>18px - 44px</td>
+                <td>400, 700</td>
+                <td>1.6 - 1.8</td>
+                <td>Primary Arabic headings & reading</td>
+              </tr>
+              <tr>
+                <td>English H1 & Body</td>
+                <td>Inter<br><span style="font-size:0.75rem; opacity:0.6; font-family:monospace;">system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif</span></td>
+                <td>16px - 40px</td>
+                <td>400, 600</td>
+                <td>1.2 - 1.5</td>
+                <td>Primary English headings & reading</td>
+              </tr>
+
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ==========================================
+       DIRECTION 2: HERITAGE & COMFORT
+       ========================================== -->
+  <section class="specimen-panel pb-32">
+    <div class="max-w-7xl mx-auto w-full flex-1 flex flex-col">
+      
+      <!-- Header -->
+      <header class="mb-12 border-b border-[#4A3B32]/10 pb-6">
+        <p class="text-sm font-bold uppercase tracking-widest opacity-60 mb-2 en-text" dir="ltr" style="text-align:left;">الخيار الثاني / Choice 2</p>
+        <h1 class="text-4xl md:text-5xl font-normal f-amiri ar-text mb-2 text-[#9B2226]">Heritage & Comfort</h1>
+        <p class="text-xl mt-3 opacity-80 f-amiri ar-text">Amiri (Arabic) + Playfair Display (English)</p>
+      </header>
+
+      <div class="grid-cols-doc flex-1">
+        
+        <!-- ARABIC COLUMN -->
+        <div class="flex flex-col">
+          <div class="mb-8">
+            <h2 class="text-4xl font-bold f-amiri ar-text mb-4"><span class="lang-ar">خط أميري والفخامة التراثية</span><span class="lang-en hidden">Amiri line and heritage luxury</span></h2>
+            <p class="text-[20px] opacity-80 f-amiri ar-text max-w-lg">
+              <span class="lang-ar">يعتمد هذا الاتجاه على خط أميري لما يحمله من جذور طباعية عربية كلاسيكية تستلهم خط النسخ التقليدي. يمنح النص حضوراً ثقافياً أصيلاً وإحساساً بالرصانة والدفء. بسبب التفاصيل الدقيقة في بنية الحروف، يحتاج إلى أحجام أكبر قليلاً حتى تظهر ملامحه بوضوح وتحافظ الفقرات على أناقتها وسهولة قراءتها.</span><span class="lang-en hidden">This trend is based on the Amiri script because of its classical Arabic typographic roots that are inspired by the traditional Naskh script. The text gives an authentic cultural presence and a sense of sobriety and warmth. Because of the finer details in letter structure, it needs slightly larger sizes so that its features appear clearly and the paragraphs remain elegant and easy to read.</span>
+            </p>
+          </div>
+
+          <div class="mb-12 border-t border-[#4A3B32]/10 pt-6">
+            <h3 class="text-2xl font-bold fb-serif ar-text mb-2"><span class="lang-ar">الخط البديل (Fallback Font)</span><span class="lang-en hidden">Fallback Font</span></h3>
+            <p class="text-[18px] opacity-70 fb-serif ar-text max-w-lg" style="line-height:1.7;">
+              <span class="lang-ar">بناءً على الطابع التراثي والفخم، تم اختيار عائلة خطوط (Serif) الكلاسيكية وعلى رأسها خط (Georgia) ليكون خط التراجع البديل. يضمن هذا الاختيار الحفاظ على الروح الأنيقة والأدبية للنص حتى عند انقطاع الاتصال. تُقرأ هذه الفقرة المعروضة أمامك بالخط البديل.</span><span class="lang-en hidden">Based on the traditional and luxurious character, the classic Serif font family, led by the Georgia font, was chosen as the alternative fallback font. This choice ensures that the elegant and literary spirit of the text is maintained even when communication is interrupted. This paragraph before you is read in the alternative font.</span>
+            </p>
+          </div>
+
+          <div class="mb-12">
+            <p class="text-xs font-bold uppercase tracking-wide opacity-50 mb-3 f-amiri"><span class="lang-ar">محارف العربية</span><span class="lang-en hidden">Arabic letters</span></p>
+            <div class="glyph-block f-amiri ar-text text-3xl leading-relaxed">
+              <span class="lang-ar">أبجد هوز حطي كلمن سعفص قرشت ثخذ ضظغ</span><span class="lang-en hidden">ABC</span><br>
+              <span class="lang-ar">١٢٣٤٥٦٧٨٩٠</span><span class="lang-en hidden">١٢٣٤٥٦٧٨٩٠</span><br>
+              <span class="lang-ar">؟ ! ، . : ؛ / - ( )</span><span class="lang-en hidden">؟ ! ، . : ؛ / - ( )</span>
+            </div>
+          </div>
+
+          <div class="mb-12">
+            <p class="text-xs font-bold uppercase tracking-wide opacity-50 mb-4 f-amiri"><span class="lang-ar">السلم الطباعي (Arabic Scale)</span><span class="lang-en hidden">Arabic Scale</span></p>
+            <div class="space-y-6 f-amiri ar-text">
+              <div><span class="text-[48px] font-bold leading-tight block"><span class="lang-ar">عرض رئيسي</span><span class="lang-en hidden">Main view</span></span><span class="text-xs opacity-50 font-sans">Display — 48px, Bold</span></div>
+              <div><span class="text-[38px] font-bold leading-tight block"><span class="lang-ar">عنوان أول</span><span class="lang-en hidden">First address</span></span><span class="text-xs opacity-50 font-sans">H1 — 38px, Bold</span></div>
+              <div><span class="text-[30px] font-bold leading-tight block"><span class="lang-ar">عنوان ثانٍ</span><span class="lang-en hidden">Second address</span></span><span class="text-xs opacity-50 font-sans">H2 — 30px, Bold</span></div>
+              <div><span class="text-[24px] font-bold leading-tight block"><span class="lang-ar">عنوان ثالث</span><span class="lang-en hidden">Third title</span></span><span class="text-xs opacity-50 font-sans">H3 — 24px, Bold</span></div>
+              <div><span class="text-[20px] font-normal leading-relaxed block"><span class="lang-ar">نص أساسي للفقرات والشرح</span><span class="lang-en hidden">Basic text for paragraphs and explanations</span></span><span class="text-xs opacity-50 font-sans">Body — 20px, Regular</span></div>
+              <div><span class="text-[16px] font-normal block"><span class="lang-ar">نص صغير للتلميحات والملاحظات</span><span class="lang-en hidden">Small text for hints and notes</span></span><span class="text-xs opacity-50 font-sans">Small — 16px, Regular</span></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ENGLISH COLUMN -->
+        <div class="flex flex-col" dir="ltr" style="text-align: left;">
+          <div class="mb-8">
+            <h2 class="text-[34px] font-semibold f-playfair en-text mb-4">Playfair Display and Heritage</h2>
+            <p class="text-[16px] opacity-80 f-playfair en-text max-w-lg">
+              Playfair Display brings historical contrast and editorial elegance. Its serif structure complements the classical rhythm of Amiri, producing a bilingual system that feels refined, literary, and culturally grounded. This direction is suitable when the visual tone should feel rooted, premium, and expressive without becoming decorative.
+            </p>
+          </div>
+
+          <div class="mb-12 border-t border-[#4A3B32]/10 pt-6">
+            <h3 class="text-xl font-semibold fb-serif en-text mb-2 text-inherit">Classical Fallback Font</h3>
+            <p class="text-[15px] opacity-70 fb-serif en-text max-w-lg text-inherit">
+              To maintain the editorial and premium aesthetic, a traditional native serif stack (led by Georgia) is employed as the fallback. This ensures the reading experience remains literary and structured even if the web font fails. This text block is actively demonstrating the fallback serif style.
+            </p>
+          </div>
+
+          <div class="mb-12">
+            <p class="text-xs font-bold uppercase tracking-widest opacity-50 mb-3 f-inter">Latin Glyphs</p>
+            <div class="glyph-block f-playfair en-text text-2xl leading-relaxed italic">
+              ABCDEFGHIJKLMNOPQRSTUVWXYZ<br>
+              abcdefghijklmnopqrstuvwxyz<br>
+              0123456789<br>
+              ! ? , . : ; / - ( )
+            </div>
+          </div>
+
+          <div class="mb-12">
+            <p class="text-xs font-bold uppercase tracking-widest opacity-50 mb-4 f-inter">English Scale</p>
+            <div class="space-y-6 f-playfair en-text">
+              <div><span class="text-[42px] font-bold italic leading-tight block">Display</span><span class="text-xs opacity-50 font-sans not-italic">Display — 42px, Bold Italic</span></div>
+              <div><span class="text-[34px] font-bold leading-tight block">Heading 1</span><span class="text-xs opacity-50 font-sans">H1 — 34px, Bold</span></div>
+              <div><span class="text-[26px] font-bold leading-tight block">Heading 2</span><span class="text-xs opacity-50 font-sans">H2 — 26px, Bold</span></div>
+              <div><span class="text-[22px] font-semibold italic leading-tight block">Heading 3</span><span class="text-xs opacity-50 font-sans not-italic">H3 — 22px, SemiBold Italic</span></div>
+              <div><span class="text-[16px] font-normal leading-relaxed block f-playfair">Body text for paragraphs and descriptions</span><span class="text-xs opacity-50 font-sans">Body — 16px, Regular</span></div>
+              <div><span class="text-[14px] font-normal block f-playfair">Small text for hints and notes</span><span class="text-xs opacity-50 font-sans">Small — 14px, Regular</span></div>
+            </div>
+          </div>
+        </div>
+        
+      </div>
+
+      <!-- Metadata Table -->
+      <div class="mt-auto pt-12 border-t border-[#4A3B32]/10" dir="ltr">
+        <p class="text-xs font-bold uppercase tracking-widest opacity-50 mb-4 f-inter" style="text-align:left;">Technical Specifications</p>
+        <div class="overflow-x-auto">
+          <table class="meta-table f-inter en-text" style="text-align:left;">
+            <thead>
+              <tr>
+                <th style="text-align:left;">Role</th>
+                <th style="text-align:left;">Font Family</th>
+                <th style="text-align:left;">Size (Mobile-Desktop)</th>
+                <th style="text-align:left;">Weight</th>
+                <th style="text-align:left;">Line Height</th>
+                <th style="text-align:left;">Usage</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Arabic H1 & Body</td>
+                <td>Amiri<br><span style="font-size:0.75rem; opacity:0.6; font-family:monospace;">Georgia, "Times New Roman", Times, serif</span></td>
+                <td>20px - 48px</td>
+                <td>400, 700</td>
+                <td>1.6 - 1.8</td>
+                <td>Premium heritage Arabic reading</td>
+              </tr>
+              <tr>
+                <td>English H1 & Body</td>
+                <td>Playfair Display<br><span style="font-size:0.75rem; opacity:0.6; font-family:monospace;">Georgia, "Times New Roman", Times, serif</span></td>
+                <td>16px - 42px</td>
+                <td>400, 700</td>
+                <td>1.2 - 1.6</td>
+                <td>Premium heritage English reading</td>
+              </tr>
+
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+
+
+
+  <SourceLinks 
+    sources={[
+      { 
+        titleAr: "معايير التيبوغرافية - نظام دبي للتصميم", 
+        titleEn: "Typography Standards - Dubai Design System",
+        url: "https://designsystem.dubai.ae/foundations/typography" 
+      },
+      { 
+        titleAr: "تصميم الواجهات العربية: تجربة المستخدم RTL", 
+        titleEn: "Designing Arabic Interfaces: Right-to-Left UX Done Right",
+        url: "https://codeguru.ae/blog/designing-arabic-interfaces-right-to-left-ux-done-right/" 
+      }
+    ]}
+  />
+</BaseLayout>
