@@ -1,0 +1,70 @@
+---
+import SurfaceCard from '../ui/SurfaceCard.astro';
+
+const systems = [
+  { 
+    titleAr: 'الخطوط', titleEn: 'Typography',
+    descAr: 'الخطوط والأوزان المصممة للقراءة المريحة وتمرير الثقافة.', descEn: 'Typefaces and weights designed for readable, culturally rich experiences.',
+    link: '/typography' 
+  },
+  { 
+    titleAr: 'الألوان', titleEn: 'Color',
+    descAr: 'نظام الـ Tonal Surfaces والتباين، مبني على سيكولوجية الزوار.', descEn: 'Tonal surfaces and contrast system, driven by user psychology.',
+    link: '/color' 
+  },
+  { 
+    titleAr: 'التصوير', titleEn: 'Photography',
+    descAr: 'اتجاه فني للتصوير الفوتوغرافي يعكس كرم الضيافة والدفء.', descEn: 'Art direction for photography reflecting warmth and generosity.',
+    link: '/photography' 
+  },
+  { 
+    titleAr: 'الحركة', titleEn: 'Motion',
+    descAr: 'التفاعل الحركي وتوجيه ردود أفعال الواجهة.', descEn: 'Interactive motion and interface feedback guidelines.',
+    link: '/motion' 
+  },
+  { 
+    titleAr: 'الهيكلة والإيقاع', titleEn: 'Structure',
+    descAr: 'نظام المسافات لتوجيه العين وتسهيل التصفح.', descEn: 'Spacing system to guide the eye and ease navigation.',
+    link: '/structure' 
+  }
+];
+---
+
+<section class="py-20 md:py-28 bg-[#FDFBF7]">
+  <div class="max-w-7xl mx-auto px-6">
+    <div class="mb-12">
+      <h2 class="text-3xl md:text-5xl font-black mb-4">
+        <span class="lang-ar">تصفح أقسام النظام</span>
+        <span class="lang-en hidden" dir="ltr">System Navigation</span>
+      </h2>
+    </div>
+
+    <!-- 5 visual cards referencing the Systems -->
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+      {systems.map(sys => (
+        <SurfaceCard class="flex flex-col h-full hover:border-[#9B2226]/50 transition-colors group cursor-pointer relative bg-white">
+          <h3 class="text-2xl font-bold mb-4 group-hover:text-[#9B2226] transition-colors">
+            <span class="lang-ar">{sys.titleAr}</span>
+            <span class="lang-en hidden">{sys.titleEn}</span>
+          </h3>
+          <p class="text-secondary leading-relaxed mb-8 flex-grow opacity-80">
+            <span class="lang-ar">{sys.descAr}</span>
+            <span class="lang-en hidden">{sys.descEn}</span>
+          </p>
+          <a href={sys.link} class="text-[#9B2226] font-bold flex items-center gap-2 before:absolute before:inset-0 rtl:flex-row-reverse ltr:flex-row w-fit">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" class="ltr:hidden" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+              <polyline points="12 5 19 12 12 19"></polyline>
+            </svg>
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" class="hidden ltr:block" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M5 12h14"></path>
+              <path d="m12 5 7 7-7 7"></path>
+            </svg>
+            <span class="lang-ar">استعرض القسم</span>
+            <span class="lang-en hidden">Review Chapter</span>
+          </a>
+        </SurfaceCard>
+      ))}
+    </div>
+  </div>
+</section>

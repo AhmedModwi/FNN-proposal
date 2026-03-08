@@ -1,152 +1,27 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import SurfaceCard from '../components/ui/SurfaceCard.astro';
-
-const systems = [
-  { 
-    titleAr: 'الطباعة', titleEn: 'Typography',
-    descAr: 'الخطوط والأوزان المصممة للقراءة المريحة وتمرير الثقافة.', descEn: 'Typefaces and weights designed for readable, culturally rich experiences.',
-    link: '/typography' 
-  },
-  { 
-    titleAr: 'الألوان', titleEn: 'Color',
-    descAr: 'نظام الـ Tonal Surfaces والتباين، مبني على سيكولوجية الزوار.', descEn: 'Tonal surfaces and contrast system, driven by user psychology.',
-    link: '/color' 
-  },
-  { 
-    titleAr: 'الهيكلة والإيقاع', titleEn: 'Structure',
-    descAr: 'نظام المسافات لتوجيه العين وتسهيل التصفح.', descEn: 'Spacing system to guide the eye and ease navigation.',
-    link: '/structure' 
-  },
-  { 
-    titleAr: 'الحركة', titleEn: 'Motion',
-    descAr: 'التفاعل الحركي وتوجيه ردود أفعال الواجهة.', descEn: 'Interactive motion and interface feedback guidelines.',
-    link: '/motion' 
-  },
-  { 
-    titleAr: 'التصوير', titleEn: 'Photography',
-    descAr: 'اتجاه فني للتصوير الفوتوغرافي يعكس كرم الضيافة والدفء.', descEn: 'Art direction for photography reflecting warmth and generosity.',
-    link: '/photography' 
-  }
-];
+import HeroSection from '../components/home/HeroSection.astro';
+import WhyDesignMatters from '../components/home/WhyDesignMatters.astro';
+import MethodologySection from '../components/home/MethodologySection.astro';
+import ReviewInsightsSection from '../components/home/ReviewInsightsSection.astro';
+import ResearchMappingSection from '../components/home/ResearchMappingSection.astro';
+import SystemIntroduction from '../components/home/SystemIntroduction.astro';
+import SystemNavigationSection from '../components/home/SystemNavigationSection.astro';
+import FinalPrinciple from '../components/home/FinalPrinciple.astro';
 ---
 
 <BaseLayout 
-  title="الرئيسية" 
-  description="المقترح الرقمي المتكامل لمطعم وكافيه الفنانين. واجهة عربية أصيلة، بتجربة مستخدم مبنية على البيانات."
+  title="المقترح الرقمي - مطعم الفنانين" 
+  description="إطار عمل رقمي منظم، صُمم لتقديم الضيافة السودانية على الإنترنت بوضوح ومصداقية."
 >
-  <div class="max-w-7xl mx-auto px-6">
-    <!-- Hero Section -->
-    <section class="py-16 md:py-28 max-w-5xl">
-      <div class="mb-4">
-        <span class="text-xs font-bold tracking-widest uppercase text-secondary mb-3 block">
-          <span class="lang-ar">المقترح الرقمي للمرحلة الأولى</span>
-          <span class="lang-en hidden" dir="ltr">Digital Proposal - Phase One</span>
-        </span>
-      </div>
-      <h1 class="text-5xl md:text-7xl font-black tracking-tight mb-8 leading-[1.2]">
-        <span class="lang-ar">
-          الضيافة السودانية، <br />
-          <span class="text-[#9B2226]">بلغة رقمية أنيقة.</span>
-        </span>
-        <span class="lang-en hidden" dir="ltr">
-          Sudanese Hospitality, <br />
-          <span class="text-[#9B2226]">in an Elegant Digital Language.</span>
-        </span>
-      </h1>
-      <p class="text-xl md:text-2xl text-secondary max-w-3xl mb-12 leading-relaxed">
-        <span class="lang-ar">
-          صُمم هذا المقترح لتقديم رؤية متكاملة للتوجه الرقمي القادم لمطعم الفنانين. 
-          لا نقدم هنا صفحات عشوائية، بل <strong class="text-primary font-bold">أنظمة تصميم</strong> مدروسة هندسياً 
-          لرفع المبيعات، وبناء الثقة، وترسيخ الهوية.
-        </span>
-        <span class="lang-en hidden" dir="ltr">
-          This proposal is designed to present a unified vision for the upcoming digital direction of Al-Fananin Restaurant. 
-          We do not deliver random pages, but <strong class="text-primary font-bold">design systems</strong> engineered 
-          to increase sales, build trust, and anchor the identity.
-        </span>
-      </p>
-      <div class="flex flex-col sm:flex-row items-center gap-4">
-        <a href="/decisions" class="px-8 py-4 bg-[#9B2226] text-white font-bold rounded-xl hover:bg-[#7a1a1e] transition-colors shadow-sm w-full sm:w-auto text-center">
-          <span class="lang-ar">القرارات المطلوبة</span>
-          <span class="lang-en hidden">Required Decisions</span>
-        </a>
-        <a href="#systems" class="px-8 py-4 bg-surface text-primary font-bold rounded-xl hover:bg-muted border border-subtle transition-colors shadow-sm w-full sm:w-auto text-center">
-          <span class="lang-ar">استعرض الأنظمة</span>
-          <span class="lang-en hidden">Review Systems</span>
-        </a>
-      </div>
-    </section>
-
-    <!-- Systems Preview -->
-    <section id="systems" class="py-20 border-t border-subtle">
-      <div class="mb-12">
-        <span class="lang-ar text-xs font-bold tracking-widest uppercase text-secondary mb-2 block">أنظمة التصميم</span>
-        <span class="lang-en hidden text-xs font-bold tracking-widest uppercase text-secondary mb-2 block" dir="ltr">Design Systems</span>
-        <h2 class="text-3xl md:text-4xl font-black mb-6">
-          <span class="lang-ar">الأنظمة المقترحة</span>
-          <span class="lang-en hidden" dir="ltr">Proposed Systems</span>
-        </h2>
-        <p class="text-secondary max-w-3xl text-lg relative pl-0 rtl:pr-4 ltr:pl-4 border-l-0 rtl:border-r-4 ltr:border-l-4 border-[#9B2226]/20">
-          <span class="lang-ar">
-            تم تقسيم العمل إلى أنظمة مستقلة لتسهيل المراجعة الإدارية والفنية. كل نظام تم بناؤه استناداً لأبحاث قطاع الضيافة لضمان الفاعلية.
-          </span>
-          <span class="lang-en hidden" dir="ltr">
-            The work is divided into independent systems to facilitate technical and administrative review. Each is grounded in hospitality research to ensure effectiveness.
-          </span>
-        </p>
-      </div>
-
-      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-        {systems.map(sys => (
-          <SurfaceCard class="flex flex-col h-full hover:border-[#9B2226]/50 transition-colors group cursor-pointer relative">
-            <h3 class="text-2xl font-bold mb-4 group-hover:text-[#9B2226] transition-colors">
-              <span class="lang-ar">{sys.titleAr}</span>
-              <span class="lang-en hidden">{sys.titleEn}</span>
-            </h3>
-            <p class="text-secondary leading-relaxed mb-8 flex-grow">
-              <span class="lang-ar">{sys.descAr}</span>
-              <span class="lang-en hidden">{sys.descEn}</span>
-            </p>
-            <a href={sys.link} class="text-[#9B2226] font-bold flex items-center gap-2 before:absolute before:inset-0 rtl:flex-row-reverse ltr:flex-row w-fit">
-              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" class="ltr:hidden" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <line x1="5" y1="12" x2="19" y2="12"></line>
-                <polyline points="12 5 19 12 12 19"></polyline>
-              </svg>
-              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" class="hidden ltr:block" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M5 12h14"></path>
-                <path d="m12 5 7 7-7 7"></path>
-              </svg>
-              <span class="lang-ar">استعرض النظام</span>
-              <span class="lang-en hidden">Review System</span>
-            </a>
-          </SurfaceCard>
-        ))}
-      </div>
-    </section>
-
-    <!-- Project Roadmap Preview -->
-    <section class="py-20 border-t border-subtle">
-      <div class="bg-[#F8F9FA] border border-subtle rounded-3xl p-8 md:p-12 max-w-4xl shadow-sm">
-        <h2 class="text-2xl font-bold mb-4">
-          <span class="lang-ar text-[#9B2226]">ماذا بعد هذه المرحلة؟</span>
-          <span class="lang-en hidden text-[#9B2226]" dir="ltr">What is after this phase?</span>
-        </h2>
-        <p class="text-secondary mb-8 leading-relaxed text-lg">
-          <span class="lang-ar">
-            هذا الموقع مخصص لاعتماد الهوية البصرية وأنظمة التصميم القابلة للتوسع (المرحلة الأولى). 
-            المرحلة الثانية ستتضمن تدفقات العمل التقنية، نظام الطلبات المخصص، نظام الحجوزات، والتهيئة التشغيلية بشكل منفصل لضمان الجودة والمرونة.
-          </span>
-          <span class="lang-en hidden" dir="ltr">
-            This site is dedicated to approving the scalable visual identity and design systems (Phase 1).
-            Phase 2 will include technical workflows, custom ordering system, reservations, and separated operational setup to ensure quality and flexibility.
-          </span>
-        </p>
-        <a href="/next-phase" class="text-primary font-bold underline underline-offset-4 decoration-subtle hover:decoration-[#9B2226] transition-colors">
-          <span class="lang-ar">ألق نظرة على خطة المرحلة القادمة</span>
-          <span class="lang-en hidden">Take a look at the upcoming phase plan</span>
-        </a>
-      </div>
-    </section>
-  </div>
+  <main class="home-layout">
+    <HeroSection />
+    <WhyDesignMatters />
+    <MethodologySection />
+    <ReviewInsightsSection />
+    <ResearchMappingSection />
+    <SystemIntroduction />
+    <SystemNavigationSection />
+    <FinalPrinciple />
+  </main>
 </BaseLayout>
