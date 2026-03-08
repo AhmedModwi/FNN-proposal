@@ -1,4 +1,6 @@
 ---
+import MobileMenu from './MobileMenu.svelte';
+
 const navItems = [
   { labelAr: 'الرئيسية', labelEn: 'Overview', href: '/' },
   { labelAr: 'الألوان', labelEn: 'Color', href: '/color' },
@@ -51,79 +53,39 @@ const currentPath = Astro.url.pathname;
         <span class="lang-en hidden">عربي</span>
       </button>
 
-      <!-- Mobile Menu Button -->
-      <button id="mobile-menu-btn" class="lg:hidden p-2 text-secondary hover:text-primary transition-colors cursor-pointer" aria-label="Open menu">
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <line x1="4" x2="20" y1="12" y2="12"></line>
-          <line x1="4" x2="20" y1="6" y2="6"></line>
-          <line x1="4" x2="20" y1="18" y2="18"></line>
-        </svg>
-      </button>
+      <!-- Svelte Mobile Menu (Island) -->
+      <MobileMenu client:load navItems={navItems} currentPath={currentPath} />
     </div>
-  </div>
-
-  <!-- Mobile Nav Sheet -->
-  <div id="mobile-nav" class="fixed inset-x-0 top-0 h-auto max-h-screen bg-surface z-40 transition-transform duration-300 transform -translate-y-full lg:hidden flex flex-col pt-20 px-6 shadow-xl border-b border-subtle">
-    <button id="close-menu-btn" class="absolute top-4 rtl:right-6 ltr:left-6 p-2 text-secondary hover:text-primary cursor-pointer" aria-label="Close menu">
-      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M18 6 6 18"></path>
-        <path d="m6 6 12 12"></path>
-      </svg>
-    </button>
-    <nav class="flex flex-col gap-6 text-xl overflow-y-auto pb-20 mt-4">
-      {navItems.map((item) => (
-        <a href={item.href} class={`font-semibold hover:text-[#9B2226] border-b border-subtle pb-4 ${currentPath === item.href ? 'text-[#9B2226]' : 'text-primary'}`}>
-          <span class="lang-ar">{item.labelAr}</span>
-          <span class="lang-en hidden">{item.labelEn}</span>
-        </a>
-      ))}
-    </nav>
   </div>
 </header>
 
-<script>
+<script is:inline>
   // Hide on scroll logic
-  let lastScrollY = window.scrollY;
-  const nav = document.getElementById('top-nav');
-  
-  if (nav) {
-    window.addEventListener('scroll', () => {
-      if (window.scrollY > lastScrollY && window.scrollY > 80) {
-        nav.style.transform = 'translateY(-100%)';
-      } else {
-        nav.style.transform = 'translateY(0)';
-      }
-      lastScrollY = window.scrollY;
-    }, { passive: true });
-  }
-
-  // Language Toggle Logic
-  const langToggleBtn = document.getElementById('lang-toggle-btn');
-  if (langToggleBtn) {
-    langToggleBtn.addEventListener('click', () => {
-      const currentLang = document.documentElement.lang;
-      const newLang = currentLang === 'ar' ? 'en' : 'ar';
-      
-      localStorage.setItem('fnn-lang', newLang);
-      document.documentElement.lang = newLang;
-      document.documentElement.dir = newLang === 'ar' ? 'rtl' : 'ltr';
-    });
-  }
-
-  // Mobile menu logic
-  const mobileBtn = document.getElementById('mobile-menu-btn');
-  const closeBtn = document.getElementById('close-menu-btn');
-  const mobileNav = document.getElementById('mobile-nav');
-
-  if (mobileBtn && closeBtn && mobileNav) {
-    mobileBtn.addEventListener('click', () => {
-      mobileNav.style.transform = 'translateY(0)';
-      document.body.style.overflow = 'hidden';
-    });
+  (function() {
+    let lastScrollY = window.scrollY;
+    const nav = document.getElementById('top-nav');
     
-    closeBtn.addEventListener('click', () => {
-      mobileNav.style.transform = 'translateY(-100%)';
-      document.body.style.overflow = '';
-    });
-  }
+    if (nav) {
+      window.addEventListener('scroll', () => {
+        // Only hide if we've scrolled a bit
+        if (window.scrollY > lastScrollY && window.scrollY > 80) {
+          nav.style.transform = 'translateY(-100%)';
+        } else {
+          nav.style.transform = 'translateY(0)';
+        }
+        lastScrollY = window.scrollY;
+      }, { passive: true });
+    }
+
+    // Language Toggle Logic
+    const langToggleBtn = document.getElementById('lang-toggle-btn');
+    if (langToggleBtn) {
+      langToggleBtn.addEventListener('click', () => {
+        const currentLang = document.documentElement.lang;
+        const newLang = currentLang === 'ar' ? 'en' : 'ar';
+        localStorage.setItem('fnn-lang', newLang);
+        window.location.reload();
+      });
+    }
+  })();
 </script>
