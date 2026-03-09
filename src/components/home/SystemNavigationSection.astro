@@ -51,7 +51,11 @@ const systems = [
             <span class="lang-ar">{sys.descAr}</span>
             <span class="lang-en hidden">{sys.descEn}</span>
           </p>
-          <a href={sys.link} class="text-[#9B2226] font-bold flex items-center gap-2 before:absolute before:inset-0 rtl:flex-row-reverse ltr:flex-row w-fit">
+          <a 
+            href={sys.link} 
+            class="text-[#9B2226] font-bold flex items-center gap-2 before:absolute before:inset-0 rtl:flex-row-reverse ltr:flex-row w-fit"
+            aria-label={`${sys.titleAr} / ${sys.titleEn}`}
+          >
             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" class="ltr:hidden" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
               <line x1="5" y1="12" x2="19" y2="12"></line>
               <polyline points="12 5 19 12 12 19"></polyline>

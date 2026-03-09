@@ -64,7 +64,7 @@ const currentPath = Astro.url.pathname;
 <script is:inline>
   // Hide on scroll logic
   (function() {
-    let lastScrollY = window.scrollY;
+    let lastScrollY = 0;
     const nav = document.getElementById('top-nav');
     
     if (nav) {
