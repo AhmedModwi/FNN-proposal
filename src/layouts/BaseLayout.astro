@@ -34,6 +34,17 @@ const { title, description = "A premium digital proposal for Al-Fananin restaura
 			* {
 				box-sizing: border-box;
 			}
+			/* Global Mobile Gutter */
+			@media (max-width: 767px) {
+				.container-doc, .max-w-7xl, .max-w-6xl, .max-w-5xl, .max-w-4xl, .container {
+					padding-left: 1.5rem !important;
+					padding-right: 1.5rem !important;
+				}
+				section > .mx-auto:not(.w-full) {
+					padding-left: 1.5rem !important;
+					padding-right: 1.5rem !important;
+				}
+			}
 		</style>
 		
 		<script is:inline>

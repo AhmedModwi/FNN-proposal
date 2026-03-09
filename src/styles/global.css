@@ -7,6 +7,82 @@
 */
 @import "./tokens.css";
 
+/* Global Typographic System 
+   Rule: > 20px (text-2xl and up) = Display Font (Amiri/Playfair)
+         <= 20px (text-xl and down) = Body Font (Cairo/Inter)
+*/
+:root {
+  --font-ar-display: 'Amiri', Georgia, "Times New Roman", Times, serif;
+  --font-ar-body: 'Cairo', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+  --font-en-display: 'Playfair Display', Georgia, "Times New Roman", Times, serif;
+  --font-en-body: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+  
+  --font-display: var(--font-ar-display);
+  --font-body: var(--font-ar-body);
+}
+
+html[lang="en"] {
+  --font-display: var(--font-en-display);
+  --font-body: var(--font-en-body);
+}
+
+.ar-text {
+  --font-display: var(--font-ar-display) !important;
+  --font-body: var(--font-ar-body) !important;
+}
+
+.en-text {
+  --font-display: var(--font-en-display) !important;
+  --font-body: var(--font-en-body) !important;
+}
+
+/* Enforce Body Font on root */
+body {
+  font-family: var(--font-body);
+}
+
+/* BASE TAG ENFORCEMENTS */
+h1, h2, h3 {
+  font-family: var(--font-display);
+}
+
+/* UTILITY SCALE ENFORCEMENTS (These override tags) 
+   We use :where() to keep specificity manageable, but we use !important
+   because Tailwind's utility classes also use !important sometimes or we need
+   to guarantee overrides over everything else. 
+*/
+/* <= 20px (text-xl is 20px) -> Body Font */
+[class*="text-xs"], 
+[class*="text-sm"], 
+[class*="text-base"], 
+[class*="text-lg"], 
+[class*="text-xl"],
+.body-text,
+h4, h5, h6 {
+  font-family: var(--font-body) !important;
+}
+
+/* > 20px (text-2xl is 24px) -> Display Font */
+[class*="text-2xl"], 
+[class*="text-3xl"], 
+[class*="text-4xl"], 
+[class*="text-5xl"], 
+[class*="text-6xl"], 
+[class*="text-7xl"], 
+[class*="text-8xl"], 
+[class*="text-9xl"], 
+.display-text {
+  font-family: var(--font-display) !important;
+}
+
+/* Allow explicit overrides if absolutely necessary */
+.fb-sans { font-family: system-ui, -apple-system, sans-serif !important; }
+.fb-serif { font-family: Georgia, "Times New Roman", serif !important; }
+.f-cairo, .font-arabic-body { font-family: var(--font-ar-body) !important; }
+.f-amiri, .font-arabic-display { font-family: var(--font-ar-display) !important; }
+.f-inter, .font-english-body { font-family: var(--font-en-body) !important; }
+.f-playfair, .font-english-display { font-family: var(--font-en-display) !important; }
+
 /* Language Visibility Helpers */
 html[lang="ar"] .lang-en { display: none !important; }
 html[lang="ar"] .lang-ar { display: block; }

@@ -68,7 +68,7 @@
       <a 
         href={item.href} 
         onclick={handleLinkClick}
-        class="font-bold hover:text-[#9B2226] transition-all transform hover:scale-110 {currentPath === item.href ? 'text-[#9B2226]' : 'text-primary'}"
+        class="font-bold hover:text-[#9B2226] transition-all transform hover:scale-110 f-amiri {currentPath === item.href ? 'text-[#9B2226]' : 'text-primary'}"
       >
         <span class="lang-ar">{item.labelAr}</span>
         <span class="lang-en hidden">{item.labelEn}</span>

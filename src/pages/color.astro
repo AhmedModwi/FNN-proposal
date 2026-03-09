@@ -43,6 +43,14 @@ import SourceLinks from '../components/ui/SourceLinks.astro';
   section { padding: 4rem 1.5rem; border-bottom: 1px solid rgba(0,0,0,0.05); }
   .container-doc { max-width: 1100px; margin: 0 auto; }
 
+  
+  /* High Performance Leather Texture Utility */
+  .tex-leather-img {
+    background-image: url('/leather-noise.webp');
+    background-size: 512px;
+    background-repeat: repeat;
+  }
+
   </style>
 
 
@@ -91,23 +99,17 @@ import SourceLinks from '../components/ui/SourceLinks.astro';
       <feBlend mode="multiply" in="denseStraws" in2="subtleBinds" />
     </filter>
 
-    <!-- Leather: Pebbled Crosshatch (Fixed to fill space without HTML rotation) -->
-    <filter id="tex-leather" x="0" y="-20%" width="100%" height="140%">
-      <!-- Crosshatch natively rotated by mapping via displacement or just using denser grid -->
-      <feTurbulence type="turbulence" baseFrequency="0.4 0.04" numOctaves="1" result="hHatch" />
-      <feTurbulence type="turbulence" baseFrequency="0.04 0.4" numOctaves="1" result="vHatch" />
-      <feBlend mode="multiply" in="hHatch" in2="vHatch" result="rectHatch" />
+        <!-- Leather: Natural Saddle Leather (Improved for large-grain realism) -->
+    <filter id="tex-leather" x="0" y="0" width="100%" height="100%">
+      <!-- Large scale organic noise for the 'hills and valleys' of the grain -->
+      <feTurbulence type="fractalNoise" baseFrequency="0.01 0.015" numOctaves="5" seed="8" result="grainBase" />
+      <!-- High contrast mapping to create deep 'cracks' (valleys) -->
+      <feColorMatrix type="matrix" values="0 0 0 0 0, 0 0 0 0 0, 0 0 0 0 0, 0 0 0 3 -1.2" in="grainBase" result="valleys" />
+      <!-- Subtle secondary noise for micro-irregularities (pores) -->
+      <feTurbulence type="fractalNoise" baseFrequency="0.6" numOctaves="2" seed="5" result="microNoise" />
+      <feColorMatrix type="matrix" values="0 0 0 0 0, 0 0 0 0 0, 0 0 0 0 0, 0 0 0 0.8 -0.2" in="microNoise" result="pores" />
       
-      <!-- Rotate the hatch 45deg using a matrix transform inside SVG isn't directly supported in filters without complex displacement.
-           Instead, we'll create the diagonal effect by blending two angled directional noises. -->
-      <feTurbulence type="fractalNoise" baseFrequency="0.5" numOctaves="3" result="pebbleNoise" />
-      
-      <!-- High contrast harsh pebbled surface covering everything -->
-      <feColorMatrix type="matrix" values="0 0 0 0 0, 0 0 0 0 0, 0 0 0 0 0, 0 0 0 3 -0.5" in="pebbleNoise" result="pebbleSurface" />
-      <feColorMatrix type="matrix" values="0 0 0 0 0, 0 0 0 0 0, 0 0 0 0 0, 0 0 0 2.5 -0.5" in="rectHatch" result="sharpHatch" />
-      
-      <feBlend mode="multiply" in="pebbleSurface" in2="sharpHatch" result="fullLeather" />
-      <feColorMatrix type="matrix" values="0 0 0 0 0, 0 0 0 0 0, 0 0 0 0 0, 0 0 0 2.5 0" in="fullLeather" />
+      <feBlend mode="multiply" in="valleys" in2="pores" />
     </filter>
   </defs>
 </svg>
@@ -241,7 +243,7 @@ import SourceLinks from '../components/ui/SourceLinks.astro';
               <div class="w-12 h-12 rounded-full bg-[#780000] shadow-sm"></div>
             </div>
             <div>
-              <strong class="block text-[#780000]"><span class="lang-ar">المناسبات (Premium): ألوان عميقة (بني جلدي/عنابي حرير)</span><span class="lang-en hidden">Occasions (Premium): Deep Colors (Leather Brown/Silk Burgundy)</span></strong>
+              <strong class="block text-[#4A3B32]"><span class="lang-ar">المناسبات (Premium): ألوان عميقة (بني جلدي/عسلي)</span><span class="lang-en hidden" dir="ltr">Events (Premium): Deep Colors (Leather Brown)</span></strong>
               <p class="text-xs opacity-70 mt-1"><span class="lang-ar">ترتبط لا شعورياً بالفخامة والحصرية في علم النفس البصري. يبرر التكلفة العالية لولائم "الكرامة" ويتسم بالرصانة.</span><span class="lang-en hidden">Subconsciously associated with luxury and exclusivity in visual psychology. Justifies the high cost of banquets and is characterized by sobriety.</span></p>
             </div>
           </div>
@@ -361,7 +363,7 @@ import SourceLinks from '../components/ui/SourceLinks.astro';
         <span class="lang-ar">يستهدف هذا النظام توفير شعور عميق بالألفة والدفء المستوحى من جذور الضيافة السودانية الأصيلة. يرتكز بصرياً على دفء اللون العضوي الهادئ الذي يعطي انطباعاً بالفخامة الهادئة وكرم الضيافة التقليدي. هذا الخيار مصمم ليُلائم المحتوى العائلي والمناسبات الرصينة حيث يكون الاستقرار والموثوقية هما الرسالة الأساسية.</span><span class="lang-en hidden">This system aims to provide a deep feeling of familiarity and warmth inspired by the roots of authentic Sudanese hospitality. Visually based on the warmth of soft, organic color that gives the impression of calm luxury and traditional hospitality. This option is designed for family content and sober occasions where stability and reliability are the key message.</span>
       </p>
       <ul class="list-disc list-inside space-y-2 font-bold opacity-90">
-        <li><span class="lang-ar">حجر الزاوية: الفخار (Terracotta)، الكسرة (Beige)، حرير الجرتق (Garnet)</span><span class="lang-en hidden">Keystone: Terracotta, Beige, Garnet</span></li>
+        <li><span class="lang-ar">حجر الزاوية: الفخار (Terracotta)، الكسرة (Beige)، الجلد العتيق (Leather)</span><span class="lang-en hidden" dir="ltr">Keystone: Terracotta, Beige, Vintage Leather</span></li>
         <li><span class="lang-ar">الحرارة البصرية: دافئة، ناعمة، منخفضة التشبع نسبياً.</span><span class="lang-en hidden">Visual temperature: warm, soft, relatively low saturation.</span></li>
         <li><span class="lang-ar">الجمهور: العائلات، والباحثين عن الضيافة التراثية العتيدة والصادقة.</span><span class="lang-en hidden">Audience: Families, and those looking for ancient and sincere traditional hospitality.</span></li>
       </ul>
@@ -428,26 +430,26 @@ import SourceLinks from '../components/ui/SourceLinks.astro';
         </div>
       </div>
 
-      <!-- S1 Palette 3 -->
+            <!-- S1 Palette 3 -->
       <div class="grid grid-cols-1 md:grid-cols-12 gap-6 bg-white p-6 rounded-2xl shadow-sm border border-gray-100 lg:items-center">
         <div class="md:col-span-4">
-          <h4 class="font-bold text-xl mb-1"><span class="lang-ar">٣. والمناسبات (حرير الجرتق)</span><span class="lang-en hidden">3. And occasions (Silk Jartq)</span></h4>
-          <p class="text-sm opacity-70 mb-4"><span class="lang-ar">فخامة عميقة واحتفالية هادئة مسائية.</span><span class="lang-en hidden">Deep luxury and a quiet festive evening.</span></p>
+          <h4 class="font-bold text-xl mb-1"><span class="lang-ar">٣. والمناسبات (الجلد العتيق)</span><span class="lang-en hidden">3. Events (Vintage Leather)</span></h4>
+          <p class="text-sm opacity-70 mb-4"><span class="lang-ar">فخامة وتاريخ وجذور متأصلة للفعاليات عالية المستوى.</span><span class="lang-en hidden">Prestige, history and deep roots of high-level events.</span></p>
           <div class="flex flex-col gap-2 text-sm text-gray-700">
-            <div><span class="font-bold"><span class="lang-ar">أرضية السطح:</span><span class="lang-en hidden">Roof floor:</span></span> <code class="en-text bg-gray-100 px-1 rounded text-xs mx-1">#780000</code></div>
-            <div><span class="font-bold"><span class="lang-ar">البطاقة المتدرجة:</span><span class="lang-en hidden">Graduated card:</span></span> <code class="en-text bg-gray-100 px-1 rounded text-xs mx-1">#660000</code></div>
-            <div><span class="font-bold"><span class="lang-ar">لون النص الأساسي:</span><span class="lang-en hidden">Base text color:</span></span> <code class="en-text bg-gray-100 px-1 rounded text-xs mx-1">#F9E4B7</code></div>
+            <div><span class="font-bold"><span class="lang-ar">أرضية السطح:</span><span class="lang-en hidden">Roof floor:</span></span> <code class="en-text bg-gray-100 px-1 rounded text-xs mx-1">#4D2C19</code></div>
+            <div><span class="font-bold"><span class="lang-ar">البطاقة المتدرجة:</span><span class="lang-en hidden">Graduated card:</span></span> <code class="en-text bg-gray-100 px-1 rounded text-xs mx-1">#402414</code></div>
+            <div><span class="font-bold"><span class="lang-ar">لون النص الأساسي:</span><span class="lang-en hidden">Base text color:</span></span> <code class="en-text bg-gray-100 px-1 rounded text-xs mx-1">#F2E8CF</code></div>
           </div>
         </div>
         <div class="md:col-span-8 flex flex-col sm:flex-row gap-4">
           <!-- Demo Card -->
-          <div class="flex-1 rounded-xl p-6 relative overflow-hidden" style="background-color: #780000; color: #F9E4B7;">
-            <svg class="texture-overlay" style="opacity: 0.15; mix-blend-mode: screen;"><rect width="100%" height="100%" filter="url(#tex-silk)"/></svg>
+          <div class="flex-1 rounded-xl p-6 relative overflow-hidden" style="background-color: #4D2C19; color: #F2E8CF;">
+            <div class="texture-overlay tex-leather-img" style="opacity: 0.22; mix-blend-mode: multiply;"></div>
             <p class="text-xs font-bold opacity-60 mb-4 relative z-10"><span class="lang-ar">الخلفية (Background السطح 0)</span><span class="lang-en hidden">Background 0</span></p>
-            <div class="rounded-lg p-5 shadow-[0_10px_20px_rgba(0,0,0,0.3)] relative z-10" style="background-color: #660000;">
+            <div class="rounded-lg p-5 shadow-lg relative z-10" style="background-color: #402414;">
               <p class="text-xs font-bold opacity-60 mb-2"><span class="lang-ar">البطاقة (Surface السطح 1)</span><span class="lang-en hidden">Card (Surface 1)</span></p>
-              <h5 class="text-lg font-bold mb-1"><span class="lang-ar">تباين الـ Dark Mode</span><span class="lang-en hidden">Dark Mode contrast</span></h5>
-              <p class="text-sm opacity-80 pb-3 border-b border-[#F9E4B7] border-opacity-10 mb-3"><span class="lang-ar">استخدام الظلال العميقة بدلاً من الفاتحة لرفع البطاقة. النص المائل الذهبي يمنح تأثيراً ملكياً فاخراً.</span><span class="lang-en hidden">Use deep shades instead of light ones to lift the card. Gold italic text gives a luxurious, royal effect.</span></p>
+              <h5 class="text-lg font-bold mb-1"><span class="lang-ar">فخامة الجلد الطبيعي</span><span class="lang-en hidden">Natural Leather Luxury</span></h5>
+              <p class="text-sm opacity-80 pb-3 border-b border-[#F2E8CF] border-opacity-10 mb-3"><span class="lang-ar">استخدام الجلد كعامل ربط مع الأثاث والديكور الداخلي للمطعم، مما يخلق تجربة بصرية متكاملة وشعوراً بالاستدامة والفخامة اليدوية.</span><span class="lang-en hidden">Using leather as a linking factor with the furniture and interior decoration, creating an integrated visual experience.</span></p>
               <span class="text-xs font-bold"><span class="lang-ar">النص المساعد (Subtext)</span><span class="lang-en hidden">Subtext</span></span>
             </div>
           </div>
@@ -458,7 +460,7 @@ import SourceLinks from '../components/ui/SourceLinks.astro';
   </div>
 </section>
 
-<!-- 6. SYSTEM 1 TEXTURE LIBRARY -->
+      <!-- 6. SYSTEM 1 TEXTURE LIBRARY -->
 <section>
   <div class="container-doc">
     <h3 class="text-2xl font-bold mb-8"><span class="lang-ar">مكتبة الخامات العضوية (System 1 Micro-Textures)</span><span class="lang-en hidden">Organic materials library (System 1 Micro-Textures)</span></h3>
@@ -496,18 +498,19 @@ import SourceLinks from '../components/ui/SourceLinks.astro';
         </div>
       </div>
 
-      <!-- Texture: Silk -->
-      <div class="border rounded-xl overflow-hidden shadow-sm">
-        <div class="h-48 relative flex items-center justify-center overflow-hidden" style="background-color: #780000;">
-          <svg class="texture-overlay" style="opacity: 0.20; mix-blend-mode: screen;"><rect width="100%" height="100%" filter="url(#tex-silk)"/></svg>
-          <span class="relative z-10 text-[#F9E4B7] font-bold text-xl px-4 py-2 bg-black/30 backdrop-blur rounded-lg"><span class="lang-ar">معاينة الملمس (مُكثّف للعرض)</span><span class="lang-en hidden">Texture preview (intensified for display)</span></span>
+      <!-- Texture: Leather -->
+<div class="border rounded-xl overflow-hidden shadow-sm">
+        <div class="h-48 relative flex items-center justify-center overflow-hidden" style="background-color: #4D2C19;">
+          <!-- Using scale-110 just to hide extreme svg border filtering artifacts, but NO strong rotation anymore so it fills corners properly -->
+          <div class="texture-overlay tex-leather-img" style="opacity: 0.28; mix-blend-mode: multiply;"></div>
+          <span class="relative z-10 text-[#F2E8CF] font-bold text-xl px-4 py-2 bg-black/30 backdrop-blur rounded-lg"><span class="lang-ar">معاينة الملمس (مُكثّف للعرض)</span><span class="lang-en hidden">Texture preview (intensified for display)</span></span>
         </div>
         <div class="p-6 bg-white text-right">
-          <h4 class="font-bold text-lg text-[#2B1A14] mb-2"><span class="lang-ar">مخمل حرير الجرتق (Crushed Velvet / Silk)</span><span class="lang-en hidden">Crushed Velvet / Silk</span></h4>
+          <h4 class="font-bold text-lg text-[#2B1A14] mb-2"><span class="lang-ar">الجلد العتيق وحرفة الصناعة (Natural Saddle Leather)</span><span class="lang-en hidden" dir="ltr">Natural Saddle Leather</span></h4>
           <p class="text-sm opacity-80 mb-4 leading-relaxed">
-            <span class="lang-ar">مأخوذ من فخامة وانعكاسات الضوء على أقمشة (حرير الجرتق) والمخمل الثقيل المستخدم في المناسبات الاجتماعية المرموقة. اعتمدنا تأثير المخمل المتداخل (Crushed Velvet) المتشابك لخلق بقع ضوئية وظلال عميقة تعطي إحساساً بالفخامة الاحتفالية، مما يجعل الأسطح الحمراء الداكنة تبدو راقية وغنية بدلاً من كونها مجرد لون مسطح للتحذير.</span><span class="lang-en hidden">Taken from the elegance and reflections of light on fabrics (jartaq silk) and heavy velvet used in prestigious social occasions. We adopted the effect of interwoven Crushed Velvet to create spots of light and deep shadows that give a sense of festive luxury, making dark red surfaces appear sophisticated and rich rather than just a flat, warning color.</span>
+            <span class="lang-ar">مستمد من مظهر الجلد الطبيعي الفاخر، حيث يتميز بمسامات غير منتظمة ونسيج غني يجمع بين النعومة والصلابة العضوية. تم هندسة هذا الملمس ليعطي إحساساً بالموثوقية والفخامة اليدوية، وهو مثالي لإضفاء عمق بصري رصين على الأسطح الداكنة في أقسام المناسبات الراقية.</span><span class="lang-en hidden" dir="ltr">Derived from the appearance of luxurious natural leather, featuring irregular pores and a rich texture that combines softness with organic firmness.</span>
           </p>
-          <div class="text-xs bg-gray-50 p-3 rounded text-gray-600 font-mono inline-block" dir="ltr">Demo Opacity: 20% | Actual UI: 6% | Blend: Screen</div>
+          <div class="text-xs bg-gray-50 p-3 rounded text-gray-600 font-mono inline-block" dir="ltr">Demo Opacity: 5% | Actual UI: 4% | Blend: Multiply</div>
         </div>
       </div>
 
@@ -515,7 +518,7 @@ import SourceLinks from '../components/ui/SourceLinks.astro';
   </div>
 </section>
 
-<!-- 7. SYSTEM 2 OVERVIEW -->
+      <!-- 7. SYSTEM 2 OVERVIEW -->
 <section>
   <div class="container-doc">
     <div class="max-w-3xl">
@@ -525,7 +528,7 @@ import SourceLinks from '../components/ui/SourceLinks.astro';
         <span class="lang-ar">تم تصميم هذا النظام ليخلق طاقة بصرية أعلى وإيقاعاً شبابياً أكثر تعبيراً للحواس. يعتمد على ألوان تواصلية زاهية ومشرقة تخلق تبايناً حاداً وجذاباً مع النصوص. هذا النظام يُعد مثالياً للصفحات التي تحتاج إلى سرعة تفاعل وحيوية اجتماعية وصوت بصري أكثر جرأة و"صخباً" وإشراقاً دون التنازل عن المرجعية الثقافية.</span><span class="lang-en hidden">This system is designed to create a higher visual energy and a youthful, more expressive rhythm to the senses. It relies on bright, communicative colors that create a sharp and attractive contrast with the texts. This system is ideal for pages that need speed of interaction, social vitality, and a bolder, louder, and brighter visual sound without compromising on cultural reference.</span>
       </p>
       <ul class="list-disc list-inside space-y-2 font-bold opacity-90">
-        <li><span class="lang-ar">حجر الزاوية: الزعفران/الخردل (Yellow)، الزراعة النيلية السعفية (Green)، جلد طبيعي (Brown).</span><span class="lang-en hidden">Cornerstone: Saffron/Mustard (Yellow), Indigo Crocus (Green), Genuine Leather (Brown).</span></li>
+        <li><span class="lang-ar">حجر الزاوية: الزعفران (Saffron)، المطعم (Warm Sand)، وحرير الجرتق (Deep Red).</span><span class="lang-en hidden" dir="ltr">Keystone: Saffron (Yellow), Warm Sand (Kisra), and Deep Red (Garnet).</span></li>
         <li><span class="lang-ar">الحرارة البصرية: حيوية متفجرة، عالية التباين والتعبير (Expressive).</span><span class="lang-en hidden">Visual temperature: explosive vividness, high contrast and expressiveness.</span></li>
         <li><span class="lang-ar">الجمهور: فئة الشباب، الحشود الاجتماعية، والأوقات الصباحية النشطة.</span><span class="lang-en hidden">Audience: Young people, social crowds, and active mornings.</span></li>
       </ul>
@@ -582,32 +585,33 @@ import SourceLinks from '../components/ui/SourceLinks.astro';
             <div class="rounded-lg p-5 shadow-lg relative z-10" style="background-color: #75A48D;">
               <p class="text-xs font-bold opacity-60 mb-2"><span class="lang-ar">البطاقة (Surface السطح 1)</span><span class="lang-en hidden">Card (Surface 1)</span></p>
               <h5 class="text-lg font-bold mb-1"><span class="lang-ar">برودة وانتعاش طازج</span><span class="lang-en hidden">Cool and fresh</span></h5>
-              <p class="text-sm opacity-80 pb-3 border-b border-[#1B2A22] border-opacity-10 mb-3"><span class="lang-ar">يعمل هذا القسم كفاصل مريح للعين (Breather) وسط الإيقاع الساخن للون الخردلي والجلدي.</span><span class="lang-en hidden">This section acts as a breather amidst the hot rhythm of mustard and leather.</span></p>
+              <p class="text-sm opacity-80 pb-3 border-b border-[#1B2A22] border-opacity-10 mb-3"><span class="lang-ar">يعمل هذا القسم كفاصل مريح للعين (Breather) وسط الإيقاع الساخن للون الخردلي والحريري.</span><span class="lang-en hidden">This section acts as a breather amidst the hot rhythm of mustard and silk.</span></p>
               <span class="text-xs font-bold"><span class="lang-ar">النص المساعد (Subtext)</span><span class="lang-en hidden">Subtext</span></span>
             </div>
           </div>
         </div>
       </div>
 
-      <!-- S2 Palette 3 -->
+            <!-- S2 Palette 3 -->
       <div class="grid grid-cols-1 md:grid-cols-12 gap-6 bg-white p-6 rounded-2xl shadow-sm border border-gray-100 lg:items-center">
         <div class="md:col-span-4">
-          <h4 class="font-bold text-xl mb-1"><span class="lang-ar">٣. المناسبات (ماربل الجلد العتيق)</span><span class="lang-en hidden">3. Occasions (Vintage Leather Marble)</span></h4>
-          <p class="text-sm opacity-70 mb-4"><span class="lang-ar">هيبة وتاريخ وجذور متأصلة للفعاليات عالية المستوى.</span><span class="lang-en hidden">Prestige, history and deep roots of high-level events.</span></p>
+          <h4 class="font-bold text-xl mb-1"><span class="lang-ar">٣. المناسبات (حرير الجرتق)</span><span class="lang-en hidden">3. Ceremonies (Jirtig Silk)</span></h4>
+          <p class="text-sm opacity-70 mb-4"><span class="lang-ar">تباين حيوي وطاقة احتفالية لليل والولائم الكبيرة.</span><span class="lang-en hidden">Vibrant contrast and festive energy for night and grand banquets.</span></p>
           <div class="flex flex-col gap-2 text-sm text-gray-700">
-            <div><span class="font-bold"><span class="lang-ar">أرضية السطح:</span><span class="lang-en hidden">Roof floor:</span></span> <code class="en-text bg-gray-100 px-1 rounded text-xs mx-1">#4D2C19</code></div>
-            <div><span class="font-bold"><span class="lang-ar">البطاقة المتدرجة:</span><span class="lang-en hidden">Graduated card:</span></span> <code class="en-text bg-gray-100 px-1 rounded text-xs mx-1">#402414</code></div>
-            <div><span class="font-bold"><span class="lang-ar">لون النص الأساسي:</span><span class="lang-en hidden">Base text color:</span></span> <code class="en-text bg-gray-100 px-1 rounded text-xs mx-1">#F2E8CF</code></div>
+            <div><span class="font-bold"><span class="lang-ar">أرضية السطح:</span><span class="lang-en hidden">Roof floor:</span></span> <code class="en-text bg-gray-100 px-1 rounded text-xs mx-1">#780000</code></div>
+            <div><span class="font-bold"><span class="lang-ar">البطاقة المتدرجة:</span><span class="lang-en hidden">Graduated card:</span></span> <code class="en-text bg-gray-100 px-1 rounded text-xs mx-1">#660000</code></div>
+            <div><span class="font-bold"><span class="lang-ar">لون النص الأساسي:</span><span class="lang-en hidden">Base text color:</span></span> <code class="en-text bg-gray-100 px-1 rounded text-xs mx-1">#F9E4B7</code></div>
           </div>
         </div>
         <div class="md:col-span-8 flex flex-col sm:flex-row gap-4">
-          <div class="flex-1 rounded-xl p-6 relative overflow-hidden" style="background-color: #4D2C19; color: #F2E8CF;">
-            <svg class="texture-overlay transform scale-110" style="opacity: 0.25; mix-blend-mode: multiply;"><rect width="100%" height="100%" filter="url(#tex-leather)"/></svg>
+          <!-- Demo Card -->
+          <div class="flex-1 rounded-xl p-6 relative overflow-hidden" style="background-color: #780000; color: #F9E4B7;">
+            <svg class="texture-overlay" style="opacity: 0.15; mix-blend-mode: screen;"><rect width="100%" height="100%" filter="url(#tex-silk)"/></svg>
             <p class="text-xs font-bold opacity-60 mb-4 relative z-10"><span class="lang-ar">الخلفية (Background السطح 0)</span><span class="lang-en hidden">Background 0</span></p>
-            <div class="rounded-lg p-5 shadow-[0_10px_20px_rgba(0,0,0,0.5)] relative z-10" style="background-color: #402414;">
+            <div class="rounded-lg p-5 shadow-[0_10px_20px_rgba(0,0,0,0.3)] relative z-10" style="background-color: #660000;">
               <p class="text-xs font-bold opacity-60 mb-2"><span class="lang-ar">البطاقة (Surface السطح 1)</span><span class="lang-en hidden">Card (Surface 1)</span></p>
-              <h5 class="text-lg font-bold mb-1"><span class="lang-ar">غنى لوني ثقيل</span><span class="lang-en hidden">Heavy color richness</span></h5>
-              <p class="text-sm opacity-80 pb-3 border-b border-[#F2E8CF] border-opacity-10 mb-3"><span class="lang-ar">تباين صارخ بين الأرضية الجنية الداكنة والنص الكريمي (Off-white) لتعزيز الإحساس بالكلاسيكيات والضيافة الثقيلة.</span><span class="lang-en hidden">A stark contrast between the dark fairy ground and the off-white text to enhance the sense of classics and heavy hospitality.</span></p>
+              <h5 class="text-lg font-bold mb-1"><span class="lang-ar">طاقة بصرية قصوى</span><span class="lang-en hidden">Maximum Visual Energy</span></h5>
+              <p class="text-sm opacity-80 pb-3 border-b border-[#F9E4B7] border-opacity-10 mb-3"><span class="lang-ar">تباين الأحمر والذهبي يعزز الرغبة في التفاعل والاحتفال، مما يجعله المحرك اللوني الأساسي لقسم المناسبات في النظام الحيوي.</span><span class="lang-en hidden">Red and gold contrast enhances the desire for interaction and celebration.</span></p>
               <span class="text-xs font-bold"><span class="lang-ar">النص المساعد (Subtext)</span><span class="lang-en hidden">Subtext</span></span>
             </div>
           </div>
@@ -618,7 +622,7 @@ import SourceLinks from '../components/ui/SourceLinks.astro';
   </div>
 </section>
 
-<!-- 9. SYSTEM 2 TEXTURE LIBRARY -->
+    <!-- 9. SYSTEM 2 TEXTURE LIBRARY -->
 <section>
   <div class="container-doc">
     <h3 class="text-2xl font-bold mb-8"><span class="lang-ar">مكتبة الخامات العضوية (System 2 Micro-Textures)</span><span class="lang-en hidden">Organic materials library (System 2 Micro-Textures)</span></h3>
@@ -654,19 +658,18 @@ import SourceLinks from '../components/ui/SourceLinks.astro';
         </div>
       </div>
 
-      <!-- Texture: Leather -->
+      <!-- Texture: Silk -->
       <div class="border rounded-xl overflow-hidden shadow-sm">
-        <div class="h-48 relative flex items-center justify-center overflow-hidden" style="background-color: #4D2C19;">
-          <!-- Using scale-110 just to hide extreme svg border filtering artifacts, but NO strong rotation anymore so it fills corners properly -->
-          <svg class="texture-overlay transform scale-110" style="opacity: 0.60; mix-blend-mode: multiply;"><rect width="100%" height="100%" filter="url(#tex-leather)"/></svg>
-          <span class="relative z-10 text-[#F2E8CF] font-bold text-xl px-4 py-2 bg-black/30 backdrop-blur rounded-lg"><span class="lang-ar">معاينة الملمس (مُكثّف للعرض)</span><span class="lang-en hidden">Texture preview (intensified for display)</span></span>
+        <div class="h-48 relative flex items-center justify-center overflow-hidden" style="background-color: #780000;">
+          <svg class="texture-overlay" style="opacity: 0.20; mix-blend-mode: screen;"><rect width="100%" height="100%" filter="url(#tex-silk)"/></svg>
+          <span class="relative z-10 text-[#F9E4B7] font-bold text-xl px-4 py-2 bg-black/30 backdrop-blur rounded-lg"><span class="lang-ar">معاينة الملمس (مُكثّف للعرض)</span><span class="lang-en hidden">Texture preview (intensified for display)</span></span>
         </div>
         <div class="p-6 bg-white text-right">
-          <h4 class="font-bold text-lg text-[#2B1A14] mb-2"><span class="lang-ar">الجلد المتقاطع والحصوي (Pebbled Crosshatch Leather)</span><span class="lang-en hidden">Pebbled Crosshatch Leather</span></h4>
+          <h4 class="font-bold text-lg text-[#2B1A14] mb-2"><span class="lang-ar">مخمل حرير الجرتق (Crushed Velvet / Silk)</span><span class="lang-en hidden">Crushed Velvet / Silk</span></h4>
           <p class="text-sm opacity-80 mb-4 leading-relaxed">
-            <span class="lang-ar">مستمد من المنتجات والأدوات الجلدية الفاخرة، ويمزج بين متانة نقشة (Saffiano) الكلاسيكية المتقاطعة، وبين المسامات الحصوية (Pebbled) العشوائية. يستهدف تقديم تغطية خشنة كاملة للمساحة بلا أي نقطة مسطحة، ليعكس متانة الجلد الطبيعي وعراقته في الاستخدامات الراقية والمرنة. يضفي ثقلاً وقوة بصرية استثنائية للواجهة المظلمة.</span><span class="lang-en hidden">Derived from fine leather products and tools, it combines the durability of the classic Saffiano crisscross pattern with random pebbled pores. It aims to provide complete rough coverage of the area without any flat spots, to reflect the durability and heritage of natural leather in sophisticated and flexible uses. It adds heft and exceptional visual strength to the dark facade.</span>
+            <span class="lang-ar">مأخوذ من فخامة وانعكاسات الضوء على أقمشة (حرير الجرتق) والمخمل الثقيل المستخدم في المناسبات الاجتماعية المرموقة. اعتمدنا تأثير المخمل المتداخل (Crushed Velvet) المتشابك لخلق بقع ضوئية وظلال عميقة تعطي إحساساً بالفخامة الاحتفالية، مما يجعل الأسطح الحمراء الداكنة تبدو راقية وغنية بدلاً من كونها مجرد لون مسطح للتحذير.</span><span class="lang-en hidden">Taken from the elegance and reflections of light on fabrics (jartaq silk) and heavy velvet used in prestigious social occasions. We adopted the effect of interwoven Crushed Velvet to create spots of light and deep shadows that give a sense of festive luxury, making dark red surfaces appear sophisticated and rich rather than just a flat, warning color.</span>
           </p>
-          <div class="text-xs bg-gray-50 p-3 rounded text-gray-600 font-mono inline-block" dir="ltr">Demo Opacity: 60% | Actual UI: 10% | Blend: Multiply</div>
+          <div class="text-xs bg-gray-50 p-3 rounded text-gray-600 font-mono inline-block" dir="ltr">Demo Opacity: 20% | Actual UI: 6% | Blend: Screen</div>
         </div>
       </div>
 
@@ -674,7 +677,7 @@ import SourceLinks from '../components/ui/SourceLinks.astro';
   </div>
 </section>
 
-<!-- 10. COMPARISON SECTION -->
+    <!-- 10. COMPARISON SECTION -->
 <section class="bg-white border-t border-gray-200">
   <div class="container-doc">
     <header class="mb-10 text-center max-w-2xl mx-auto">
