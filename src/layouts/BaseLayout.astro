@@ -18,6 +18,7 @@ const { title, description = "A premium digital proposal for Al-Fananin restaura
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="generator" content={Astro.generator} />
+		<link rel="preload" as="image" href="https://images.unsplash.com/photo-1541544741938-0af808871cc0?q=40&w=1200&auto=format&fit=crop" fetchpriority="high" />
 		<link rel="preconnect" href="https://fonts.googleapis.com">
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 		<link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400;1,700&family=Cairo:wght@400;700;900&family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
@@ -61,8 +62,7 @@ const { title, description = "A premium digital proposal for Al-Fananin restaura
 				} catch (e) {}
 			})();
 		</script>
-		<!-- Lucide Icons -->
-		<script src="https://unpkg.com/lucide@latest"></script>
+		</script>
 	</head>
 	<body class="bg-base text-primary min-h-screen flex flex-col font-arabic antialiased selection:bg-[#9B2226] selection:text-white overflow-x-hidden w-full max-w-[100vw]">
 		<TopNav />
@@ -91,5 +91,7 @@ const { title, description = "A premium digital proposal for Al-Fananin restaura
 				<p class="lang-en hidden">Built to provide a clear vision for the digital future.</p>
 			</div>
 		</footer>
+		<!-- Defer non-critical scripts -->
+		<script src="https://unpkg.com/lucide@latest" defer></script>
 	</body>
 </html>

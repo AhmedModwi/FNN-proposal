@@ -4,7 +4,14 @@
 <section class="py-24 md:py-32 relative overflow-hidden flex items-center min-h-[70vh] border-b border-subtle">
   <!-- Subtle Background overlay for depth -->
   <div class="absolute inset-0 bg-gradient-to-br from-surface to-surface/50 z-0"></div>
-  <div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1541544741938-0af808871cc0?q=40&w=1200&auto=format&fit=crop')] bg-cover bg-center opacity-5 mix-blend-multiply z-0"></div>
+  <img 
+    src="https://images.unsplash.com/photo-1541544741938-0af808871cc0?q=40&w=1200&auto=format&fit=crop" 
+    alt="" 
+    class="absolute inset-0 w-full h-full object-cover opacity-5 mix-blend-multiply z-0"
+    fetchpriority="high"
+    loading="eager"
+    decoding="async"
+  />
 
   <div class="max-w-7xl mx-auto px-6 relative z-10">
     <div class="max-w-4xl">

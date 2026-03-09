@@ -68,14 +68,21 @@ const currentPath = Astro.url.pathname;
     const nav = document.getElementById('top-nav');
     
     if (nav) {
+      let ticking = false;
+      
       window.addEventListener('scroll', () => {
-        // Only hide if we've scrolled a bit
-        if (window.scrollY > lastScrollY && window.scrollY > 80) {
-          nav.style.transform = 'translateY(-100%)';
-        } else {
-          nav.style.transform = 'translateY(0)';
+        if (!ticking) {
+          window.requestAnimationFrame(() => {
+            if (window.scrollY > lastScrollY && window.scrollY > 80) {
+              nav.style.transform = 'translateY(-100%)';
+            } else {
+              nav.style.transform = 'translateY(0)';
+            }
+            lastScrollY = window.scrollY;
+            ticking = false;
+          });
+          ticking = true;
         }
-        lastScrollY = window.scrollY;
       }, { passive: true });
     }
 
