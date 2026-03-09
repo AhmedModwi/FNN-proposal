@@ -16,8 +16,9 @@
   --color-border-subtle: rgba(43, 26, 20, 0.1);
 
   --color-text-primary: #2B1A14;
-  --color-text-secondary: #6B5C58;
-  --color-text-muted: #A39692;
+  --color-text-secondary: #4A3C38; /* Darkened for accessibility */
+  --color-text-muted: #6B5C58;     /* Darkened for accessibility (previous secondary) */
+
   
   /* Typography Variables */
   --font-arabic: 'Amiri', serif, system-ui, -apple-system, sans-serif;

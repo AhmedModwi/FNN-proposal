@@ -18,13 +18,14 @@ const currentPath = Astro.url.pathname;
 <header id="top-nav" class="fixed top-0 inset-x-0 z-50 transition-transform duration-300 bg-surface/90 backdrop-blur-md border-b border-subtle shadow-sm">
   <div class="max-w-[1600px] mx-auto px-6 lg:px-8 h-16 flex items-center justify-between gap-4">
     <!-- Logo / Brand -->
-    <a href="/" class="flex items-center gap-2 group shrink-0">
-      <div class="w-8 h-8 rounded-full bg-[#9B2226] flex items-center justify-center text-white font-bold text-sm group-hover:bg-[#7a1a1e] transition-colors">
+    <a href="/" class="flex items-center gap-2 group shrink-0" aria-label="Al-Fananin Home / الرئيسية">
+      <div class="w-8 h-8 rounded-full bg-[#9B2226] flex items-center justify-center text-white font-bold text-sm group-hover:bg-[#7a1a1e] transition-colors" aria-hidden="true">
         FNN
       </div>
       <span class="font-bold text-lg tracking-tight lang-ar pb-1">الفنانين</span>
       <span class="font-bold text-lg tracking-tight lang-en hidden">Al-Fananin</span>
     </a>
+
 
     <!-- Desktop Nav -->
     <nav class="hidden lg:flex flex-1 justify-center items-center gap-3 xl:gap-6">
@@ -47,11 +48,12 @@ const currentPath = Astro.url.pathname;
 
     <!-- Right Side: Lang Toggle & Mobile Menu -->
     <div class="flex items-center gap-3 shrink-0">
-      <button id="lang-toggle-btn" class="flex items-center gap-1.5 px-3 py-1.5 rounded-md border border-subtle text-sm font-medium hover:bg-subtle transition-colors cursor-pointer text-secondary hover:text-primary">
-        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m5 8 6 6"/><path d="m4 14 6-6 2-3"/><path d="M2 5h12"/><path d="M7 2h1"/><path d="m22 22-5-10-5 10"/><path d="M14 18h6"/></svg>
+      <button id="lang-toggle-btn" class="flex items-center gap-1.5 px-3 py-1.5 rounded-md border border-subtle text-sm font-medium hover:bg-subtle transition-colors cursor-pointer text-secondary hover:text-primary" aria-label="Toggle Language / تغيير اللغة">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 8 6 6"/><path d="m4 14 6-6 2-3"/><path d="M2 5h12"/><path d="M7 2h1"/><path d="m22 22-5-10-5 10"/><path d="M14 18h6"/></svg>
         <span class="lang-ar">English</span>
         <span class="lang-en hidden">عربي</span>
       </button>
+
 
       <!-- Svelte Mobile Menu (Island) -->
       <MobileMenu client:load navItems={navItems} currentPath={currentPath} />
