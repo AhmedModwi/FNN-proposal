@@ -21,8 +21,8 @@
 
   
   /* Typography Variables */
-  --font-arabic: 'Amiri', serif, system-ui, -apple-system, sans-serif;
-  --font-english: 'Inter', system-ui, -apple-system, sans-serif;
+  --font-arabic: 'Tajawal', system-ui, -apple-system, sans-serif;
+  --font-english: 'Roboto', system-ui, -apple-system, sans-serif;
 
   /* Spacing */
   --space-1: 0.5rem;   /* 8px */

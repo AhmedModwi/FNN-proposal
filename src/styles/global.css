@@ -13,9 +13,9 @@
 */
 :root {
   --font-ar-display: 'Amiri', Georgia, "Times New Roman", Times, serif;
-  --font-ar-body: 'Cairo', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+  --font-ar-body: 'Tajawal', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
   --font-en-display: 'Playfair Display', Georgia, "Times New Roman", Times, serif;
-  --font-en-body: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+  --font-en-body: 'Roboto', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
   
   --font-display: var(--font-ar-display);
   --font-body: var(--font-ar-body);
@@ -78,9 +78,9 @@ h4, h5, h6 {
 /* Allow explicit overrides if absolutely necessary */
 .fb-sans { font-family: system-ui, -apple-system, sans-serif !important; }
 .fb-serif { font-family: Georgia, "Times New Roman", serif !important; }
-.f-cairo, .font-arabic-body { font-family: var(--font-ar-body) !important; }
+.f-tajawal, .font-arabic-body { font-family: var(--font-ar-body) !important; }
 .f-amiri, .font-arabic-display { font-family: var(--font-ar-display) !important; }
-.f-inter, .font-english-body { font-family: var(--font-en-body) !important; }
+.f-roboto, .font-english-body { font-family: var(--font-en-body) !important; }
 .f-playfair, .font-english-display { font-family: var(--font-en-display) !important; }
 
 /* Language Visibility Helpers */
