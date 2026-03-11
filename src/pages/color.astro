@@ -67,10 +67,10 @@ import SourceLinks from '../components/ui/SourceLinks.astro';
       <feBlend mode="multiply" in="tFine" in2="dLines" />
     </filter>
 
-    <!-- Kisra: Spongy Pores -->
+    <!-- Kisra: Spongy Pores (Suggestion 3: Soft/Large) -->
     <filter id="tex-kisra" x="0" y="0" width="100%" height="100%">
-      <feTurbulence type="fractalNoise" baseFrequency="0.04" numOctaves="3" result="noise" />
-      <feColorMatrix type="matrix" values="1 0 0 0 0, 0 1 0 0 0, 0 0 1 0 0, 0 0 0 10 -4" in="noise" />
+      <feTurbulence type="fractalNoise" baseFrequency="0.02" numOctaves="4" result="noise" />
+      <feColorMatrix type="matrix" values="1 0 0 0 0, 0 1 0 0 0, 0 0 1 0 0, 0 0 0 8 -3" in="noise" />
     </filter>
 
     <!-- Silk: Crushed Velvet -->
@@ -560,7 +560,7 @@ import SourceLinks from '../components/ui/SourceLinks.astro';
         <div class="md:col-span-8 flex flex-col sm:flex-row gap-4">
           <!-- Demo Card -->
           <div class="flex-1 rounded-xl p-6 relative overflow-hidden" style="background-color: #EEDCB5; color: #4A3B32;">
-            <svg class="texture-overlay" style="opacity: 0.10; mix-blend-mode: multiply;"><rect width="100%" height="100%" filter="url(#tex-kisra)"/></svg>
+            <svg class="texture-overlay" style="opacity: 0.08; mix-blend-mode: multiply;"><rect width="100%" height="100%" filter="url(#tex-kisra)"/></svg>
             <p class="text-xs font-bold opacity-60 mb-4 relative z-10"><span class="lang-ar">الخلفية (Background السطح 0)</span><span class="lang-en hidden">Background 0</span></p>
             <div class="rounded-lg p-5 shadow-lg relative z-10" style="background-color: #E3D0A8;">
               <p class="text-xs font-bold opacity-60 mb-2"><span class="lang-ar">البطاقة (Surface السطح 1)</span><span class="lang-en hidden">Card (Surface 1)</span></p>
@@ -636,7 +636,7 @@ import SourceLinks from '../components/ui/SourceLinks.astro';
           <p class="text-sm opacity-80 mb-4 leading-relaxed">
             <span class="lang-ar">مستوحى من المسامات الإسفنجية الدقيقة لخبز الكسرة السوداني الأصيل أثناء نضجه على الصاج. يمثل هذا الملمس رمزية المشاركة، الدفء المنزلي، والاحتواء. التوزيع العضوي غير المنتظم للفقاعات الرفيعة يكسر جمود اللون البيج المسطح ويجعله سطحاً حياً يتنفس، مما يجعله مثالياً لخلفيات المحتوى المقروء دون تشتيت الانتباه.</span><span class="lang-en hidden">Inspired by the fine spongy pores of authentic Sudanese kasra bread as it cooks on the sheet pan. This texture represents symbolism of sharing, domestic warmth, and containment. The irregular, organic distribution of fine bubbles breaks up the rigidity of the flat beige color and makes it a living, breathing surface, making it ideal for backgrounds for readable content without distracting attention.</span>
           </p>
-          <div class="text-xs bg-gray-50 p-3 rounded text-gray-600 font-mono inline-block" dir="ltr">Demo Opacity: 15% | Actual UI: 5% | Blend: Multiply</div>
+          <div class="text-xs bg-gray-50 p-3 rounded text-gray-600 font-mono inline-block" dir="ltr">Demo Opacity: 15% | Actual UI: 8% | Blend: Multiply</div>
         </div>
       </div>
 
