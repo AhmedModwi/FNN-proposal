@@ -50,14 +50,6 @@ import SourceLinks from '../components/ui/SourceLinks.astro';
     background-size: 512px;
     background-repeat: repeat;
   }
-  .tex-coffee-beans {
-    background-image: url('/coffee-beans-texture.png');
-    background-size: cover;
-    background-position: center;
-    background-repeat: repeat;
-    mix-blend-mode: multiply;
-  }
-  
   /* Gold Accent Styles for Events section */
   .gold-accent {
     color: #D4AF37; /* Metallic Gold */
@@ -130,14 +122,13 @@ import SourceLinks from '../components/ui/SourceLinks.astro';
 <!-- 1. HERO / INTRO SECTION -->
 <section class="bg-white border-none pt-24 pb-16">
   <div class="container-doc">
-    <h1 class="text-4xl md:text-5xl font-black mb-6 leading-tight"><span class="lang-ar">نظام لوني موحد — ثلاث بيئات سودانية تحاكي دورة حياة الضيافة</span><span class="lang-en hidden">Unified color system — three Sudanese environments mimicking the hospitality lifecycle</span></h1>
+    <h1 class="text-4xl md:text-5xl font-black mb-6 leading-tight"><span class="lang-ar">نظام لوني موحد — بيئتان سودانيتان تحاكيان دورة حياة الضيافة</span><span class="lang-en hidden">Unified color system — two Sudanese environments mimicking the hospitality lifecycle</span></h1>
     <p class="text-xl opacity-80 max-w-3xl leading-relaxed">
-      <span class="lang-ar">هذا المستند يعرض نظاماً لونياً موحداً يغطي ثلاث بيئات جغرافية وثقافية داخل المطعم (الكسرة والجلود وحبات البن). يوثق هذا الملف معمارية الألوان (Color Architecture)، التوزيع الهرمي، والأسطح ذات النغمات المتدرجة (Tonal Surfaces) لضمان تجربة بصرية متكاملة وشاملة.</span><span class="lang-en hidden">This document presents a unified color system covering three geographic and cultural environments within the restaurant (Kisra, leather, and coffee beans). It documents the color architecture, hierarchy, and tonal surfaces for an integrated experience.</span>
+      <span class="lang-ar">هذا المستند يعرض نظاماً لونياً موحداً يغطي بيئتين أساسيتين: الكسرة (الافتراضية لكامل الموقع) والجلد (للكيترينج والفوتر). يوثق هذا الملف معمارية الألوان (Color Architecture)، التوزيع الهرمي، والأسطح ذات النغمات المتدرجة (Tonal Surfaces) لضمان تجربة بصرية متكاملة وشاملة.</span><span class="lang-en hidden">This document presents a unified color system covering two core environments: Kisra (the site-wide default) and Leather (for catering and footer). It documents the color architecture, hierarchy, and tonal surfaces for an integrated experience.</span>
     </p>
     <div class="mt-8 flex gap-4">
-      <div class="px-4 py-2 bg-[#EEDCB5] text-[#4A3B32] font-bold rounded shadow-sm border border-gray-200"><span class="lang-ar">بيئة المطعم</span><span class="lang-en hidden">Restaurant</span></div>
-      <div class="px-4 py-2 bg-[#6B4D41] text-[#F4F1DE] font-bold rounded shadow-sm"><span class="lang-ar">بيئة المقهى</span><span class="lang-en hidden">Coffee Shop</span></div>
-      <div class="px-4 py-2 bg-[#4D2C19] text-[#F4F1DE] font-bold rounded shadow-sm border border-[#D4AF37]"><span class="lang-ar">المناسبات والـ VIP</span><span class="lang-en hidden">Events & VIP</span></div>
+      <div class="px-4 py-2 bg-[#EEDCB5] text-[#4A3B32] font-bold rounded shadow-sm border border-gray-200"><span class="lang-ar">بيئة المطعم (الافتراضية)</span><span class="lang-en hidden">Restaurant — Default</span></div>
+      <div class="px-4 py-2 bg-[#4D2C19] text-[#F4F1DE] font-bold rounded shadow-sm border border-[#D4AF37]"><span class="lang-ar">الكيترينج والفوتر</span><span class="lang-en hidden">Catering & Footer</span></div>
     </div>
   </div>
 </section>
@@ -231,15 +222,6 @@ import SourceLinks from '../components/ui/SourceLinks.astro';
         <p class="text-sm opacity-80 mb-6 max-w-3xl"><span class="lang-ar">استخدام "لون واحد للموقع بالكامل" سيفشل في إرضاء 3 شرائح متباينة. لذلك، قمنا بتخصيص لون وملمس لكل قسم ليخاطب سيكولوجية شريحته بشكل مستقل:</span><span class="lang-en hidden">Using “one color for the entire site” will fail to satisfy 3 disparate segments. Therefore, we assigned a color and texture to each section to independently address the psychology of its segment:</span></p>
         
         <div class="space-y-4">
-          <div class="flex items-start gap-4 p-4 bg-white border border-gray-100 rounded-lg shadow-sm">
-            <div class="flex-shrink-0">
-              <div class="w-14 h-14 rounded-full shadow-sm" style="background-color: #6B4D41;" title="Bistro Base"></div>
-            </div>
-            <div>
-              <strong class="block text-[#3E2723]"><span class="lang-ar">بيئة المقهى (Bistro): بني البن الدافئ (#6B4D41)</span><span class="lang-en hidden">Coffee Shop (Bistro): Warm Coffee Brown (#6B4D41)</span></strong>
-              <p class="text-xs opacity-70 mt-1"><span class="lang-ar">يحفز الهدوء والتركيز، مع ملمس حبات القهوة الحقيقية لإضفاء روح اجتماعية مريحة تشجع على الجلوس الطويل والمحادثة.</span><span class="lang-en hidden">Stimulates calm and focus, with real coffee bean texture for a comfortable social spirit that encourages conversation.</span></p>
-            </div>
-          </div>
           <div class="flex items-start gap-4 p-4 bg-white border border-gray-100 rounded-lg shadow-sm">
             <div class="flex-shrink-0">
               <div class="w-14 h-14 rounded-full border border-gray-100 shadow-sm" style="background-color: #EEDCB5;" title="Restaurant Base"></div>
@@ -514,14 +496,13 @@ import SourceLinks from '../components/ui/SourceLinks.astro';
   <div class="container-doc">
     <div class="max-w-3xl">
       <p class="text-sm font-bold uppercase tracking-widest opacity-60 mb-2 en-text">Unified Identity System</p>
-      <h2 class="text-4xl font-bold mb-6"><span class="lang-ar">النظام الموحد — ثلاث بيئات، رؤية واحدة</span><span class="lang-en hidden">Unified System — Three Environments, One Vision</span></h2>
+      <h2 class="text-4xl font-bold mb-6"><span class="lang-ar">النظام الموحد — بيئتان، رؤية واحدة</span><span class="lang-en hidden">Unified System — Two Environments, One Vision</span></h2>
       <p class="text-lg opacity-80 leading-relaxed mb-6">
-        <span class="lang-ar">يعتمد النظام الموحد على الهوية البصرية العضوية التي تتنفس من خلال ثلاث بيئات مختلفة. كل بيئة مصممة هندسياً لتلبية احتياجات نفسية وحسية محددة، مع الحفاظ على روح "الفنانين" الأصيلة. يضمن هذا التوجه تماسك العلامة التجارية مع توفير تنوع بصري يمنع الملل الرقمي.</span><span class="lang-en hidden">The unified system relies on an organic visual identity that breathes through three different environments. Each environment is engineered to meet specific psychological and sensory needs while maintaining the authentic "Al-Fananin" spirit.</span>
+        <span class="lang-ar">يعتمد النظام الموحد على الهوية البصرية العضوية التي تتنفس من خلال بيئتين أساسيتين. الكسرة هي الافتراضية لكامل الموقع، بينما يُحجز الجلد للكيترينج والفوتر فقط. يضمن هذا التوجه تماسك العلامة التجارية مع الحفاظ على روح "الفنانين" الأصيلة.</span><span class="lang-en hidden">The unified system relies on an organic visual identity that breathes through two core environments. Kisra is the site-wide default, while Leather is reserved exclusively for catering and the footer, maintaining the authentic "Al-Fananin" spirit.</span>
       </p>
       <ul class="list-disc list-inside space-y-2 font-bold opacity-90">
-        <li><span class="lang-ar">بيئة المطعم: الكسرة والأصالة (Heritage Warmth)</span></li>
-        <li><span class="lang-ar">بيئة المقهى: البن وجلسات السمر (Bistro Focus)</span></li>
-        <li><span class="lang-ar">بيئة المناسبات: الجلد والذهب (Premium Hospitality)</span></li>
+        <li><span class="lang-ar">بيئة المطعم: الكسرة والأصالة — الافتراضية لكامل الموقع (Heritage Warmth)</span></li>
+        <li><span class="lang-ar">بيئة الكيترينج والفوتر: الجلد والذهب (Premium Hospitality)</span></li>
       </ul>
     </div>
   </div>
@@ -553,32 +534,6 @@ import SourceLinks from '../components/ui/SourceLinks.astro';
               <p class="text-xs font-bold opacity-60 mb-2"><span class="lang-ar">البطاقة (Surface السطح 1)</span><span class="lang-en hidden">Card (Surface 1)</span></p>
               <h5 class="text-lg font-bold mb-1"><span class="lang-ar">حيادية ترابية</span><span class="lang-en hidden">Territorial neutrality</span></h5>
               <p class="text-sm opacity-90 leading-[1.8] pb-3 border-b border-[#2D241E] border-opacity-10 mb-3 flex-grow" style="font-weight: 500; letter-spacing: 0.01em;"><span class="lang-ar">تطبيق لمبدأ السطح المتدرج (Tonal Surface) الذي يبني بُعداً خفياً باستخدام الظلال والدرجات الداكنة الطفيفة فقط.</span><span class="lang-en hidden">An application of the Tonal Surface principle that builds subtle dimension using only subtle shadows and tones.</span></p>
-              <span class="text-xs font-bold"><span class="lang-ar">النص المساعد (Subtext)</span><span class="lang-en hidden">Subtext</span></span>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- S1 Palette 2: Bistro -->
-      <div class="grid grid-cols-1 md:grid-cols-12 gap-6 bg-white p-6 rounded-2xl shadow-sm border border-gray-100 items-stretch">
-        <div class="md:col-span-4 flex flex-col justify-center">
-          <h4 class="font-bold text-xl mb-1"><span class="lang-ar">٢. بيئة المقهى (البن)</span><span class="lang-en hidden">2. Coffee Shop (Bistro Beans)</span></h4>
-          <p class="text-sm opacity-70 mb-4"><span class="lang-ar">يعكس دفء القهوة التقليدية و جلسات السمر.</span><span class="lang-en hidden">Reflects the warmth of traditional coffee and social sessions.</span></p>
-          <div class="flex flex-col gap-2 text-sm text-gray-700">
-            <div><span class="font-bold"><span class="lang-ar">أرضية السطح:</span><span class="lang-en hidden">Roof floor:</span></span> <code class="en-text bg-gray-100 px-1 rounded text-xs mx-1">#6B4D41</code></div>
-            <div><span class="font-bold"><span class="lang-ar">البطاقة المتدرجة:</span><span class="lang-en hidden">Graduated card:</span></span> <code class="en-text bg-gray-100 px-1 rounded text-xs mx-1">#5A4137</code></div>
-            <div><span class="font-bold"><span class="lang-ar">لون النص الأساسي:</span><span class="lang-en hidden">Base text color:</span></span> <code class="en-text bg-gray-100 px-1 rounded text-xs mx-1">#FDFBF7</code></div>
-          </div>
-        </div>
-        <div class="md:col-span-8">
-          <!-- Demo Card with Coffee Beans Texture -->
-          <div class="rounded-xl p-6 relative overflow-hidden h-full shadow-lg" style="background-color: #6B4D41; color: #FDFBF7;">
-            <div class="tex-coffee-beans absolute inset-0 opacity-10"></div>
-            <p class="text-xs font-bold opacity-60 mb-4 relative z-10"><span class="lang-ar">الخلفية (Background السطح 0)</span><span class="lang-en hidden">Background 0</span></p>
-            <div class="rounded-lg p-5 shadow-lg relative z-10 h-full flex flex-col" style="background-color: #5A4137;">
-              <p class="text-xs font-bold opacity-60 mb-2"><span class="lang-ar">البطاقة (Surface السطح 1)</span><span class="lang-en hidden">Card (Surface 1)</span></p>
-              <h5 class="text-lg font-bold mb-1"><span class="lang-ar">ملمس حبات البن</span><span class="lang-en hidden">Coffee Beans Texture</span></h5>
-              <p class="text-sm opacity-90 leading-relaxed pb-3 border-b border-[#FDFBF7] border-opacity-10 mb-3 flex-grow" style="font-weight: 500;"><span class="lang-ar">استخدام صورة حقيقية لحبات البن بشفافية 10% لخلق عمق بصري يحاكي رائحة القهوة الطازجة.</span><span class="lang-en hidden">10% opacity coffee bean texture for sensory depth.</span></p>
               <span class="text-xs font-bold"><span class="lang-ar">النص المساعد (Subtext)</span><span class="lang-en hidden">Subtext</span></span>
             </div>
           </div>
@@ -663,21 +618,6 @@ import SourceLinks from '../components/ui/SourceLinks.astro';
         </div>
       </div>
 
-      <!-- Texture: Coffee Beans -->
-      <div class="border rounded-xl overflow-hidden shadow-sm">
-        <div class="h-48 relative flex items-center justify-center overflow-hidden" style="background-color: #6B4D41;">
-          <div class="tex-coffee-beans absolute inset-0 opacity-40"></div>
-          <span class="relative z-10 text-white font-bold text-xl px-4 py-2 bg-black/40 backdrop-blur rounded-lg"><span class="lang-ar">معاينة الملمس (مُكثّف للعرض)</span><span class="lang-en hidden">Texture preview (intensified for display)</span></span>
-        </div>
-        <div class="p-6 bg-white text-right">
-          <h4 class="font-bold text-lg text-[#2B1A14] mb-2"><span class="lang-ar">حبات البن المتراكمة (Pile of Coffee Beans)</span><span class="lang-en hidden">Pile of Coffee Beans</span></h4>
-          <p class="text-sm opacity-80 mb-4 leading-relaxed">
-            <span class="lang-ar">ملمس واقعي مستمد من صور عالية الدقة لحبات البن السوداني المحمصة. هذا الملمس ليس مجرد زخرفة، بل هو استدعاء حسي لرائحة المكان وكفاءة التحميص. يُطبق بشفافية منخفضة جداً (10%) لضمان ووضوح النصوص.</span><span class="lang-en hidden">Realistic coffee bean texture for sensory evocation. Applied at 10% opacity for clarity and depth.</span>
-          </p>
-          <div class="text-xs bg-gray-50 p-3 rounded text-gray-600 font-mono inline-block" dir="ltr">Demo Opacity: 40% | Actual UI: 10% | Blend: Multiply</div>
-        </div>
-      </div>
-
     </div>
   </div>
 </section>
@@ -714,6 +654,20 @@ import SourceLinks from '../components/ui/SourceLinks.astro';
           <div>
             <span class="font-bold block text-gray-900 mb-1"><span class="lang-ar">احترام عتبة الخامات البصرية (Filter Thresholds)</span><span class="lang-en hidden">Respecting the threshold of optical materials (Filter Thresholds)</span></span>
             <span class="text-gray-600 text-base"><span class="lang-ar">فلاتر الـ SVG يجب أن تعيش دائماً ضمن نطاق الشفافية (Opacity) من %4 إلى %6 كحد أقصى لتكون محسوسة سيكولوجياً وغير مرئية زخرفياً.</span><span class="lang-en hidden">SVG filters should always live within the Opacity range of 4% to 6% maximum to be psychologically perceptible and decoratively invisible.</span></span>
+          </div>
+        </li>
+        <li class="flex gap-4">
+          <span class="text-2xl">✅</span>
+          <div>
+            <span class="font-bold block text-gray-900 mb-1"><span class="lang-ar">الكسرة هي الافتراضي العام للموقع</span><span class="lang-en hidden">Kisra is the site-wide default</span></span>
+            <span class="text-gray-600 text-base"><span class="lang-ar"><code class="en-text text-xs bg-gray-100 px-1 rounded">#EEDCB5</code> هو لون خلفية كل صفحة وكل قسم في الموقع بالكامل. لا توجد بيئة افتراضية أخرى.</span><span class="lang-en hidden"><code class="en-text text-xs bg-gray-100 px-1 rounded">#EEDCB5</code> is the default background for every page and section across the entire site. No other environment is used as a default.</span></span>
+          </div>
+        </li>
+        <li class="flex gap-4">
+          <span class="text-2xl">✅</span>
+          <div>
+            <span class="font-bold block text-gray-900 mb-1"><span class="lang-ar">الجلد محجوز للكيترينج والفوتر فقط</span><span class="lang-en hidden">Leather is reserved for catering and footer only</span></span>
+            <span class="text-gray-600 text-base"><span class="lang-ar"><code class="en-text text-xs bg-gray-100 px-1 rounded">#4D2C19</code> يُستخدم حصراً في صفحة الكيترينج وفي الفوتر. يُمنع توظيفه في أي صفحة أو قسم آخر.</span><span class="lang-en hidden"><code class="en-text text-xs bg-gray-100 px-1 rounded">#4D2C19</code> is used exclusively on the catering page and in the footer. It must not appear on any other page or section.</span></span>
           </div>
         </li>
       </ul>
