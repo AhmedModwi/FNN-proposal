@@ -194,32 +194,28 @@ import SourceLinks from '../components/ui/SourceLinks.astro';
       <div>
         <h3 class="text-xl font-bold mb-4 text-[#2B1A14] flex items-center gap-2">
           <span class="bg-[#2B1A14] text-white w-6 h-6 flex items-center justify-center rounded-full text-sm"><span class="lang-ar">٢</span><span class="lang-en hidden">٢</span></span>
-          <span class="lang-ar">تقسيم الجمهور إلى 3 شرائح (Audience Segmentation)</span><span class="lang-en hidden">Dividing the audience into 3 segments (Audience Segmentation)</span>
+          <span class="lang-ar">توزيع البيئتين على احتياجات الجمهور المختلفة (Audience Distribution)</span><span class="lang-en hidden">Distributing the two environments across varying audience needs (Audience Distribution)</span>
         </h3>
-        <p class="text-sm opacity-80 mb-6 border-b pb-4 max-w-3xl"><span class="lang-ar">كشف تحليل الكلمات المفتاحية أن جمهور "الفنانين" لا يمثل شريحة واحدة، بل ينقسم إلى ثلاث شرائح (Personas) مختلفة ومتباينة الاحتياجات:</span><span class="lang-en hidden">Keyword analysis revealed that the “artists” audience does not represent a single segment, but is divided into three different segments (Personas) with varying needs:</span></p>
-        <div class="grid md:grid-cols-3 gap-6">
-          <div class="bg-white p-6 border rounded-xl">
-            <h4 class="font-bold text-[#D9A92B] mb-2"><span class="lang-ar">1. الشباب والأصدقاء (The Social Crowd)</span><span class="lang-en hidden">1. Youth and Friends (The Social Crowd)</span></h4>
-            <p class="text-xs opacity-70 leading-relaxed"><span class="lang-ar">تأتي من أجل "الونسة". ركزت مراجعاتهم على مصطلحات: "تجمع الأصدقاء"، "الشيشة"، "لعب الكوتشينة"، والمباريات. يميلون للبيئة الصاخبة والحيوية.</span><span class="lang-en hidden">She comes for "the miss". Their reviews focused on the terms: "friends gathering", "shisha", "playing cards", and matches. They prefer a noisy and lively environment.</span></p>
+        <p class=”text-sm opacity-80 mb-6 border-b pb-4 max-w-3xl”><span class=”lang-ar”>كشف تحليل الكلمات المفتاحية أن جمهور “الفنانين” متنوع الاحتياجات. لذلك، صممنا بيئتين أساسيتين لتلبية متطلبات المستخدمين المختلفة:</span><span class=”lang-en hidden”>Keyword analysis revealed that the “artists” audience has diverse needs. Therefore, we designed two core environments to serve different user requirements:</span></p>
+        <div class=”grid md:grid-cols-2 gap-6”>
+          <div class=”bg-white p-6 border rounded-xl”>
+            <h4 class=”font-bold text-[#D9A92B] mb-2”><span class=”lang-ar”>1. الشباب والأصدقاء (The Social Crowd)</span><span class=”lang-en hidden”>1. Youth and Friends (The Social Crowd)</span></h4>
+            <p class=”text-xs opacity-70 leading-relaxed”><span class=”lang-ar”>تأتي من أجل “الونسة”. ركزت مراجعاتهم على مصطلحات: “تجمع الأصدقاء”، “الشيشة”، “لعب الكوتشينة”، والمباريات. يميلون للبيئة الصاخبة والحيوية — تُخدم بـ بيئة الكسرة الافتراضية.</span><span class=”lang-en hidden”>They come for “the gathering”. Their reviews focused on: “friends gathering”, “shisha”, “playing cards”, and matches. They prefer a lively environment — served by the default Kisra environment.</span></p>
           </div>
-          <div class="bg-white p-6 border rounded-xl">
-            <h4 class="font-bold text-[#81B29A] mb-2"><span class="lang-ar">2. العائلات والذواقة (Families & Foodies)</span><span class="lang-en hidden">2. Families & Foodies</span></h4>
-            <p class="text-xs opacity-70 leading-relaxed"><span class="lang-ar">تبحث عن الأصالة والراحة. ركزت مراجعاتهم على: "الطعام السوداني الأصيل"، "شية الجمر"، قسم العائلات المنفصل، ويطالبون ببيئة نظيفة ومريحة للجلوس الطويل.</span><span class="lang-en hidden">Looking for authenticity and comfort. Their reviews focused on: “authentic Sudanese food”, “shiya el-jamar”, separate family section, and claimed a clean and comfortable environment for extended seating.</span></p>
-          </div>
-          <div class="bg-white p-6 border rounded-xl">
-            <h4 class="font-bold text-[#780000] mb-2"><span class="lang-ar">3. المناسبات (The Premium Seekers)</span><span class="lang-en hidden">3. Occasions (The Premium Seekers)</span></h4>
-            <p class="text-xs opacity-70 leading-relaxed"><span class="lang-ar">تركز على الكرم والضيافة. العبارات الرائجة: "الضيافة السودانية"، "قسم الولائم"، واللحوم المشوية. هذه الشريحة تتوقع جودة عالية تلبي المعايير الراقية.</span><span class="lang-en hidden">Focuses on generosity and hospitality. Popular phrases: "Sudanese hospitality", "banquet department", and grilled meats. This segment expects high quality that meets high-end standards.</span></p>
+          <div class=”bg-white p-6 border rounded-xl”>
+            <h4 class=”font-bold text-[#81B29A] mb-2”><span class=”lang-ar”>2. العائلات والمناسبات (Families, Foodies & Premium Events)</span><span class=”lang-en hidden”>2. Families, Foodies & Premium Events</span></h4>
+            <p class=”text-xs opacity-70 leading-relaxed”><span class=”lang-ar”>تبحث عن الأصالة والراحة والفخامة. يريدون الطعام السوداني الأصيل والجلوس المريح والضيافة الراقية. هذه الشريحة تُخدم بـ بيئة الكسرة (للجلسات الهادئة) و بيئة الجلد (للتموين والمناسبات الخاصة).</span><span class=”lang-en hidden”>They seek authenticity, comfort, and refinement. They want genuine Sudanese food, comfortable seating, and premium hospitality. This segment is served by Kisra (for quiet sessions) and Leather (for catering and special occasions).</span></p>
           </div>
         </div>
       </div>
 
       <!-- Step 3 -->
       <div>
-        <h3 class="text-xl font-bold mb-4 text-[#2B1A14] flex items-center gap-2">
-          <span class="bg-[#2B1A14] text-white w-6 h-6 flex items-center justify-center rounded-full text-sm"><span class="lang-ar">٣</span><span class="lang-en hidden">٣</span></span>
-          <span class="lang-ar">النظام اللوني الثلاثي المتخصص (The Tripartite Psychology)</span><span class="lang-en hidden">The Tripartite Psychology</span>
+        <h3 class=”text-xl font-bold mb-4 text-[#2B1A14] flex items-center gap-2”>
+          <span class=”bg-[#2B1A14] text-white w-6 h-6 flex items-center justify-center rounded-full text-sm”><span class=”lang-ar”>٣</span><span class=”lang-en hidden”>٣</span></span>
+          <span class=”lang-ar”>النظام اللوني الثنائي المتخصص (Dual Color Psychology)</span><span class=”lang-en hidden”>Dual Color Psychology</span>
         </h3>
-        <p class="text-sm opacity-80 mb-6 max-w-3xl"><span class="lang-ar">استخدام "لون واحد للموقع بالكامل" سيفشل في إرضاء 3 شرائح متباينة. لذلك، قمنا بتخصيص لون وملمس لكل قسم ليخاطب سيكولوجية شريحته بشكل مستقل:</span><span class="lang-en hidden">Using “one color for the entire site” will fail to satisfy 3 disparate segments. Therefore, we assigned a color and texture to each section to independently address the psychology of its segment:</span></p>
+        <p class=”text-sm opacity-80 mb-6 max-w-3xl”><span class=”lang-ar”>استخدام “لون واحد للموقع بالكامل” سيفشل في خدمة احتياجات متنوعة. لذلك، قمنا بتصميم بيئتين متخصصتين: الكسرة كافتراضية عامة، والجلد للتموين وذيل الصفحة، لتلبية السيكولوجية المختلفة لكل استخدام:</span><span class=”lang-en hidden”>Using “one color for the entire site” fails to meet diverse needs. Therefore, we designed two specialized environments: Kisra as the universal default, and Leather for catering and footer, to address the distinct psychology of each use case:</span></p>
         
         <div class="space-y-4">
           <div class="flex items-start gap-4 p-4 bg-white border border-gray-100 rounded-lg shadow-sm">
@@ -540,11 +536,11 @@ import SourceLinks from '../components/ui/SourceLinks.astro';
         </div>
       </div>
 
-      <!-- S1 Palette 3: Events & VIP -->
+      <!-- S1 Palette 2: Events & Catering -->
       <div class="grid grid-cols-1 md:grid-cols-12 gap-6 bg-white p-6 rounded-2xl shadow-sm border border-gray-100 items-stretch">
         <div class="md:col-span-4 flex flex-col justify-center">
           <h4 class="font-bold text-xl mb-1 flex items-center gap-2">
-            <span class="lang-ar">٣. والمناسبات (الجلد العتيق)</span><span class="lang-en hidden">3. Events (Vintage Leather)</span>
+            <span class="lang-ar">٢. والمناسبات (الجلد العتيق)</span><span class="lang-en hidden">2. Events (Vintage Leather)</span>
             <span class="w-3 h-3 rounded-full bg-[#D4AF37] animate-pulse"></span>
           </h4>
           <p class="text-sm opacity-70 mb-4"><span class="lang-ar">فخامة وتاريخ وجذور متأصلة للفعاليات عالية المستوى.</span><span class="lang-en hidden">Prestige, history and deep roots of high-level events.</span></p>
